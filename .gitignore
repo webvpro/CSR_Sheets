@@ -348,3 +348,13 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+debug.log
+.idea
+firebase.config.js
+firebase-debug.log
+*.cache
