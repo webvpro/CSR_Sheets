@@ -1,15 +1,14 @@
 import { toRefs, reactive, onMounted } from "vue";
-import { db } from "@/modules/firebase"
-import { 
+import { db } from "@/modules/firebase";
+import {
   collection,
   getDoc,
   doc,
   setDoc,
-  Timestamp
-
+  onSnapshot,
+  deleteDoc,
+  Timestamp,
 } from "firebase/firestore";
-import { async } from "@firebase/util";
-
 
 /**
  *
@@ -18,17 +17,15 @@ import { async } from "@firebase/util";
  * @param { boolean | undefined } queryOptions.onMounted if true run query on mount
  * @param { string | undefined } queryOptions.documentId query string, see firebase documentation
  */
-export default function(collectionName, queryOptions) {
+export default function (collectionName, queryOptions) {
   let state = reactive({
     // error if one happens
     error: null,
     // the results of the query
     documentData: {},
     // if the query is loading or ot
-    loading: false
+    loading: false,
   });
- 
-
 
   /**
    * there is the option to load the query when the component
@@ -38,43 +35,41 @@ export default function(collectionName, queryOptions) {
    */
   onMounted(() => {
     queryOptions &&
-      (queryOptions.onMount && getDocument(queryOptions.documentId));
+      queryOptions.onMount &&
+      getDocument(queryOptions.documentId);
   });
 
-  const deleteDocument = async _documentId => {
+  const deleteDocument = async (_documentId) => {
     state.loading = true;
     state.error = null;
     await deleteDoc(doc(db, collectionName, _documentId));
   };
 
-  const setDocument = async  _documentData => {
+  const setDocument = async (_documentData) => {
     state.loading = true;
     state.error = null;
-    let docRef = null
+    let docRef = null;
     if (_documentData.id) {
       // update existing
-      let docRefArray = []
-      docRefArray.push(db)
-      docRefArray.push(collectionName)
-      docRefArray.push(_documentData.id)
-      delete _documentData.id
-      docRef = doc(...docRefArray)
+      let docRefArray = [];
+      docRefArray.push(db);
+      docRefArray.push(collectionName);
+      docRefArray.push(_documentData.id);
+      delete _documentData.id;
+      docRef = doc(...docRefArray);
     } else {
       //create new
-      console.log(collectionName)
-      docRef = doc(collection(db, collectionName))
+      console.log(collectionName);
+      docRef = doc(collection(db, collectionName));
     }
 
-    await setDoc(docRef,{ 
+    await setDoc(docRef, {
       ..._documentData,
-      createdOn: Timestamp.now()
-    }) 
-    
-    
-    state.loading = false; 
-  };
+      createdOn: Timestamp.now(),
+    });
 
-  
+    state.loading = false;
+  };
 
   /**
    *
@@ -82,24 +77,37 @@ export default function(collectionName, queryOptions) {
    * @param { boolean | undefined } queryOptions.onMounted
    * @param { string | undefined } queryOptions.documentId
    */
-  const getDocument = async documentId => {
+  const getDocument = async (_documentId) => {
     state.loading = true;
     state.error = null;
-    const docRef = doc(db, collectionName, _documentId)
+    const docRef = doc(db, collectionName, _documentId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      state.documentData = docSnap.data()
+      state.documentData = docSnap.data();
     } else {
-      state.documentData = {}
+      state.documentData = {};
       console.log("No such document!");
     }
-     
+  };
+
+  const getUpadateDocument = async (_documentId) => {
+    state.loading = true;
+    state.error = null;
+    const docRef = doc(db, collectionName, _documentId);
+    const docSnap = await onSnapshot(docRef);
+    if (docSnap.exists()) {
+      state.documentData = docSnap.data();
+    } else {
+      state.documentData = {};
+      console.log("No such document!");
+    }
   };
 
   return {
     ...toRefs(state),
-    'getDocument': getDocument,
-    'setDocument': setDocument,
-    'deleteDocument': deleteDocument,
+    getDocument: getDocument,
+    getUpadateDocument: getUpadateDocument,
+    setDocument: setDocument,
+    deleteDocument: deleteDocument,
   };
 }

@@ -9,6 +9,7 @@
       :block-id="block._uid"
       :block-data="block.data"
     ></component>
+    <iframe class="w-full h-full" :src="diceIdx"></iframe>
   </div>
 </template>
 <script>
@@ -40,6 +41,7 @@ export default {
   },
   setup() {
     const open = ref(true);
+    const diceIdx = "./diceIndex.html";
     const blocks = ref([
       {
         _uid: "nameblock1",
@@ -70,6 +72,7 @@ export default {
       schema: {},
       data: {},
       blockId: "",
+      diceIdx,
     });
 
     const editBlock = (id) => {

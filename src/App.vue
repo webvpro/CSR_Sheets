@@ -3,7 +3,7 @@
     <header class="bg-indigo-900 shadow">
       <PageHeader />
     </header>
-    <div class="container h-full w-full">
+    <div class="h-full w-full">
       <Suspense>
         <template #default>
           <router-view />

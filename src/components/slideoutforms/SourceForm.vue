@@ -24,7 +24,7 @@
                     <div class="flex items-start justify-between space-x-3">
                       <div class="space-y-1">
                         <DialogTitle class="text-lg font-medium text-gray-900">
-                          Source
+                          Source {{ sourceId }}
                         </DialogTitle>
                         <p class="text-sm text-gray-500">
                           Define a Cypher Ruleset
@@ -320,11 +320,16 @@ export default {
   },
   setup() {
     const open = ref(inject("openForm"));
+    const sourceId = ref(inject("sourceId"));
     console.log(open);
     return {
       open,
       tabs,
-      close: () => (open.value = false),
+      close: () => {
+        sourceId.value = "";
+        open.value = false;
+      },
+      sourceId,
     };
   },
 };
