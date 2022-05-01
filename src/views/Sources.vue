@@ -10,7 +10,7 @@
           <button
             type="button"
             class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            @click="open"
+            @click="createSource"
           >
             Create
           </button>
@@ -50,12 +50,12 @@
       </div>
     </div>
     <div class="container w-full mx-auto content-evenly p-5 fixed">
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div
           v-for="source in sources"
           :key="source.id"
           class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-          @click="editSource(source.id)"
+          @click="gotoSource(source.id)"
         >
           <div class="flex-shrink-0">
             {{ source.name }}
@@ -79,7 +79,8 @@
 </template>
 
 <script>
-import { ref, toRefs, reactive, onMounted, provide } from "vue";
+import { ref, toRefs, reactive, onMounted, provide, computed } from "vue";
+import { useRouter } from "vue-router";
 import useSourceCollection from "@/modules/use-collection";
 import SourceForm from "@/components/slideoutforms/SourceForm.vue";
 
@@ -91,18 +92,23 @@ const tabs = [
   { name: "Horror", href: "#", current: false },
   { name: "Fantasy", href: "#", current: false },
   { name: "Sci-Fi", href: "#", current: false },
+  { name: "Homebrew", href: "#", current: false },
 ];
 export default {
   components: {
     SourceForm,
   },
   setup() {
+    const router = useRouter();
     const show = ref(false);
     const sourceId = ref("");
-    const open = () => (show.value = true);
-    const editSource = (docId) => {
-      sourceId.value = docId;
+    const createSource = () => {
+      sourceId.value = "";
       return (show.value = true);
+    };
+    const gotoSource = (docId) => {
+      const path = `/source/${docId}`;
+      router.push(path);
     };
 
     const state = reactive({
@@ -117,16 +123,20 @@ export default {
     state.sources = collectionData;
 
     provide("openForm", show);
-    provide("sourceId", sourceId);
+    provide(
+      "sourceId",
+      computed(() => sourceId.value)
+    );
     onMounted(() => {
       getCollection();
     });
     return {
-      open,
+      createSource,
       SourceForm,
       ...toRefs(state),
       tabs,
-      editSource,
+      gotoSource,
+      sourceId,
     };
   },
 };

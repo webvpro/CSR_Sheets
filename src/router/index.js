@@ -23,41 +23,46 @@ export const routes = [
     meta: { title: "Game", secure: true },
   },
   {
-    path: "/sources",
-    component: () => import("@/views/Sources.vue"),
-    meta: { title: "Sources", secure: true },
+    path: "/source/:id",
+    component: () => import("@/views/Source.vue"),
+    meta: { title: "Source", secure: true },
     children: [
       {
         path: "ablilites",
-        component: () => import("@/views/AbilitiesSource.vue"),
+        component: () => import("@/views/source/Abilities.vue"),
         meta: { title: "Abilities Source", secure: true },
       },
       {
         path: "types",
-        component: () => import("@/views/TypesSource.vue"),
+        component: () => import("@/views/source/Types.vue"),
         meta: { title: "Types Source", secure: true },
       },
       {
         path: "powershifts",
-        component: () => import("@/views/PowerShiftsSource.vue"),
-        meta: { title: "Power Shifts Source", secure: true },
+        component: () => import("@/views/source/Shifts.vue"),
+        meta: { title: "Shifts Source", secure: true },
       },
       {
         path: "descriptors",
-        component: () => import("@/views/DescriptorsSource.vue"),
+        component: () => import("@/views/source/Descriptors.vue"),
         meta: { title: "Descriptors", secure: true },
       },
       {
-        path: "Foci",
-        component: () => import("@/views/FociSource.vue"),
+        path: "foci",
+        component: () => import("@/views/source/Foci.vue"),
         meta: { title: "Foci Sources", secure: true },
       },
       {
-        path: "Cyphers",
-        component: () => import("@/views/CyphersSource.vue"),
+        path: "cyphers",
+        component: () => import("@/views/source/Cyphers.vue"),
         meta: { title: "Cyphers Sources", secure: true },
       },
     ],
+  },
+  {
+    path: "/sources",
+    component: () => import("@/views/Sources.vue"),
+    meta: { title: "Sources", secure: true },
   },
   {
     path: "/sheet",

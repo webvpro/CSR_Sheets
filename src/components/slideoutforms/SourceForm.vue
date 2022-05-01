@@ -17,6 +17,7 @@
             <div class="w-screen max-w-2xl">
               <form
                 class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll"
+                @submit="saveForm"
               >
                 <div class="flex-1">
                   <!-- Header -->
@@ -24,7 +25,7 @@
                     <div class="flex items-start justify-between space-x-3">
                       <div class="space-y-1">
                         <DialogTitle class="text-lg font-medium text-gray-900">
-                          Source {{ sourceId }}
+                          Create Source
                         </DialogTitle>
                         <p class="text-sm text-gray-500">
                           Define a Cypher Ruleset
@@ -38,7 +39,7 @@
                           @click="close"
                         >
                           <span class="sr-only">Close panel</span>
-                          <XIcon class="h-6 w-6" aria-hidden="true" />
+                          <v-icon name="hi-solid-x" scale="2" title="" />
                         </button>
                       </div>
                     </div>
@@ -46,181 +47,152 @@
 
                   <!-- Divider container -->
                   <div
-                    class="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-gray-200"
+                    class="py-6 px-6 space-y-6 xs:py-0 xs:space-y-0 divide-y divide-gray-200"
                   >
+                    <!-- Source name -->
                     <div>
-                      <div class="sm:hidden">
-                        <label for="tabs" class="sr-only">Select a tab</label>
-                        <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-                        <select
-                          id="tabs"
-                          name="tabs"
-                          class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                      <label
+                        for="name"
+                        class="block text-sm font-medium text-gray-700"
+                        >Source Name</label
+                      >
+                      <div class="mt-1 relative rounded-md shadow-sm">
+                        <Field
+                          v-model="name"
+                          name="name"
+                          type="text"
+                          :class="{
+                            formTextInput: true,
+                            inputError: errors.name,
+                          }"
+                          placeholder="Source Name"
+                        />
+                        <div
+                          v-if="errors.name"
+                          class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
                         >
-                          <option
-                            v-for="tab in tabs"
-                            :key="tab.name"
-                            :selected="tab.current"
-                          >
-                            {{ tab.name }}
-                          </option>
-                        </select>
-                      </div>
-                      <div class="hidden sm:block">
-                        <div class="border-b border-gray-200">
-                          <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                            <a
-                              v-for="tab in tabs"
-                              :key="tab.name"
-                              href="#"
-                              :class="[
-                                tab.current
-                                  ? 'border-indigo-500 text-indigo-600'
-                                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200',
-                                'whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm',
-                              ]"
-                              :aria-current="tab.current ? 'page' : undefined"
-                            >
-                              {{ tab.name }}
-                            </a>
-                          </nav>
+                          <v-icon
+                            name="hi-exclamation-circle"
+                            class="h-5 w-5 text-red-500"
+                            aria-hidden="true"
+                          />
                         </div>
                       </div>
-                    </div>
-                    <!-- Project name -->
-                    <div
-                      class="space-y-1 px-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5"
-                    >
-                      <div>
-                        <label
-                          for="project-name"
-                          class="block text-sm font-medium text-gray-900 sm:mt-px sm:pt-2"
-                        >
-                          Sorource name
-                        </label>
-                      </div>
-                      <div class="sm:col-span-2">
-                        <input
-                          id="project-name"
-                          type="text"
-                          name="project-name"
-                          class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                        />
-                      </div>
+                      <p class="mt-2 text-sm text-red-600">{{ errors.name }}</p>
                     </div>
 
-                    <!-- Project description -->
+                    <!-- Source description -->
                     <div
-                      class="space-y-1 px-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5"
+                      class="py-6 px-6 space-y-6 xs:py-0 xs:space-y-0 divide-y divide-gray-200"
                     >
                       <div>
                         <label
-                          for="project-description"
-                          class="block text-sm font-medium text-gray-900 sm:mt-px sm:pt-2"
+                          for="description"
+                          class="block text-sm font-medium text-gray-700"
                         >
                           Description
                         </label>
                       </div>
-                      <div class="sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm">
                         <textarea
-                          id="project-description"
-                          name="project-description"
+                          v-model="description"
+                          name="description"
                           rows="3"
                           class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
                         />
                       </div>
                     </div>
 
-                    <!-- Privacy -->
+                    <!-- Imported Resources -->
                     <fieldset>
                       <div
                         class="space-y-2 px-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:px-6 sm:py-5"
                       >
-                        <div>
+                        <div class="col-span-3">
                           <legend class="text-sm font-medium text-gray-900">
-                            Privacy
+                            Books to Import
                           </legend>
                         </div>
-                        <div class="space-y-5 sm:col-span-2">
+                        <div class="space-y-5 sm:col-span-3">
                           <div class="space-y-5 sm:mt-0">
-                            <div class="relative flex items-start">
-                              <div class="absolute flex items-center h-5">
-                                <input
-                                  id="public-access"
-                                  name="privacy"
-                                  aria-describedby="public-access-description"
-                                  type="radio"
-                                  class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                                  checked=""
-                                />
+                            <fieldset class="space-y-5">
+                              <legend class="sr-only">Notifications</legend>
+                              <div class="relative flex items-start">
+                                <div class="flex items-center h-5">
+                                  <input
+                                    id="comments"
+                                    aria-describedby="comments-description"
+                                    name="comments"
+                                    type="checkbox"
+                                    class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                  />
+                                </div>
+                                <div class="ml-3 text-sm">
+                                  <label
+                                    for="comments"
+                                    class="font-medium text-gray-700"
+                                    >Comments</label
+                                  >
+                                  <p
+                                    id="comments-description"
+                                    class="text-gray-500"
+                                  >
+                                    Get notified when someones posts a comment
+                                    on a posting.
+                                  </p>
+                                </div>
                               </div>
-                              <div class="pl-7 text-sm">
-                                <label
-                                  for="public-access"
-                                  class="font-medium text-gray-900"
-                                >
-                                  Public access
-                                </label>
-                                <p
-                                  id="public-access-description"
-                                  class="text-gray-500"
-                                >
-                                  Everyone with the link will see this project
-                                </p>
+                              <div class="relative flex items-start">
+                                <div class="flex items-center h-5">
+                                  <input
+                                    id="candidates"
+                                    aria-describedby="candidates-description"
+                                    name="candidates"
+                                    type="checkbox"
+                                    class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                  />
+                                </div>
+                                <div class="ml-3 text-sm">
+                                  <label
+                                    for="candidates"
+                                    class="font-medium text-gray-700"
+                                    >Candidates</label
+                                  >
+                                  <p
+                                    id="candidates-description"
+                                    class="text-gray-500"
+                                  >
+                                    Get notified when a candidate applies for a
+                                    job.
+                                  </p>
+                                </div>
                               </div>
-                            </div>
-                            <div class="relative flex items-start">
-                              <div class="absolute flex items-center h-5">
-                                <input
-                                  id="restricted-access"
-                                  name="privacy"
-                                  aria-describedby="restricted-access-description"
-                                  type="radio"
-                                  class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                                />
+                              <div class="relative flex items-start">
+                                <div class="flex items-center h-5">
+                                  <input
+                                    id="offers"
+                                    aria-describedby="offers-description"
+                                    name="offers"
+                                    type="checkbox"
+                                    class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                  />
+                                </div>
+                                <div class="ml-3 text-sm">
+                                  <label
+                                    for="offers"
+                                    class="font-medium text-gray-700"
+                                    >Offers</label
+                                  >
+                                  <p
+                                    id="offers-description"
+                                    class="text-gray-500"
+                                  >
+                                    Get notified when a candidate accepts or
+                                    rejects an offer.
+                                  </p>
+                                </div>
                               </div>
-                              <div class="pl-7 text-sm">
-                                <label
-                                  for="restricted-access"
-                                  class="font-medium text-gray-900"
-                                >
-                                  Private to Project Members
-                                </label>
-                                <p
-                                  id="restricted-access-description"
-                                  class="text-gray-500"
-                                >
-                                  Only members of this project would be able to
-                                  access
-                                </p>
-                              </div>
-                            </div>
-                            <div class="relative flex items-start">
-                              <div class="absolute flex items-center h-5">
-                                <input
-                                  id="private-access"
-                                  name="privacy"
-                                  aria-describedby="private-access-description"
-                                  type="radio"
-                                  class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                                />
-                              </div>
-                              <div class="pl-7 text-sm">
-                                <label
-                                  for="private-access"
-                                  class="font-medium text-gray-900"
-                                >
-                                  Private to you
-                                </label>
-                                <p
-                                  id="private-access-description"
-                                  class="text-gray-500"
-                                >
-                                  You are the only one able to access this
-                                  project
-                                </p>
-                              </div>
-                            </div>
+                            </fieldset>
                           </div>
                           <hr class="border-gray-200" />
                           <div
@@ -273,7 +245,7 @@
                       type="submit"
                       class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                      Create
+                      Create Source
                     </button>
                   </div>
                 </div>
@@ -287,7 +259,10 @@
 </template>
 
 <script>
-import { inject, ref } from "vue";
+import { inject, ref, reactive, toRefs } from "vue";
+import { useField, useForm, Field } from "vee-validate";
+import * as yup from "yup";
+import useCloudFunction from "@/modules/use-functions";
 import {
   Dialog,
   DialogOverlay,
@@ -295,17 +270,7 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import { XIcon } from "@heroicons/vue/outline";
 import { LinkIcon, QuestionMarkCircleIcon } from "@heroicons/vue/solid";
-
-const tabs = [
-  { name: "Summary", href: "#", count: "52", current: false },
-  { name: "Pools/Trackers", href: "#", count: "6", current: false },
-  { name: "Skills", href: "#", count: "4", current: true },
-  { name: "Abilities", href: "#", current: false },
-  { name: "Equipment", href: "#", current: false },
-  { name: "Cyphers", href: "#", current: false },
-];
 
 export default {
   components: {
@@ -316,21 +281,78 @@ export default {
     TransitionRoot,
     LinkIcon,
     QuestionMarkCircleIcon,
-    XIcon,
+    Field,
   },
+
   setup() {
-    const open = ref(inject("openForm"));
-    const sourceId = ref(inject("sourceId"));
-    console.log(open);
+    const initState = {
+      loading: false,
+      error: "",
+    };
+    const { callFunction, functionData } = useCloudFunction("createSource");
+
+    const open = ref(inject("openForm"), false);
+    const state = reactive({ ...initState });
+    const saveDocument = async (form) => {
+      state.loading = true;
+      try {
+        await callFunction(form);
+        console.log(`Function return${functionData}`);
+        open.value = false;
+      } catch (error) {
+        state.error = error;
+      }
+      state.loading = false;
+    };
+
+    //form validation scheme
+    const schema = yup.object({
+      name: yup.string().required().min(6).label("Source Name"),
+      description: yup.string().required().min(6).label("Source Description"),
+    });
+
+    const { handleSubmit, resetForm, errors } = useForm({
+      validationSchema: schema,
+      initialValues: state.source,
+    });
+
+    const { value: name } = useField("name");
+    const { value: description } = useField("description");
+
+    function onInvalidSubmit({ values, errors, results }) {
+      console.log(values); // current form values
+      console.log(errors); // a map of field names and their first error message
+      console.log(results); // a detailed map of field names and their validation results
+    }
+    const close = () => {
+      resetForm();
+      open.value = false;
+    };
+    const saveForm = handleSubmit((values, { resetForm }) => {
+      //save doc
+      saveDocument(values);
+      resetForm();
+    }, onInvalidSubmit);
     return {
       open,
-      tabs,
-      close: () => {
-        sourceId.value = "";
-        open.value = false;
-      },
-      sourceId,
+      close,
+      ...toRefs(state),
+      saveForm,
+      name,
+      description,
+      resetForm,
+      errors,
     };
   },
 };
 </script>
+<style lang="postcss">
+.formTextInput {
+  @apply block w-full shadow-sm sm:text-sm;
+  @apply focus:ring-indigo-500 focus:border-indigo-500;
+  @apply border-gray-300 rounded-md;
+}
+.inputError {
+  @apply border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500;
+}
+</style>

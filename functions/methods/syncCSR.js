@@ -1,10 +1,11 @@
 import fetch from 'node-fetch';
+import functions from 'firebase-functions';
 import { initializeApp } from 'firebase-admin/app';
 import { getStorage } from 'firebase-admin/storage';
 import { getFirestore } from 'firebase-admin/firestore';
 import { load } from 'cheerio';
 import cors from 'cors';
-import functions from 'firebase-functions';
+
 
 initializeApp();
 
@@ -73,3 +74,5 @@ export const scraper = functions.https.onRequest( async (request, response) => {
         response.sendStatus(200)
   });
 });
+
+

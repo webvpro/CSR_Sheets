@@ -62,12 +62,16 @@ export default function (collectionName, queryOptions) {
       console.log(collectionName);
       docRef = doc(collection(db, collectionName));
     }
-
     await setDoc(docRef, {
       ..._documentData,
       createdOn: Timestamp.now(),
     });
-
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      state.documentData = docSnap.data();
+    } else {
+      state.documentData = { ...docRef };
+    }
     state.loading = false;
   };
 

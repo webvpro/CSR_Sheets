@@ -8,7 +8,7 @@ initializeApp();
 const db = getFirestore();
 const bucket = getStorage().bucket();
 
-export const getCSR =  functions.https.onRequest( async (req, res) => {
+export default getCSR =  functions.https.onRequest( async (req, res) => {
     const getBookPage = (desc) => {
           const atAry = desc.split('@');
           const rbAry = atAry[1].split(']');
