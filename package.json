@@ -18,7 +18,7 @@
     "firebase": "^9.2.0",
     "oh-vue-icons": "^1.0.0-rc1",
     "pdfjs-dist": "^2.10.377",
-    "three": "^0.134.0",
+    "three": "^0.140.0",
     "troisjs": "^0.3.3",
     "vee-validate": "^4.5.5",
     "vue": "^3.2.21",
