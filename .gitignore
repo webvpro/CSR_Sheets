@@ -358,3 +358,7 @@ debug.log
 firebase.config.js
 firebase-debug.log
 *.cache
+database-debug.log
+database-debug.log
+database-debug.log
+ui-debug.log
