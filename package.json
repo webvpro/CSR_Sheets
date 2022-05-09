@@ -15,7 +15,7 @@
     "@vue/devtools": "^5.3.4",
     "@xstate/vue": "^0.8.0",
     "build-url": "^6.0.1",
-    "firebase": "^9.2.0",
+    "firebase": "^9.8.0",
     "oh-vue-icons": "^1.0.0-rc1",
     "pdfjs-dist": "^2.10.377",
     "three": "^0.134.0",
