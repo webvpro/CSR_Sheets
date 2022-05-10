@@ -22,6 +22,8 @@ export default function (collectionName, queryOptions) {
     error: null,
     // the results of the query
     documentData: {},
+
+    document: {},
     // if the query is loading or ot
     loading: false,
   });
@@ -81,8 +83,8 @@ export default function (collectionName, queryOptions) {
     state.error = null;
     const docRef = doc(db, collectionName, _documentId);
     const docSnap = await getDoc(docRef);
+    state.document = docSnap;
     if (docSnap.exists()) {
-      console.log("set doc")
       state.documentData = docSnap.data();
     } else {
       state.documentData = {};

@@ -7,12 +7,12 @@ import {
   limit,
   query,
   onSnapshot,
+  getDocs,
 } from "firebase/firestore";
 
 /**
  *
  * @param { String } collectionName name of the desired collection
- * @param { object } queryOptions
  * @param { boolean | undefined } queryOptions.onMounted if true run query on mount
  * @param { string | undefined } queryOptions.query query string, see firebase documentation
  * @param { string | undefined } queryOptions.orderBy order results,  string, see firebase documentation
@@ -52,7 +52,8 @@ export default function (collectionName, queryOptions) {
     limit: _limit,
   } = queryOptions) => {
     let qArgs = [];
-    qArgs.push(collection(db, collectionName));
+    const collectionPath = collectionName.split(",");
+    qArgs.push(collection(db, ...collectionPath));
     if (_where) qArgs.push(where(..._where));
     if (_orderBy) qArgs.push(orderBy(..._orderBy));
     if (_limit) qArgs.push(limit(_limit));
@@ -69,8 +70,31 @@ export default function (collectionName, queryOptions) {
     });
   };
 
+  const getSubCollectionDocs = async ({
+    where: _where,
+    orderBy: _orderBy,
+    limit: _limit,
+  } = queryOptions) => {
+    let qArgs = [];
+    const collectionPath = collectionName.split(",");
+    const subColRef = collection(db, ...collectionPath);
+
+    if (_where) qArgs.push(where(..._where));
+    if (_orderBy) qArgs.push(orderBy(..._orderBy));
+    if (_limit) qArgs.push(limit(_limit));
+
+    const docs = await getDocs(subColRef);
+    let resultArray = [];
+    docs.forEach((doc) => {
+      resultArray.push({ id: doc.id, ...doc.data() });
+    });
+    state.collectionData = resultArray;
+    state.loading = false;
+  };
+
   return {
     ...toRefs(state),
     getCollection: getCollection,
+    getSubCollectionDocs: getSubCollectionDocs,
   };
 }

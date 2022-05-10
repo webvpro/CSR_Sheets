@@ -81,16 +81,7 @@
 </template>
 
 <script>
-import {
-  toRefs,
-  reactive,
-  computed,
-  onMounted,
-  provide,
-  ref,
-  watchEffect,
-  watch,
-} from "vue";
+import { toRefs, reactive, computed, provide, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import useSourceDocument from "@/modules/use-doc";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
@@ -108,18 +99,15 @@ export default {
     const route = useRoute();
     const sourceNav = ref({});
     const sourceName = ref();
-    state.sourceId = computed(() => route.params.id);
-    const { getDocument, documentData } = useSourceDocument("sources", {
+    const { documentData, document } = useSourceDocument("sources", {
       onMount: true,
       documentId: route.params.id,
     });
     state.source = computed(() => documentData);
+    state.sourceDoc = computed(() => document);
+    provide("sourceDoc", state.sourceDoc);
     provide("source", state.source);
     provide("crumbPgs", sourceNav);
-    onMounted(() => {
-      const doc = getDocument(route.params.id);
-      console.log(doc.id);
-    });
     watchEffect(() => {
       sourceNav.value = {
         rootPg: {
@@ -136,7 +124,10 @@ export default {
           },
           {
             title: `${
-              route.params.name ? route.params.name : undefined
+              route.params.name
+                ? route.params.name.charAt(0).toUpperCase() +
+                  route.params.name.slice(1)
+                : undefined
             } Collection `,
             path: `/source/${route.params.id}/collection/${route.params.name}`,
             icon: "gi-notebook",
