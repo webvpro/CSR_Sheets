@@ -15,6 +15,7 @@ const Hi = Object.values({ ...HiIcons });
 addIcons(...Gi, ...Fa, ...Hi);
 
 const app = createApp(App);
+app.config.unwrapInjectedRef = true;
 app.component("VIcon", OhVueIcon);
 app.use(VuePdf);
 app.use(router);

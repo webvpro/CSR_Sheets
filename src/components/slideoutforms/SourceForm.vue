@@ -36,7 +36,7 @@
                         <button
                           type="button"
                           class="text-gray-400 hover:text-gray-500"
-                          @click="close"
+                          @click.prevent="close"
                         >
                           <span class="sr-only">Close panel</span>
                           <v-icon name="hi-solid-x" scale="2" title="" />
@@ -237,7 +237,7 @@
                     <button
                       type="button"
                       class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      @click="close"
+                      @click.prevent="close"
                     >
                       Cancel
                     </button>
@@ -308,7 +308,6 @@ export default {
     //form validation scheme
     const schema = yup.object({
       name: yup.string().required().min(6).label("Source Name"),
-      description: yup.string().required().min(6).label("Source Description"),
     });
 
     const { handleSubmit, resetForm, errors } = useForm({

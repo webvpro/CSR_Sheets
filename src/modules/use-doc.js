@@ -5,9 +5,8 @@ import {
   getDoc,
   doc,
   setDoc,
-  onSnapshot,
-  deleteDoc,
   Timestamp,
+  deleteDoc,
 } from "firebase/firestore";
 
 /**
@@ -62,16 +61,12 @@ export default function (collectionName, queryOptions) {
       console.log(collectionName);
       docRef = doc(collection(db, collectionName));
     }
+
     await setDoc(docRef, {
       ..._documentData,
       createdOn: Timestamp.now(),
     });
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      state.documentData = docSnap.data();
-    } else {
-      state.documentData = { ...docRef };
-    }
+
     state.loading = false;
   };
 
@@ -87,30 +82,18 @@ export default function (collectionName, queryOptions) {
     const docRef = doc(db, collectionName, _documentId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
+      console.log("set doc")
       state.documentData = docSnap.data();
     } else {
       state.documentData = {};
       console.log("No such document!");
     }
-  };
-
-  const getUpadateDocument = async (_documentId) => {
     state.loading = true;
-    state.error = null;
-    const docRef = doc(db, collectionName, _documentId);
-    const docSnap = await onSnapshot(docRef);
-    if (docSnap.exists()) {
-      state.documentData = docSnap.data();
-    } else {
-      state.documentData = {};
-      console.log("No such document!");
-    }
   };
 
   return {
     ...toRefs(state),
     getDocument: getDocument,
-    getUpadateDocument: getUpadateDocument,
     setDocument: setDocument,
     deleteDocument: deleteDocument,
   };

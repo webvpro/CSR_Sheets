@@ -15,7 +15,11 @@
         </div>
       </router-link>
       <nav class="mt-5 flex-1" aria-label="Sidebar">
-        <div v-for="item in navigation" :key="item.name" class="px-2 space-y-1">
+        <div
+          v-for="item in collections"
+          :key="item.name"
+          class="px-2 space-y-1"
+        >
           <router-link
             v-slot="{ isActive, isExactActive }"
             :to="item.href"
@@ -52,37 +56,36 @@
 import { ref } from "vue";
 
 const navigation = [
-  { name: "Types", href: "/sources/types", icon: "gi-3d-meeple" },
-  { name: "Abilites", href: "/sources/ablilites", icon: "gi-embrassed-energy" },
+  { name: "Types", href: "./types", icon: "gi-3d-meeple" },
+  { name: "Abilites", href: "./ablilites", icon: "gi-embrassed-energy" },
   {
     name: "Power Shifts",
-    href: "/sources/powershifts",
+    href: "./powershifts",
     icon: "gi-impact-point",
   },
   {
     name: "Descriptors",
-    href: "/sources/descriptors",
+    href: "./descriptors",
     icon: "gi-artificial-intelligence",
   },
-  { name: "Foci", href: "/sources/foci", icon: "gi-all-seeing-eye" },
-  { name: "Cyphers", href: "/sources/cyphers", icon: "gi-sparkles" },
+  { name: "Foci", href: "./foci", icon: "gi-all-seeing-eye" },
+  { name: "Cyphers", href: "./cyphers", icon: "gi-sparkles" },
   {
     name: "Artifacts",
-    href: "/sources/artifacts",
+    href: "./artifacts",
     icon: "gi-glowing-artifact",
   },
-  { name: "Equipment", href: "/sources/equipment", icon: "gi-light-backpack" },
-  { name: "Skills", href: "/sources/skills", icon: "gi-skills" },
-  { name: "Pools", href: "/sources/skills", icon: "gi-impact-point" },
-  { name: "Trackers", href: "/sources/skills", icon: "fa-chart-bar" },
+  { name: "Equipment", href: "./equipment", icon: "gi-light-backpack" },
+  { name: "Skills", href: "./skills", icon: "gi-skills" },
+  { name: "Pools", href: "./skills", icon: "gi-impact-point" },
+  { name: "Trackers", href: "./skills", icon: "fa-chart-bar" },
 ];
 
 export default {
   setup() {
-    const sidebarNav = ref(false);
+    const collections = ref(navigation);
     return {
-      navigation,
-      sidebarNav,
+      collections,
     };
   },
 };

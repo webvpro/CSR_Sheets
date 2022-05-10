@@ -65,26 +65,35 @@
       </div>
     </div>
     <div class="flex flex-col min-w-0 flex-1 overflow-hidden"></div>
-    <SourceForm />
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-
+import { ref, provide, inject } from "vue";
+import { useRoute } from "vue-router";
 import { XIcon } from "@heroicons/vue/outline";
 
-import SourceForm from "@/components/slideoutforms/SourceForm.vue";
 import SidebarNav from "@/components/sources/sourceNav.vue";
 
 export default {
   components: {
     XIcon,
     SidebarNav,
-    SourceForm,
   },
   setup() {
     const sidebarOpen = ref(false);
+    const source = ref(inject("source"), {});
+    const route = useRoute();
+    const rtAry = route.path.split("/").pop();
+    const basePath = rtAry.join("/");
+    provide("pages", [
+      {
+        name: `${source.value.name}`,
+        href: `${basePath}`,
+        current: false,
+        icon: "gi-spell-book",
+      },
+    ]);
 
     return {
       sidebarOpen,

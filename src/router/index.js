@@ -28,34 +28,14 @@ export const routes = [
     meta: { title: "Source", secure: true },
     children: [
       {
-        path: "ablilites",
-        component: () => import("@/views/source/Abilities.vue"),
-        meta: { title: "Abilities Source", secure: true },
+        path: "collection/:name",
+        component: () => import("@/views/source/Collection.vue"),
+        meta: { title: "Source Collection", secure: true },
       },
       {
-        path: "types",
-        component: () => import("@/views/source/Types.vue"),
-        meta: { title: "Types Source", secure: true },
-      },
-      {
-        path: "powershifts",
-        component: () => import("@/views/source/Shifts.vue"),
-        meta: { title: "Shifts Source", secure: true },
-      },
-      {
-        path: "descriptors",
-        component: () => import("@/views/source/Descriptors.vue"),
-        meta: { title: "Descriptors", secure: true },
-      },
-      {
-        path: "foci",
-        component: () => import("@/views/source/Foci.vue"),
-        meta: { title: "Foci Sources", secure: true },
-      },
-      {
-        path: "cyphers",
-        component: () => import("@/views/source/Cyphers.vue"),
-        meta: { title: "Cyphers Sources", secure: true },
+        path: "",
+        component: () => import("@/views/source/Home.vue"),
+        meta: { title: "Source Collections", secure: true },
       },
     ],
   },
@@ -108,7 +88,7 @@ router.beforeEach(async (to, from, next) => {
   const isSecure = to.matched.some((record) => record.meta.secure);
   const isAuth = await getUserState();
   startLoading();
-  await getAuthRedirect()
+  getAuthRedirect()
     .then((result) => {
       document.title = from.meta.title
         ? `'Stormbringer.io POC: '${from.meta.title}`

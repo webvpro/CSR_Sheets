@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-full flex flex-col flex-nowrap flex-grow">
+  <div class="h-full w-full flex flex-col flex-nowrap flex-grow overflow-auto">
     <header class="bg-indigo-900 shadow">
       <PageHeader />
     </header>

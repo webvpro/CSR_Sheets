@@ -1,20 +1,8 @@
 <template>
   <Disclosure v-slot="{ open }" as="nav" class="bg-gray-800">
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="w-full mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
-          <DisclosureButton
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-          >
-            <span class="sr-only">Open main menu</span>
-            <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-            <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
-          </DisclosureButton>
-        </div>
-        <div
-          class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
-        >
+        <div class="flex items-stretch justify-start">
           <router-link to="/">
             <div class="flex-shrink-0 flex items-center">
               <v-icon
@@ -82,7 +70,7 @@
               >
                 <MenuItem v-if="user" v-slot="{ active }">
                   <router-link
-                    to="/profile"
+                    to="../profile"
                     :class="[
                       active ? 'bg-gray-100' : '',
                       'block px-4 py-2 text-sm text-gray-700',
@@ -100,7 +88,7 @@
                     >Settings</a
                   >
                 </MenuItem>
-                <MenuItem v-if="user" v-slot="{ active }">
+                <MenuItem v-slot="{ active }" :v-if="user">
                   <a
                     href="#"
                     :class="[
@@ -111,7 +99,7 @@
                     >Sign Out</a
                   >
                 </MenuItem>
-                <MenuItem v-if="!user" v-slot="{ active }">
+                <MenuItem v-slot="{ active }" v-if="!user">
                   <router-link
                     to="/login"
                     :class="[
@@ -127,24 +115,6 @@
         </div>
       </div>
     </div>
-
-    <DisclosurePanel class="sm:hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <a
-          v-for="item in navigation"
-          :key="item.name"
-          :href="item.href"
-          :class="[
-            item.current
-              ? 'bg-gray-900 text-white'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-            'block px-3 py-2 rounded-md text-base font-medium',
-          ]"
-          :aria-current="item.current ? 'page' : undefined"
-          >{{ item.name }}</a
-        >
-      </div>
-    </DisclosurePanel>
   </Disclosure>
 </template>
 
