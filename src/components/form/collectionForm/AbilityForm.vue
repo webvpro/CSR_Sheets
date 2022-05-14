@@ -190,40 +190,7 @@
               </fieldset>
             </div>
             <hr class="border-gray-200" />
-
-            <fieldset>
-              <legend class="text-lg font-medium text-gray-900">
-                Categories
-              </legend>
-              <div
-                class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200"
-              >
-                <FieldArray v-slot="{ fields: categories }" name="categories">
-                  <div
-                    v-for="(cat, ck, idx) in fetchRef('categories')"
-                    :key="idx"
-                    class="relative flex items-start py-4"
-                  >
-                    <div class="min-w-0 flex-1 text-sm">
-                      <label
-                        :for="`categories[${idx}]`"
-                        class="font-medium text-gray-700 select-none"
-                        >{{ cat.label }}</label
-                      >
-                    </div>
-                    <div class="ml-3 flex items-center h-5">
-                      <Field
-                        :id="`categories[${idx}]`"
-                        :name="`categories[${idx}]`"
-                        type="checkbox"
-                        class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                        :value="false"
-                      />
-                    </div>
-                  </div>
-                </FieldArray>
-              </div>
-            </fieldset>
+            <AbilityCats input-name="categories" title="Categories" />
           </div>
         </div>
       </fieldset>
@@ -252,23 +219,16 @@
 
 <script>
 import { inject, ref, reactive, toRefs } from "vue";
-import {
-  useField,
-  useForm,
-  Field,
-  useFieldArray,
-  FieldArray,
-} from "vee-validate";
-import { PlusSmIcon as PlusSmIconSolid } from "@heroicons/vue/solid";
+import { useField, useForm, Field } from "vee-validate";
 
 import * as yup from "yup";
 import AbilityMods from "@/components/form/fieldsets/AbilityMods.vue";
-
+import AbilityCats from "@/components/form/fieldsets/AbilityCats.vue";
 export default {
   components: {
     Field,
-    FieldArray,
     AbilityMods,
+    AbilityCats,
   },
 
   setup() {
@@ -283,23 +243,6 @@ export default {
         LOW: { label: "Low", description: "Tier 1 or 2" },
         MID: { label: "Mid", description: "Tier 3 or 4" },
         HIGH: { label: "High", description: "Tier 5 or 6" },
-      },
-      categories: {
-        ATTACKSKILL: { label: "Attack Skill" },
-        COMPANION: { label: "Companion" },
-        CONTROL: { label: "Control" },
-        CRAFT: { label: "Craft" },
-        CURE: { label: "Cure" },
-        ENVIRONMENT: { label: "Environment" },
-        INFORMATION: { label: "Information" },
-        META: { label: "Meta" },
-        MOVEMENT: { label: "Movement" },
-        PROTECTION: { label: "Protection" },
-        SENSES: { label: "Senses" },
-        SPECIALATTACK: { label: "Special Attack" },
-        SUPPORT: { label: "Support" },
-        TASK: { label: "Task" },
-        TRANSFORM: { label: "Transform" },
       },
       pools: {
         MIGHT: { label: "Might" },
@@ -329,7 +272,6 @@ export default {
         categories: [],
       },
     });
-    const { remove, push, fields } = useFieldArray("mods");
     const { value: name } = useField("name");
     const { value: description } = useField("description");
 
@@ -338,33 +280,14 @@ export default {
       console.log(errors); // a map of field names and their first error message
       console.log(results); // a detailed map of field names and their validation results
     }
-    const onModChange = () => {
-      console.log(`Mod Seleted Value:${selectedMod.value}`);
-    };
-    const fetchRef = (rv) => {
-      console.log(rv);
-      return formInputRefs[rv];
-    };
-    const isModeType = () => {
-      //const modObj = JSON.parse(mod);
-      return false;
-    };
-    const addMod = () => {
-      console.log({ ...formInputRefs.abilityMods[selectedMod.value].fields });
-      if (selectedMod.value) {
-        push({ ...formInputRefs.abilityMods[selectedMod.value].fields });
-        console.log(fields);
-      }
-      selectedMod.value = undefined;
-    };
     const close = () => {
       resetForm();
       open.value = false;
     };
     const saveForm = handleSubmit((values, { resetForm }) => {
       //save doc
-      saveDocument(values);
-      resetForm();
+      console.log(values);
+      //resetForm();
     }, onInvalidSubmit);
     return {
       open,
@@ -376,18 +299,10 @@ export default {
       description,
       resetForm,
       errors,
-      fields,
       Field,
-      push,
-      remove,
-      PlusSmIconSolid,
-      onModChange,
       selectedMod,
-      addMod,
-      fetchRef,
-      isModeType,
-      FieldArray,
       AbilityMods,
+      AbilityCats,
     };
   },
 };
