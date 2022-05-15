@@ -85,9 +85,11 @@
                   >
                     <input
                       :id="key"
-                      name="tier-range"
+                      v-model="ability_type"
+                      name="ability_type"
                       type="radio"
                       :checked="false"
+                      :value="key"
                       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                     />
                     <label
@@ -106,23 +108,24 @@
                 >Pool Cost</label
               >
               <fieldset class="mt-4">
-                <legend class="sr-only">Pool Cost</legend>
+                <legend class="sr-only">Stat Pool Cost</legend>
                 <div
                   class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10"
                 >
                   <div class="flex items-center flex-wrap">
                     <label
-                      for="cost-pool"
+                      for="stat_pool"
                       class="block w-full text-sm font-medium text-gray-700"
                     >
                       Pool
                     </label>
                     <select
-                      id="cost-pool"
-                      name="cost_pool"
+                      id="stat_pool"
+                      v-model="stat_pool"
+                      name="stat_pool"
                       class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     >
-                      <option value="">N/A</option>
+                      <option value="">Stat Pool</option>
                       <option
                         v-for="(pool, key) in pools"
                         :key="key"
@@ -134,16 +137,17 @@
                   </div>
                   <div class="flex items-center flex-wrap">
                     <label
-                      for="first-name"
+                      for="pool_cost"
                       class="block w-full text-sm font-medium text-gray-700"
                     >
                       Cost
                     </label>
                     <div class="mt-1">
                       <input
-                        id="first-name"
+                        id="pool_cost"
+                        v-model="pool_cost"
                         type="number"
-                        name="first-name"
+                        name="pool_cost"
                         autocomplete="given-name"
                         class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-28 sm:text-sm border-gray-300 rounded-md"
                       />
@@ -153,7 +157,7 @@
               </fieldset>
             </div>
             <hr class="border-gray-200" />
-            <AbilityMods />
+            <ability-mods />
             <hr class="border-gray-200" />
             <div class="space-y-5 sm:mt-0">
               <label class="text-base font-medium text-gray-900"
@@ -174,9 +178,11 @@
                   >
                     <input
                       :id="key"
-                      name="tier-range"
+                      v-model="tier_range"
+                      :name="`tier_range`"
                       type="radio"
                       :checked="false"
+                      :value="key"
                       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                     />
                     <label
@@ -190,7 +196,7 @@
               </fieldset>
             </div>
             <hr class="border-gray-200" />
-            <AbilityCats input-name="categories" title="Categories" />
+            <ability-cats input-name="categories" title="Categories" />
           </div>
         </div>
       </fieldset>
@@ -222,8 +228,8 @@ import { inject, ref, reactive, toRefs } from "vue";
 import { useField, useForm, Field } from "vee-validate";
 
 import * as yup from "yup";
-import AbilityMods from "@/components/form/fieldsets/AbilityMods.vue";
-import AbilityCats from "@/components/form/fieldsets/AbilityCats.vue";
+import AbilityMods from "@/components/form/fieldsets/abilityMods.vue";
+import AbilityCats from "@/components/form/fieldsets/abilityCats.vue";
 export default {
   components: {
     Field,
@@ -257,10 +263,6 @@ export default {
     const selectedMod = ref();
     const state = reactive({ ...initState });
     state.formSettings = inject("formSettings");
-    const saveDocument = async (form) => {
-      console.log(form);
-    };
-
     //form validation scheme
     const schema = yup.object({
       name: yup.string().required().min(6).label("Source Name"),
@@ -270,10 +272,15 @@ export default {
       initialValues: {
         ablilityMods: [],
         categories: [],
+        stat_pool: "",
       },
     });
     const { value: name } = useField("name");
     const { value: description } = useField("description");
+    const { value: tier_range } = useField("tier_range");
+    const { value: stat_pool } = useField("stat_pool");
+    const { value: pool_cost } = useField("pool_cost");
+    const { value: ability_type } = useField("ability_type");
 
     function onInvalidSubmit({ values, errors, results }) {
       console.log(values); // current form values
@@ -287,7 +294,7 @@ export default {
     const saveForm = handleSubmit((values, { resetForm }) => {
       //save doc
       console.log(values);
-      //resetForm();
+      resetForm();
     }, onInvalidSubmit);
     return {
       open,
@@ -297,6 +304,10 @@ export default {
       saveForm,
       name,
       description,
+      tier_range,
+      ability_type,
+      stat_pool,
+      pool_cost,
       resetForm,
       errors,
       Field,
