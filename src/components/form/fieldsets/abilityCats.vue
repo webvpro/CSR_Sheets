@@ -5,7 +5,7 @@
     <legend class="text-lg font-medium text-gray-900">
       {{ fieldsetLegend }}
     </legend>
-    <button @click="isShowing = !isShowing">Show Items</button>
+    <button type="button" @click.prevent="isShowing = !isShowing">Show Items</button>
     <p>
       <span
         v-for="(cat, idx) in selectedList"
@@ -18,10 +18,10 @@
     <div class="mt-4 border-gray-200 divide-y divide-gray-200">
       <TransitionRoot
         :show="isShowing"
-        enter="transition-opacity duration-75"
+        enter="transform transition ease-in-out duration-500"
         enter-from="opacity-0"
         enter-to="opacity-100"
-        leave="transition-opacity duration-150"
+        leave="transform transition ease-in-out duration-500"
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
@@ -30,20 +30,20 @@
           :key="idx"
           class="relative flex items-start py-4"
         >
-          <div class="min-w-0 flex-1 text-sm">
+          <div class="flex-1 min-w-0 text-sm">
             <label
               :for="`${inputName}[${idx}]`"
               class="font-medium text-gray-700 select-none"
               >{{ item.label }}</label
             >
           </div>
-          <div class="ml-3 flex items-center h-5">
+          <div class="flex items-center h-5 ml-3">
             <Field
               :id="`${inputName}[${idx}]`"
               :v-model="`${inputName}`"
               :name="`${inputName}[${idx}]`"
               type="checkbox"
-              class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+              class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
               :value="ck"
             />
           </div>

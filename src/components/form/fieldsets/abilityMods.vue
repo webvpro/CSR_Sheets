@@ -4,9 +4,8 @@
     <label class="text-base font-medium text-gray-900"
       >Ability Modifications</label
     >
-    <TransitionRoot :show="isShowing">
+    <TransitionRoot :show="true"> 
       <TransitionChild
-        appear
         enter="transition-opacity ease-linear duration-800"
         enter-from="opacity-0"
         enter-to="opacity-100"
@@ -22,36 +21,36 @@
             <div
               v-for="(mod, flk) in Object.keys(fieldset.value)"
               :key="flk"
-              class="flex flex-grow items-stretch flex-wrap"
+              class="flex flex-wrap items-stretch flex-grow"
             >
               <label
-                for="cost-pool"
+                :about="`${mod}[${fgk}][${flk}]`"
                 class="block w-full text-sm font-medium text-gray-700"
               >
                 {{ fieldset.value[mod].label }}
               </label>
               <template v-if="fieldset.value[mod].type === 'text'">
-                <div class="mt-1 mb-2 w-full">
+                <div class="w-full mt-1 mb-2">
                   <Field
                     :name="`${mod}[${fgk}][${flk}]`"
                     :type="fieldset.value[mod].type"
-                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
               </template>
               <template v-else-if="fieldset.value[mod].type === 'number'">
-                <div class="mt-1 mb-2 w-full">
+                <div class="w-full mt-1 mb-2">
                   <Field
                     :name="`${mod}[${fgk}][${flk}]`"
                     :type="fieldset.value[mod].type"
-                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
               </template>
               <template v-else-if="fieldset.value[mod].type === 'select'">
-                <div class="mt-1 mb-2 w-full">
+                <div class="w-full mt-1 mb-2">
                   <select
-                    class="mt-1 block w-full pl-3 pr-6 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    class="block w-full pl-3 pr-6 mt-1 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   >
                     <option
                       v-for="(item, ik) in fetchRef(fieldset.value[mod].ref)"
@@ -63,18 +62,18 @@
                 </div>
               </template>
             </div>
-            <div class="flex flex-shrink items-center flex-wrap">
+            <div class="flex flex-wrap items-center flex-shrink">
               <label
-                class="block w-12 text-sm font-medium text-gray-700 invisible"
+                class="invisible block w-12 text-sm font-medium text-gray-700"
               >
                 Remove
               </label>
               <button
                 type="button"
-                class="inline-flex ml-auto items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-red-400 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400"
+                class="inline-flex items-center p-1 ml-auto text-white bg-red-400 border border-transparent rounded-full shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400"
                 @click="remove(fgk)"
               >
-                <v-icon name="fa-trash-alt" scale="1" inverse="true" />
+                <v-icon name="fa-trash-alt" scale="1" :inverse="true" />
               </button>
             </div>
           </div>
@@ -95,7 +94,7 @@
           <div
             class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10"
           >
-            <div class="flex items-center flex-wrap">
+            <div class="flex flex-wrap items-center">
               <label
                 for="cost-pool"
                 class="block w-full text-sm font-medium text-gray-700"
@@ -106,7 +105,7 @@
                 id="ability-mod"
                 v-model="selectedMod"
                 name="ability-mod"
-                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 @change="onModChange()"
               >
                 <option :value="undefined">Select Modification</option>
@@ -119,15 +118,15 @@
                 </option>
               </select>
             </div>
-            <div class="flex items-stretch flex-wrap">
+            <div class="flex flex-wrap items-stretch">
               <label class="block w-full text-sm font-medium text-gray-700">
               </label>
               <button
                 type="button"
-                class="inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                class="inline-flex items-center p-1 text-white bg-indigo-600 border border-transparent rounded-full shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 @click="addMod()"
               >
-                <PlusSmIconSolid class="h-5 w-5" aria-hidden="true" />
+                <PlusSmIconSolid class="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -153,64 +152,71 @@ export default {
   setup() {
     const formInputRefs = reactive({
       abilityMods: {
-        TASKMOD: {
+        TASK: {
           name: "Task Modification",
           track: "SKILL",
           fields: {
-            DESCRIPTION: { label: "Task Description", type: "text" },
-            PROFICIENCY: {
+            TASK_DESCRIPTION: { label: "Task Description", type: "text" },
+            TASK_PROFICIENCY: {
               label: "Proficiency",
               type: "select",
               ref: "skillProficiencies",
             },
           },
         },
-        ABLILITYMOD: {
+        ABILITY: {
           name: "Ablility Modification",
           track: "ABILITY",
           fields: {
-            DESCRIPTION: { label: "Ablility Description", type: "text" },
+            ABILITY_DESCRIPTION: {
+              label: "Ablility Description",
+              type: "text",
+            },
           },
         },
-        ARMORMOD: {
+        ARMOR: {
           name: "Armor Modification",
           track: "AROMR",
           fields: {
-            DESCRIPTION: { label: "Armor Description", type: "text" },
-            MOD: { label: "Mod", type: "number" },
+            ARMOR_DESCRIPTION: { label: "Armor Description", type: "text" },
+            ARMOR_MOD: { label: "Mod", type: "number" },
           },
         },
-        DAMAGEMOD: {
+        DAMAGE: {
           name: "Damage Modification",
           track: "DAMAGE",
-          fields: {
-            DESCRIPTION: { label: "Damage Description", type: "text" },
-            MOD: { label: "Mod", type: "number" },
+          fields: {  
+            DAMAGE_DESCRIPTION: { label: "Damage Description", type: "text" },
+            DAMAGE_MOD: { label: "Mod", type: "number" },
           },
         },
-        DEFENSEMOD: {
+        DEFENSE: {
           name: "Defense Modification",
           track: "DEFENSE",
           fields: {
-            DESCRIPTION: { label: "Defense Description", type: "text" },
-            MOD: { label: "Mod", type: "number" },
+            DEFENSE_DESCRIPTION: { label: "Defense Description", type: "text" },
+            DEFENSE_MOD: { label: "Mod", type: "number" },
           },
         },
-        ATTACKMOD: {
+        ATTACK: {
           name: "Attack Modification",
           track: "ATTACK",
           fields: {
-            DESCRIPTION: { label: "Attack Description", type: "text" },
-            MOD: { label: "Mod", type: "number" },
+            ATTACK_DESCRIPTION: { label: "Attack Description", type: "text" },
+            ATTACK_MOD: { label: "Mod", type: "number" },
           },
         },
-        POOLMOD: {
+        POOL: {
           name: "Pool Modification",
           track: "POOL",
           fields: {
-            POOL: { label: "Pool", type: "select", ref: "pools" },
-            GRANT: { label: "Apply", type: "select", ref: "poolApplyOptions" },
-            MOD: { label: "Mod", type: "number" },
+            POOL_TYPE: { label: "Pool", type: "select", ref: "pools" },
+            POOL_GRANT: {
+              label: "Apply",
+              type: "select",
+              ref: "poolApplyOptions",
+            },
+            POOL_MOD: { label: "Mod", type: "number" },
           },
         },
       },

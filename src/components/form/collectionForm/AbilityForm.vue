@@ -270,7 +270,7 @@ export default {
     const { handleSubmit, resetForm, errors } = useForm({
       validationSchema: schema,
       initialValues: {
-        ablilityMods: [],
+        abliliyMod: [],
         categories: [],
         stat_pool: "",
       },
@@ -281,6 +281,7 @@ export default {
     const { value: stat_pool } = useField("stat_pool");
     const { value: pool_cost } = useField("pool_cost");
     const { value: ability_type } = useField("ability_type");
+    const { value: ability_mod } = useField("ability_type");
 
     function onInvalidSubmit({ values, errors, results }) {
       console.log(values); // current form values
@@ -308,6 +309,7 @@ export default {
       ability_type,
       stat_pool,
       pool_cost,
+      ability_mod,
       resetForm,
       errors,
       Field,
