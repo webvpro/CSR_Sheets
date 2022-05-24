@@ -1,14 +1,14 @@
 <template>
-  <div class="h-full flex">
+  <div class="flex h-full">
     <div
-      class="relative container mx-auto pb-5 pt-5 border-b border-gray-200 sm:pb-0"
+      class="container relative pt-5 pb-5 mx-auto border-b border-gray-200 sm:pb-0"
     >
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <a
           v-for="col in collectionDocs"
           :key="col.id"
           href="#"
-          class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+          class="relative flex items-center px-6 py-5 space-x-3 bg-white border border-gray-300 rounded-lg shadow-sm hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
           @click="open(col.id)"
         >
           <div class="flex-shrink-0">
@@ -47,12 +47,11 @@ export default {
       errors: {},
       source: {},
       collectionDocs: [],
-      collectionDocId: "",
-      collectionKey: "",
     });
     state.source = inject("source");
     const route = useRoute();
     const collectionName = ref("");
+    const selectedCollectionId = ref("");
     const openForm = ref(false);
     collectionName.value = computed(
       () =>
@@ -63,14 +62,18 @@ export default {
         `sources,${route.params.id},${route.params.name}`,
         {}
       );
-    state.collectionDocs = collectionData;
-    state.collectionKey = route.params.name.toUpperCase();
+    state.collectionDocs = computed(() => collectionData);
+    state.collectionKey = computed(() => route.params.name.toUpperCase());
     state.error = error;
     provide("openForm", openForm);
-    provide("collectionKey", state.collectionKey);
-    provide("collectionDocId", state.collectionDocId);
+    provide(
+      "collectionKey",
+      computed(() => state.collectionKey)
+    );
+    provide("collectionDocId", selectedCollectionId);
     const open = (id) => {
-      state.collectionDocId = id;
+      selectedCollectionId.value = id;
+      console.log(selectedCollectionId.value);
       return (openForm.value = true);
     };
     onMounted(() => {

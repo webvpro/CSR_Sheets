@@ -43,7 +43,8 @@ export default function (collectionName, queryOptions) {
   const deleteDocument = async (_documentId) => {
     state.loading = true;
     state.error = null;
-    await deleteDoc(doc(db, collectionName, _documentId));
+    const collectionPath = collectionName.split(",");
+    await deleteDoc(doc(db, ...collectionPath, _documentId));
   };
 
   const setDocument = async (_documentData) => {
@@ -52,16 +53,18 @@ export default function (collectionName, queryOptions) {
     let docRef = null;
     if (_documentData.id) {
       // update existing
+      const collectionPath = collectionName.split(",");
       let docRefArray = [];
       docRefArray.push(db);
-      docRefArray.push(collectionName);
+      docRefArray.push(...collectionPath);
       docRefArray.push(_documentData.id);
       delete _documentData.id;
       docRef = doc(...docRefArray);
     } else {
       //create new
-      console.log(collectionName);
-      docRef = doc(collection(db, collectionName));
+      const collectionPath = collectionName.split(",");
+      console.log(...collectionPath);
+      docRef = doc(collection(db, ...collectionPath));
     }
 
     await setDoc(docRef, {
@@ -81,7 +84,8 @@ export default function (collectionName, queryOptions) {
   const getDocument = async (_documentId) => {
     state.loading = true;
     state.error = null;
-    const docRef = doc(db, collectionName, _documentId);
+    const collectionPath = collectionName.split(",");
+    const docRef = doc(db, ...collectionPath, _documentId);
     const docSnap = await getDoc(docRef);
     state.document = docSnap;
     if (docSnap.exists()) {

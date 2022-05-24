@@ -3,18 +3,18 @@
     <div>
       <div>
         <img
-          class="h-32 w-full object-cover lg:h-48"
+          class="object-cover w-full h-32 lg:h-48"
           src="https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
           alt=""
         />
       </div>
       <div
-        class="relative container mx-auto pb-5 pt-5 border-b border-gray-200 p-4"
+        class="container relative p-4 pt-5 pb-5 mx-auto border-b border-gray-200"
       >
         <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
           <div class="flex">
             <v-icon
-              class="h-24 w-24 rounded-full bg-purple-600 ring-4 ring-white sm:h-32 sm:w-32"
+              class="w-24 h-24 bg-purple-600 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
               name="gi-at-sea"
               :label="source.name"
               scale="5"
@@ -24,26 +24,22 @@
           <div
             class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1"
           >
-            <div class="sm:hidden md:block mt-6 min-w-0 flex-1"></div>
+            <div class="flex-1 min-w-0 mt-6 sm:hidden md:block"></div>
             <div
-              class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4"
+              class="flex flex-col mt-6 space-y-3 justify-stretch sm:flex-row sm:space-y-0 sm:space-x-4"
             >
               <button
                 type="button"
-                class="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                class="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
               >
-                <MailIcon
-                  class="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
                 <span>Delete</span>
               </button>
               <button
                 type="button"
-                class="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                class="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
               >
                 <v-icon
-                  class="rounded-full bg-purple-600 border-2 p-1"
+                  class="p-1 bg-purple-600 border-2 rounded-full"
                   name="gi-settings-knobs"
                   label="Configure"
                   scale="1"
@@ -54,7 +50,7 @@
             </div>
           </div>
         </div>
-        <div class="sm:block mt-6 min-w-0 flex-1 p-4">
+        <div class="flex-1 min-w-0 p-4 mt-6 sm:block">
           <router-link
             v-slot="{ href, navigate, isActive }"
             :to="{ path: `/source/${route.params.id}` }"
@@ -71,10 +67,10 @@
         </div>
       </div>
     </div>
-    <div class="sm:block mt-6 min-w-0 flex-1 p-4">
+    <div class="flex-1 min-w-0 p-4 mt-6 sm:block">
       <BreadCrumbs />
     </div>
-    <div class="relative container mx-auto pb-5 pt-5 p-4">
+    <div class="container relative p-4 pt-5 pb-5 mx-auto">
       <router-view :key="route.fullPath" />
     </div>
   </div>
