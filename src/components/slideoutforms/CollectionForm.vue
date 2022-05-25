@@ -49,7 +49,6 @@
                   <div
                     class="px-6 py-6 space-y-6 divide-y divide-gray-200 xs:py-0 xs:space-y-0"
                   >
-                    {{ collectionDocId }}
                     <component :is="formSettings.component"></component>
                   </div>
                 </div>

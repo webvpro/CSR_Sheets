@@ -231,12 +231,11 @@
 
 <script>
 import { inject, ref, reactive, toRefs, computed, watchEffect } from "vue";
-import { useField, useForm, Field } from "vee-validate";
+import { useField, useForm } from "vee-validate";
 
 import * as yup from "yup";
 import AbilityMods from "@/components/form/fieldsets/abilityMods.vue";
 import AbilityCats from "@/components/form/fieldsets/abilityCats.vue";
-import { f } from "vue3-pdfjs/esm/index-19f89c12";
 export default {
   components: {
     AbilityMods,
