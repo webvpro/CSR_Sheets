@@ -13,7 +13,7 @@
           >{{ formSettings.name }} Name</label
         >
         <div class="relative mt-4 rounded-md shadow-sm">
-          <input
+          <Field
             v-model="name"
             name="name"
             type="text"
@@ -85,11 +85,9 @@
                   >
                     <input
                       :id="key"
-                      v-model="ability_type"
-                      name="ability_type"
+                      name="tier-range"
                       type="radio"
                       :checked="false"
-                      :value="key"
                       class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                     />
                     <label
@@ -108,23 +106,23 @@
                 >Pool Cost</label
               >
               <fieldset class="mt-4">
-                <legend class="sr-only">Stat Pool Cost</legend>
+                <legend class="sr-only">Pool Cost</legend>
                 <div
                   class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10"
                 >
                   <div class="flex flex-wrap items-center">
                     <label
-                      for="stat_pool"
+                      for="cost-pool"
                       class="block w-full text-sm font-medium text-gray-700"
                     >
                       Pool
                     </label>
                     <select
-                      v-model="stat_pool"
-                      name="stat_pool"
+                      id="cost-pool"
+                      name="cost_pool"
                       class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-                      <option value="">Stat Pool</option>
+                      <option value="">N/A</option>
                       <option
                         v-for="(pool, key) in pools"
                         :key="key"
@@ -136,17 +134,16 @@
                   </div>
                   <div class="flex flex-wrap items-center">
                     <label
-                      for="pool_cost"
+                      for="first-name"
                       class="block w-full text-sm font-medium text-gray-700"
                     >
                       Cost
                     </label>
                     <div class="mt-1">
                       <input
-                        id="pool_cost"
-                        v-model="pool_cost"
+                        id="first-name"
                         type="number"
-                        name="pool_cost"
+                        name="first-name"
                         autocomplete="given-name"
                         class="block border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 w-28 sm:text-sm"
                       />
@@ -156,7 +153,7 @@
               </fieldset>
             </div>
             <hr class="border-gray-200" />
-            <ability-mods values="mods" />
+            <AbilityMods />
             <hr class="border-gray-200" />
             <div class="space-y-5 sm:mt-0">
               <label class="text-base font-medium text-gray-900"
@@ -177,11 +174,9 @@
                   >
                     <input
                       :id="key"
-                      v-model="tier_range"
-                      :name="`tier_range`"
+                      name="tier-range"
                       type="radio"
                       :checked="false"
-                      :value="key"
                       class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                     />
                     <label
@@ -195,14 +190,7 @@
               </fieldset>
             </div>
             <hr class="border-gray-200" />
-            {{ categories.value }}
-            <ability-cats
-              input-name="categories"
-              title="Categories"
-              :item-list="categoryList"
-              :selected-items="categories"
-            />
-          </div>
+           </div>
         </div>
       </fieldset>
     </div>
@@ -213,7 +201,7 @@
         <button
           type="button"
           class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          @click.prevent="resetForm"
+          @click.prevent="close"
         >
           Cancel
         </button>
@@ -229,16 +217,15 @@
 </template>
 
 <script>
-import { inject, ref, reactive, toRefs, computed, watchEffect } from "vue";
-import { useField, useForm, useFieldArray } from "vee-validate";
+import { inject, ref, reactive, toRefs } from "vue";
+import { useField, useForm, Field } from "vee-validate";
 
 import * as yup from "yup";
 import AbilityMods from "@/components/form/fieldsets/abilityMods.vue";
-import AbilityCats from "@/components/form/fieldsets/abilityCats.vue";
 export default {
   components: {
+    Field,
     AbilityMods,
-    AbilityCats,
   },
 
   setup() {
@@ -247,7 +234,6 @@ export default {
       error: "",
       form: {},
       formSettings: {},
-      collectionDoc: {},
     };
     const formInputRefs = reactive({
       tierGroup: {
@@ -264,93 +250,28 @@ export default {
         ENABLER: { label: "Enabler" },
         ACTION: { label: "Action" },
       },
-      categoryList: {
-        ATTACKSKILL: { label: "Attack Skill" },
-        COMPANION: { label: "Companion" },
-        CONTROL: { label: "Control" },
-        CRAFT: { label: "Craft" },
-        CURE: { label: "Cure" },
-        ENVIRONMENT: { label: "Environment" },
-        INFORMATION: { label: "Information" },
-        META: { label: "Meta" },
-        MOVEMENT: { label: "Movement" },
-        PROTECTION: { label: "Protection" },
-        SENSES: { label: "Senses" },
-        SPECIALATTACK: { label: "Special Attack" },
-        SUPPORT: { label: "Support" },
-        TASK: { label: "Task" },
-        TRANSFORM: { label: "Transform" },
-      },
     });
     const selectedMod = ref();
     const state = reactive({ ...initState });
     state.formSettings = inject("formSettings");
-    state.collectionDoc = computed(() => inject("collectionDoc"));
+    const saveDocument = async (form) => {
+      console.log(form);
+    };
+
     //form validation scheme
     const schema = yup.object({
       name: yup.string().required().min(6).label("Source Name"),
     });
-    const { handleSubmit, resetForm, errors, setFieldValue } = useForm({
+    const { handleSubmit, resetForm, errors } = useForm({
       validationSchema: schema,
       initialValues: {
-        ability_mods: [],
+        ablilityMods: [],
         categories: [],
-        stat_pool: "",
-        pool_cost: 0,
-        description: "",
-        ability_type: "",
       },
     });
-    state.form = computed(() => inject("collectionForm"));
     const { value: name } = useField("name");
     const { value: description } = useField("description");
-    const { value: tier_range } = useField("tier_range");
-    const { value: stat_pool } = useField("stat_pool");
-    const { value: categories } = useField("categories");
-    const { value: pool_cost } = useField("pool_cost");
-    const { value: ability_type } = useField("ability_type");
-    const { fields: mods, value: ability_mods } = useFieldArray("ability_mods");
-    // set init form values for edit
-    //pool convert hack
-    const poolHack = (val) =>
-      val.toUpperCase() === "POOL" ? "" : val.toUpperCase();
-    const setSelectedChecks = (selAry, items) => {
-      const itemsArray = Object.keys(items);
-      const ary = Array(itemsArray.length);
-      selAry.forEach((selVal) => {
-        ary[itemsArray.findIndex((itm) => itm === selVal)] = selVal;
-      });
-      return ary;
-    };
-    const loadSelectedDocValues = (doc) => {
-      if (doc.value.name) {
-        const docVal = doc.value;
-        setFieldValue("name", docVal.name);
-        setFieldValue(
-          "description",
-          docVal.description
-            ? docVal.description
-            : ` Found in ${docVal.source} on Page #${docVal.pageNum}`
-        );
-        setFieldValue(
-          "ability_type",
-          docVal.abilityType ? docVal.abilityType : "ENABLER"
-        );
-        setFieldValue("ability_mods", docVal.mods ?? []);
-        setFieldValue(
-          "stat_pool",
-          docVal.statPool.toUpperCase() ?? poolHack(docVal.pool) ?? ""
-        );
-        setFieldValue("pool_cost", docVal.poolCost ?? docVal.cost ?? 0);
-        setFieldValue("tier_range", docVal.tierRange ?? "LOW");
-        setFieldValue(
-          "categories",
-          docVal.categories
-            ? setSelectedChecks(docVal.categories, formInputRefs.categoryList)
-            : []
-        );
-      }
-    };
+
     function onInvalidSubmit({ values, errors, results }) {
       console.log(values); // current form values
       console.log(errors); // a map of field names and their first error message
@@ -360,23 +281,11 @@ export default {
       resetForm();
       open.value = false;
     };
-    const writeAbility = (formVals) => {
-      /*state.form.value = {
-        name: formVals.name,
-        description: formVals.description,
-        abilityType: formVals.ability_type,
-        statPool: formVals.stat_pool,
-        poolCost: formVals.pool_cost,
-        tierRange: formVals.tier_range,
-        categories: formVals.categories.filter((v) => v !== undefined),
-      };*/
-      console.log(formVals);
-      open.value = close;
-    };
-    const saveForm = handleSubmit((values) => {
-      writeAbility(values);
+    const saveForm = handleSubmit((values, { resetForm }) => {
+      //save doc
+      console.log(values);
+      //resetForm();
     }, onInvalidSubmit);
-    watchEffect(() => loadSelectedDocValues(state.collectionDoc));
     return {
       open,
       close,
@@ -385,19 +294,11 @@ export default {
       saveForm,
       name,
       description,
-      tier_range,
-      ability_type,
-      stat_pool,
-      pool_cost,
       resetForm,
       errors,
+      Field,
       selectedMod,
       AbilityMods,
-      AbilityCats,
-      loadSelectedDocValues,
-      categories,
-      mods,
-      ability_mods,
     };
   },
 };

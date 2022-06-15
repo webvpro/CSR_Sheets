@@ -4,7 +4,7 @@
     <label class="text-base font-medium text-gray-900"
       >Ability Modifications</label
     >
-    <TransitionRoot :show="true"> 
+    <TransitionRoot :show="true">
       <TransitionChild
         enter="transition-opacity ease-linear duration-800"
         enter-from="opacity-0"
@@ -13,48 +13,60 @@
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <fieldset v-for="(fieldset, fgk) in fields" :key="fgk" class="mt-4">
-          <legend class="sr-only">{{ fgk }} Modifaction</legend>
+        <fieldset
+          v-for="(fieldset, fgk) in fields"
+          :key="fieldset.key"
+          class="mt-4"
+        >
+          <legend class="sr-only">{{ fieldset.value.mod }} Modifaction</legend>
           <div
             class="space-y-4 sm:flex sm:flex-grow sm:items-center sm:space-y-0 sm:space-x-3"
           >
             <div
-              v-for="(mod, flk) in Object.keys(fieldset.value)"
+              v-for="(field, flk) in Object.keys(fieldset.value.fields)"
               :key="flk"
               class="flex flex-wrap items-stretch flex-grow"
             >
               <label
-                :about="`${mod}[${fgk}][${flk}]`"
+                :for="`mods[${field}][${fgk}]`"
                 class="block w-full text-sm font-medium text-gray-700"
               >
-                {{ fieldset.value[mod].label }}
+                {{ fieldset.value.fields[field].label }}
               </label>
-              <template v-if="fieldset.value[mod].type === 'text'">
+              <template v-if="fieldset.value.fields[field].type === 'text'">
                 <div class="w-full mt-1 mb-2">
                   <Field
-                    :name="`${mod}[${fgk}][${flk}]`"
-                    :type="fieldset.value[mod].type"
+                    :name="`mods[${field}][${fgk}]`"
+                    type="text"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
               </template>
-              <template v-else-if="fieldset.value[mod].type === 'number'">
+              <template
+                v-else-if="fieldset.value.fields[field].type === 'number'"
+              >
                 <div class="w-full mt-1 mb-2">
                   <Field
-                    :name="`${mod}[${fgk}][${flk}]`"
-                    :type="fieldset.value[mod].type"
+                    :name="`mods[${field}][${fgk}]`"
+                    type="number"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
               </template>
-              <template v-else-if="fieldset.value[mod].type === 'select'">
+              <template
+                v-else-if="fieldset.value.fields[field].type === 'select'"
+              >
                 <div class="w-full mt-1 mb-2">
                   <select
+                    :name="`mods[${field}][${fgk}]`"
                     class="block w-full pl-3 pr-6 mt-1 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   >
                     <option
-                      v-for="(item, ik) in fetchRef(fieldset.value[mod].ref)"
+                      v-for="(item, ik) in fetchRef(
+                        fieldset.value.fields[field].ref
+                      )"
                       :key="ik"
+                      :value="ik"
                     >
                       {{ item.label }}
                     </option>
@@ -88,7 +100,6 @@
         leave-from="translate-x-0"
         leave-to="-translate-x-full"
       >
-        <hr class="border-gray-200" />
         <fieldset class="mt-4">
           <legend class="sr-only">Ablility Modifaction</legend>
           <div
@@ -148,13 +159,12 @@ export default {
     TransitionRoot,
     TransitionChild,
   },
-
   setup() {
     const formInputRefs = reactive({
       abilityMods: {
         TASK: {
-          name: "Task Modification",
-          track: "SKILL",
+          name: "Task",
+          track: "TASK",
           fields: {
             TASK_DESCRIPTION: { label: "Task Description", type: "text" },
             TASK_PROFICIENCY: {
@@ -164,18 +174,18 @@ export default {
             },
           },
         },
-        ABILITY: {
-          name: "Ablility Modification",
-          track: "ABILITY",
+        AUGMMENT: {
+          name: "Augment",
+          track: "TASK",
           fields: {
-            ABILITY_DESCRIPTION: {
-              label: "Ablility Description",
+            AUGMMENT_DESCRIPTION: {
+              label: "Augmment Description",
               type: "text",
             },
           },
         },
         ARMOR: {
-          name: "Armor Modification",
+          name: "Armor",
           track: "AROMR",
           fields: {
             ARMOR_DESCRIPTION: { label: "Armor Description", type: "text" },
@@ -183,40 +193,33 @@ export default {
           },
         },
         DAMAGE: {
-          name: "Damage Modification",
+          name: "Damage",
           track: "DAMAGE",
-          fields: {  
+          fields: {
             DAMAGE_DESCRIPTION: { label: "Damage Description", type: "text" },
             DAMAGE_MOD: { label: "Mod", type: "number" },
           },
         },
-        DEFENSE: {
-          name: "Defense Modification",
-          track: "DEFENSE",
-          fields: {
-            DEFENSE_DESCRIPTION: { label: "Defense Description", type: "text" },
-            DEFENSE_MOD: { label: "Mod", type: "number" },
-          },
-        },
         ATTACK: {
-          name: "Attack Modification",
-          track: "ATTACK",
+          name: "Attack",
+          track: "TASK",
           fields: {
-            ATTACK_DESCRIPTION: { label: "Attack Description", type: "text" },
-            ATTACK_MOD: { label: "Mod", type: "number" },
+            ATTACK_DESCRIPTION: { label: "Description", type: "text" },
+            ATTACK_MOD: { label: "Mod", type: "select", ref: "attackMods" },
+            ATTACK_STEPS: { label: "Steps", type: "number" },
           },
         },
         POOL: {
           name: "Pool Modification",
           track: "POOL",
           fields: {
+            POOL_MOD: { label: "Points", type: "number" },
             POOL_TYPE: { label: "Pool", type: "select", ref: "pools" },
             POOL_GRANT: {
               label: "Apply",
               type: "select",
               ref: "poolApplyOptions",
             },
-            POOL_MOD: { label: "Mod", type: "number" },
           },
         },
       },
@@ -230,15 +233,20 @@ export default {
         ACTION: { label: "Action" },
       },
       skillProficiencies: {
-        HINDERED: { label: "Hindered" },
-        UNTRAINED: { label: "Untrained" },
+        ASSET: { label: "Asset" },
+        HINDERED: { label: "Hindered/Inability" },
+        PROFICIENT: { label: "Proficient" },
         TRAINED: { label: "Trained" },
         SPECIALIZED: { label: "Specialized" },
+      },
+      attackMods: {
+        HINDERED: { label: "Hindered" },
+        EASED: { label: "Eased" },
       },
       poolApplyOptions: {
         EDGE: { label: "to Edge" },
         TEMPPOOL: { label: "Temporary Points" },
-        POOL: { label: "More points to Pool" },
+        POOL: { label: "Add to Pool" },
       },
     });
     const selectedMod = ref();
@@ -249,15 +257,25 @@ export default {
       console.log(rv);
       return formInputRefs[rv];
     };
-    const addMod = () => {
-      console.log({ ...formInputRefs.abilityMods[selectedMod.value].fields });
+    const addMod = (vals = []) => {
+      console.log(
+        { ...formInputRefs.abilityMods[selectedMod.value].fields },
+        ...vals
+      );
       if (selectedMod.value) {
-        push({ ...formInputRefs.abilityMods[selectedMod.value].fields });
-        console.log(fields);
+        push({
+          mod: selectedMod.value,
+          fields: {
+            ...formInputRefs.abilityMods[selectedMod.value].fields,
+            ...vals,
+          },
+        });
+        console.log(fields.value);
       }
       selectedMod.value = undefined;
     };
-    const { remove, push, fields } = useFieldArray("mods");
+    const { remove, push, fields } = useFieldArray("ability_mods");
+    //modsArray.push([...mods]);
     return {
       open,
       close,

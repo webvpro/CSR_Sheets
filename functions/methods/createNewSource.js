@@ -2,6 +2,7 @@ import { initializeApp, applicationDefault } from 'firebase-admin/app';
 import { getFirestore, Timestamp, FieldValue } from 'firebase-admin/firestore';
 import functions from 'firebase-functions';
 
+
 const app = initializeApp(applicationDefault(),"createSource");
 const db = getFirestore(app);
 
@@ -16,7 +17,7 @@ const db = getFirestore(app);
           'while authenticated.');
     }
     const categories = [
-      { collection: 'ablilites', ref: 'ablilties' },
+      { collection: 'abilites', ref: 'ablilties' },
       { collection: 'types', ref: 'types' },
       { collection: 'descriptors', ref: 'descriptors' },
       { collection: 'foci', ref: 'foci' },

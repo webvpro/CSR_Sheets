@@ -1,9 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
-import { getAuth, onAuthStateChanged, getRedirectResult } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  getRedirectResult,
+  getIdTokenResult,
+} from "firebase/auth";
 import { reactive, computed, onMounted, onUnmounted, toRefs } from "vue";
 import firebaseConfig from "../../firebase.config";
+import { async } from "@firebase/util";
 
 export const state = reactive({
   user: null,
@@ -37,8 +43,11 @@ export const useAuthState = () => {
   onMounted(() => {
     unsubscribe = onAuthStateChanged(
       auth,
-      (u) => {
+      async (u) => {
         state.user = u ? { ...u } : null;
+        if (u) {
+          state.user.token = await getIdTokenResult(u);
+        }
         state.loading = false;
       },
       (e) => {

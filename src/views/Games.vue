@@ -24,27 +24,27 @@
     </div>
   </div>
   <div class="mx-16 lg:mx-36">
-    <h3 class="max-w-screen-2xl text-lg leading-6 font-medium text-gray-900">
+    <h3 class="text-lg font-medium leading-6 text-gray-900 max-w-screen-2xl">
       Games ({{ collectionData.length }})
       <button
         type="button"
-        class="inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        class="inline-flex items-center p-2 text-white bg-indigo-600 border border-transparent rounded-full shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         @click.prevent="showForm()"
       >
-        <PlusSmIconOutline class="h-6 w-6" aria-hidden="true" />
+        <PlusSmIconOutline class="w-6 h-6" aria-hidden="true" />
       </button>
     </h3>
     <ul
       role="list"
-      class="mt-3 grid grid-cols-1 gap-2 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+      class="grid grid-cols-1 gap-2 mt-3 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
     >
       <li
         v-for="item in games"
         :key="item.id"
-        class="col-span-1 flex shadow-sm rounded-md"
+        class="flex col-span-1 rounded-md shadow-sm"
       >
         <div
-          class="bg-indigo-900 flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md"
+          class="flex items-center justify-center flex-shrink-0 w-16 text-sm font-medium text-white bg-indigo-900 rounded-l-md"
         >
           <v-icon
             name="gi-winged-sword"
@@ -54,18 +54,18 @@
           />
         </div>
         <div
-          class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
+          class="flex items-center justify-between flex-1 truncate bg-white border-t border-b border-r border-gray-200 rounded-r-md"
         >
           <div class="flex-1 px-4 py-2 text-sm truncate">
-            <a href="#" class="text-gray-900 font-medium hover:text-gray-600">{{
+            <a href="#" class="font-medium text-gray-900 hover:text-gray-600">{{
               item.name
             }}</a>
             <p class="text-gray-500">{{ item.description }}</p>
           </div>
-          <div class="flex-grow-1 pr-2">
+          <div class="pr-2 flex-grow-1">
             <button
               type="button"
-              class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              class="inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-transparent bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               @click="showForm(item.id)"
             >
               <span class="sr-only">Open options</span>
@@ -160,7 +160,6 @@ export default {
     onMounted(() => {
       getCollection();
     });
-
     return {
       user,
       collectionData,

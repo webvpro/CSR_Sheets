@@ -11,12 +11,7 @@
           class="relative flex items-center px-6 py-5 space-x-3 bg-white border border-gray-300 rounded-lg shadow-sm hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
           @click="open(col.id)"
         >
-          <div class="flex-shrink-0">
-            {{ col.name }}
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-gray-900">More Here</p>
-          </div>
+          <item-card :item-data="col" />
         </a>
       </div>
     </div>
@@ -37,12 +32,14 @@ import {
 import { useRoute } from "vue-router";
 import useSourceSubCollection from "@/modules/use-collection";
 import CollectionForm from "@/components/slideoutforms/CollectionForm.vue";
+import ItemCard from "@/components/ListCards/CollectionItemCard.vue";
 
 export default {
   components: {
     CollectionForm,
+    ItemCard,
   },
-  setup() {
+  async setup() {
     const state = reactive({
       errors: {},
       source: {},
@@ -84,6 +81,7 @@ export default {
       ...toRefs(state),
       CollectionForm,
       open,
+      ItemCard,
     };
   },
 };
