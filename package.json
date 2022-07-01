@@ -12,7 +12,7 @@
   "dependencies": {
     "@formschema/native": "^2.0.0-beta.6",
     "@google-cloud/vision": "^2.4.1",
-    "@vue/devtools": "^5.3.4",
+    "@vue/devtools": "^6.2.0",
     "@xstate/vue": "^0.8.0",
     "build-url": "^6.0.1",
     "firebase": "^9.2.0",
