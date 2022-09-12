@@ -14,7 +14,7 @@
           />
         </router-link>
         <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900">
-          Sign in to your account {{ user }}
+          Sign in to your account
         </h2>
         <p class="mt-2 text-sm text-center text-gray-600">
           Or

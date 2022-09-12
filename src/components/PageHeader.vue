@@ -1,10 +1,10 @@
 <template>
   <Disclosure v-slot="{ open }" as="nav" class="bg-gray-800">
-    <div class="w-full mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="w-full px-2 mx-auto sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <div class="flex items-stretch justify-start">
           <router-link to="/">
-            <div class="flex-shrink-0 flex items-center">
+            <div class="flex items-center flex-shrink-0">
               <v-icon
                 name="gi-magic-portal"
                 label="Stormbringer POC"
@@ -12,7 +12,7 @@
                 scale="2"
                 fill="#fcba03"
               />
-              <h2 class="text-yellow-400 font-bold">Stormbringer POC</h2>
+              <h2 class="font-bold text-yellow-400">Stormbringer POC</h2>
             </div>
           </router-link>
           <div class="hidden sm:block sm:ml-6">
@@ -37,37 +37,47 @@
           class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
         >
           <button
-            class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+            class="p-1 text-gray-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
           >
             <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6 text-blue-500" aria-hidden="true" />
+            <BellIcon class="w-6 h-6 text-blue-500" aria-hidden="true" />
           </button>
 
           <!-- Profile dropdown -->
-          <Menu as="div" class="ml-3 relative">
+          <Menu as="div" class="relative ml-3">
             <div>
               <MenuButton
-                class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
               >
                 <span class="sr-only">Open user menu</span>
                 <v-icon
                   name="gi-winged-sword"
-                  class="h-8 w-8 rounded-full bg-purple-500"
+                  class="w-8 h-8 bg-purple-500 rounded-full"
                   alt=""
                 />
               </MenuButton>
             </div>
             <transition
-              enter-active-class="transition ease-out duration-100"
-              enter-from-class="transform opacity-0 scale-95"
-              enter-to-class="transform opacity-100 scale-100"
-              leave-active-class="transition ease-in duration-75"
-              leave-from-class="transform opacity-100 scale-100"
-              leave-to-class="transform opacity-0 scale-95"
+              enter-active-class="transition duration-100 ease-out"
+              enter-from-class="transform scale-95 opacity-0"
+              enter-to-class="transform scale-100 opacity-100"
+              leave-active-class="transition duration-75 ease-in"
+              leave-from-class="transform scale-100 opacity-100"
+              leave-to-class="transform scale-95 opacity-0"
             >
               <MenuItems
-                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
+                <MenuItem v-if="user.token.claims.admin" v-slot="{ active }">
+                  <router-link
+                    to="/admin"
+                    :class="[
+                      active ? 'bg-gray-100' : '',
+                      'block px-4 py-2 text-sm text-gray-700',
+                    ]"
+                    >Admin</router-link
+                  >
+                </MenuItem>
                 <MenuItem v-if="user" v-slot="{ active }">
                   <router-link
                     to="../profile"
@@ -99,7 +109,7 @@
                     >Sign Out</a
                   >
                 </MenuItem>
-                <MenuItem v-slot="{ active }" v-if="!user">
+                <MenuItem v-if="!user" v-slot="{ active }">
                   <router-link
                     to="/login"
                     :class="[
@@ -119,38 +129,34 @@
 </template>
 
 <script>
+import { toRefs, reactive, computed } from "vue";
 import { getAuth, signOut } from "@firebase/auth";
 import { useRouter } from "vue-router";
-
 import { useAuthState } from "@/modules/firebase";
 import {
   Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
   Menu,
   MenuButton,
   MenuItem,
   MenuItems,
 } from "@headlessui/vue";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
+import { BellIcon } from "@heroicons/vue/outline";
 
 export default {
   components: {
     Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
     Menu,
     MenuButton,
     MenuItem,
     MenuItems,
     BellIcon,
-    MenuIcon,
-    XIcon,
   },
   setup() {
-    const { user } = useAuthState();
+    const { user, loading } = useAuthState();
     const auth = getAuth();
     const router = useRouter();
+    const state = reactive({});
+    state.user = computed(() => user);
     const signOutUser = async () => {
       try {
         await signOut(auth);
@@ -160,7 +166,7 @@ export default {
         alert(e.message);
       }
     };
-    return { user, signOutUser };
+    return { ...toRefs(state), signOutUser };
   },
 };
 </script>

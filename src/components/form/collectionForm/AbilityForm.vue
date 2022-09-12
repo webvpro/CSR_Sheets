@@ -229,6 +229,7 @@
 </template>
 
 <script>
+/* there is alot of conversion here because of the mass import from foundry */
 import { inject, ref, reactive, toRefs, computed, watchEffect } from "vue";
 import { useField, useForm, useFieldArray } from "vee-validate";
 
@@ -323,7 +324,8 @@ export default {
       return ary;
     };
     const loadSelectedDocValues = (doc) => {
-      if (doc.value.name) {
+      console.log(JSON.stringify(doc.value));
+      if (doc.value && doc.value.name) {
         const docVal = doc.value;
         setFieldValue("name", docVal.name);
         setFieldValue(
@@ -339,7 +341,9 @@ export default {
         setFieldValue("ability_mods", docVal.mods ?? []);
         setFieldValue(
           "stat_pool",
-          docVal.statPool.toUpperCase() ?? poolHack(docVal.pool) ?? ""
+          docVal.pool
+            ? poolHack(docVal.pool)
+            : docVal?.statPool.toUpperCase() ?? ""
         );
         setFieldValue("pool_cost", docVal.poolCost ?? docVal.cost ?? 0);
         setFieldValue("tier_range", docVal.tierRange ?? "LOW");
@@ -361,7 +365,7 @@ export default {
       open.value = false;
     };
     const writeAbility = (formVals) => {
-      /*state.form.value = {
+      state.form.value = {
         name: formVals.name,
         description: formVals.description,
         abilityType: formVals.ability_type,
@@ -369,7 +373,7 @@ export default {
         poolCost: formVals.pool_cost,
         tierRange: formVals.tier_range,
         categories: formVals.categories.filter((v) => v !== undefined),
-      };*/
+      };
       console.log(formVals);
       open.value = close;
     };

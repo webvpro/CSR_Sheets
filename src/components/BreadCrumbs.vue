@@ -1,8 +1,8 @@
 <template>
-  <nav class="bg-white border-b border-gray-200 flex" aria-label="Breadcrumb">
+  <nav class="flex bg-white border-b border-gray-200" aria-label="Breadcrumb">
     <ol
       role="list"
-      class="max-w-screen-xl w-full mx-auto px-4 flex space-x-4 sm:px-6 lg:px-8"
+      class="flex w-full max-w-screen-xl px-4 mx-auto space-x-4 sm:px-6 lg:px-8"
     >
       <li class="flex">
         <div class="flex items-center">
@@ -14,7 +14,7 @@
             <a :href="href" class="text-gray-400 hover:text-gray-500">
               <v-icon
                 name="gi-book-cover"
-                class="flex-shrink-0 h-5 w-5"
+                class="flex-shrink-0 w-5 h-5"
                 aria-hidden="true"
               />
               {{ bcPgs.rootPg?.title }}
@@ -56,7 +56,6 @@ export default {
   setup() {
     const source = ref(inject("source"));
     const bcPgs = ref(inject("crumbPgs"));
-    console.log(bcPgs.value.pgs);
     return {
       bcPgs,
       source,

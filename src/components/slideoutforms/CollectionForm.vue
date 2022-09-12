@@ -1,6 +1,6 @@
 <template>
   <TransitionRoot as="template" :show="openForm" :unmount="true">
-    <Dialog as="div" class="fixed inset-0 overflow-hidden" @close="close">
+    <Dialog as="div" class="fixed inset-0 z-50 overflow-hidden" @close="close">
       <div class="absolute inset-0 overflow-hidden">
         <DialogOverlay class="absolute inset-0" />
 

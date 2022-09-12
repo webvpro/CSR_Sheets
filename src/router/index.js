@@ -1,16 +1,25 @@
 import { createWebHistory, createRouter } from "vue-router";
-import {
-  getUserState,
-  getAuthRedirect,
-  useAuthState,
-} from "@/modules/firebase";
+import { useAuthState, getUserState, hasAdmin } from "@/modules/firebase";
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
   {
+    name: "Home",
     path: "/",
     component: () => import("../views/Home.vue"),
     meta: { title: "Home" },
+  },
+  {
+    path: "/admin",
+    component: () => import("@/views/Admin.vue"),
+    meta: { title: "Admin Dashboard", secure: true, admin: true },
+    children: [
+      {
+        path: "",
+        component: () => import("../views/admin/Dashboard.vue"),
+        meta: { title: "Admin Dashboard", secure: true },
+      },
+    ],
   },
   {
     path: "/games",
@@ -86,27 +95,18 @@ const router = createRouter({
 const { startLoading, endLoading } = useAuthState();
 router.beforeEach(async (to, from, next) => {
   const isSecure = to.matched.some((record) => record.meta.secure);
-  const isAuth = await getUserState();
+  const isAdminOnly = to.matched.some((record) => record.meta.admin);
+  const userState = await getUserState();
+  const isAdmin = await hasAdmin();
+  const isAuth = !!userState;
   startLoading();
-  getAuthRedirect()
-    .then((result) => {
-      document.title = from.meta.title
-        ? `'Stormbringer.io POC: '${from.meta.title}`
-        : "Stormbringer.io POC";
-      const authRedirectPath = to.query.from ? to.query.from : "/";
-      if (result && result.user) {
-        console.log(to.query.from);
-        next({ path: authRedirectPath });
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 
   if (isSecure && !isAuth) {
     const redirectPath = to.path;
     document.title = to.meta.title ? to.meta.title : "Stormbringer.io POC";
     next({ name: "login", query: { from: redirectPath } });
+  } else if (isSecure && isAdminOnly && isAuth && !isAdmin) {
+    next({ name: "Home" });
   } else {
     document.title = to.meta.title ? to.meta.title : "Stormbringer.io POC";
     next();

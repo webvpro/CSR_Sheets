@@ -70,9 +70,8 @@
     <div class="flex-1 min-w-0 p-4 mt-6 sm:block">
       <BreadCrumbs />
     </div>
-    <div class="container relative p-4 pt-5 pb-5 mx-auto">
-      <router-view :key="route.fullPath" />
-    </div>
+
+    <router-view :key="route.fullPath" />
   </div>
 </template>
 

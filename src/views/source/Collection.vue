@@ -1,22 +1,18 @@
 <template>
-  <div class="flex h-full">
+  <div class="container p-5 mx-auto border-b border-gray-200 mb-52">
     <div
-      class="container relative pt-5 pb-5 mx-auto border-b border-gray-200 sm:pb-0"
+      class="grid justify-center gap-4 m-auto auto-cols-fr grid-flow-dense auto-rows-auto md:auto-rows-fr md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
     >
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <a
-          v-for="col in collectionDocs"
-          :key="col.id"
-          href="#"
-          class="relative flex items-center px-6 py-5 space-x-3 bg-white border border-gray-300 rounded-lg shadow-sm hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-          @click="open(col.id)"
-        >
-          <item-card :item-data="col" />
-        </a>
+      <div v-for="col in collectionDocs" :key="col.id">
+        <item-card
+          :item-data="col"
+          :item-type="collectionKey"
+          @edit-item="open(col.id)"
+        />
       </div>
     </div>
-    <CollectionForm />
   </div>
+  <CollectionForm />
 </template>
 
 <script>
@@ -32,7 +28,7 @@ import {
 import { useRoute } from "vue-router";
 import useSourceSubCollection from "@/modules/use-collection";
 import CollectionForm from "@/components/slideoutforms/CollectionForm.vue";
-import ItemCard from "@/components/ListCards/CollectionItemCard.vue";
+import ItemCard from "@/components/ListCards/ItemCard.vue";
 
 export default {
   components: {

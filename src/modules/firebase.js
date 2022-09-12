@@ -30,11 +30,20 @@ export const auth = initializeAuth(firebaseApp, {
 });
 connectFunctionsEmulator(functions, "localhost", 5001);
 export const getUserState = () => {
-  return new Promise((resolve, reject) =>
-    auth.onAuthStateChanged(resolve, reject)
-  );
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      unsubscribe();
+      resolve(user);
+    }, reject);
+  });
 };
 
+export const hasAdmin = async () => {
+  const tokens = auth.currentUser
+    ? await auth.currentUser.getIdTokenResult()
+    : { claims: {} };
+  return !!tokens.claims.admin ?? false;
+};
 export const getAuthRedirect = () => {
   return getRedirectResult(auth);
 };

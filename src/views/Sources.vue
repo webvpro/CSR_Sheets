@@ -1,15 +1,15 @@
 <template>
-  <div class="flex-col">
+  <div class="flex-col justify-center max-w-6xl">
     <!-- Static sidebar for desktop -->
     <div
-      class="relative container mx-auto pb-5 pt-5 border-b border-gray-200 sm:pb-0"
+      class="container relative pt-5 pb-5 mx-auto border-b border-gray-200 sm:pb-0"
     >
       <div class="md:flex md:items-center md:justify-between">
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Sources</h3>
-        <div class="mt-3 flex md:mt-0 md:absolute md:top-3 md:right-0">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">Sources</h3>
+        <div class="flex mt-3 md:mt-0 md:absolute md:top-3 md:right-0">
           <button
             type="button"
-            class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             @click.prevent="createSource"
           >
             Create
@@ -22,7 +22,7 @@
           <select
             id="current-tab"
             name="current-tab"
-            class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            class="block w-full py-2 pl-3 pr-10 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           >
             <option v-for="tab in tabs" :key="tab.name" :selected="tab.current">
               {{ tab.name }}
@@ -30,7 +30,7 @@
           </select>
         </div>
         <div class="hidden sm:block">
-          <nav class="-mb-px flex space-x-8">
+          <nav class="flex -mb-px space-x-8">
             <a
               v-for="tab in tabs"
               :key="tab.name"
@@ -50,9 +50,11 @@
       </div>
     </div>
     <div
-      class="relative container mx-auto pb-5 pt-5 border-b border-gray-200 sm:pb-0"
+      class="container justify-center pt-5 pb-5 mx-auto border-b border-gray-200 sm:pb-0"
     >
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div
+        class="grid justify-center grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+      >
         <router-link
           v-for="source in sources"
           v-slot="{ href }"
@@ -61,7 +63,7 @@
         >
           <a
             :href="href"
-            class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+            class="relative flex items-center px-6 py-5 space-x-3 bg-white border border-gray-300 rounded-lg shadow-sm hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
           >
             <div class="flex-shrink-0">
               {{ source.name }}
