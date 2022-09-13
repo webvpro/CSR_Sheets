@@ -17,7 +17,7 @@ const db = getFirestore(app);
           'while authenticated.');
     }
     const categories = [
-      { collection: 'abilites', ref: 'ablilties' },
+      { collection: 'abilities', ref: 'abilities' },
       { collection: 'types', ref: 'types' },
       { collection: 'descriptors', ref: 'descriptors' },
       { collection: 'foci', ref: 'foci' },

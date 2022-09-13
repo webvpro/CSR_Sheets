@@ -8,7 +8,7 @@
         class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
       >
         <br />
-        <span class="text-indigo-600">Stormbringer.poc</span>
+        <span class="text-indigo-600">Mike's Stuff</span>
       </h2>
     </div>
     <div class="relative py-16 bg-white sm:py-24 lg:py-32">
@@ -17,9 +17,7 @@
       >
         <h2
           class="text-base font-semibold tracking-wider text-indigo-600 uppercase"
-        >
-          <button class="btn">Hello daisyui</button>firebase
-        </h2>
+        ></h2>
         <p
           class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
         >
