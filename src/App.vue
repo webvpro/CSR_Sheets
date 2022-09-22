@@ -1,9 +1,7 @@
 <template>
-  <div class="flex flex-col flex-grow w-full h-full overflow-auto flex-nowrap">
-    <header class="sticky top-0 z-40 bg-indigo-900 shadow">
-      <PageHeader />
-    </header>
-    <div class="relative w-full h-full">
+  <div>
+    <PageHeader />
+    <div id="main-body" class="">
       <Suspense>
         <template #default>
           <router-view />
@@ -13,7 +11,6 @@
         </template>
       </Suspense>
     </div>
-    <page-footer />
   </div>
 </template>
 
@@ -23,7 +20,7 @@ import PageHeader from "@/components/PageHeader.vue";
 import SkeletonLoader from "@/components/SkeletonLoader.vue";
 import PageFooter from "@/components/PageFooter.vue";
 export default {
-  components: { PageHeader, SkeletonLoader, PageFooter },
+  components: { PageHeader, SkeletonLoader },
   setup() {
     const { user, error, loading, isAuthenicated } = useAuthState();
     return {

@@ -84,5 +84,11 @@ export const useAuthState = () => {
 
   const isAuthenticated = computed(() => state.user != null);
 
-  return { ...toRefs(state), isAuthenticated, startLoading, endLoading };
+  return {
+    ...toRefs(state),
+    isAuthenticated,
+    hasAdmin,
+    startLoading,
+    endLoading,
+  };
 };

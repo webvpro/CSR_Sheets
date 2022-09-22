@@ -1,87 +1,67 @@
 <template>
-  <div class="flex-col justify-center max-w-6xl">
-    <!-- Static sidebar for desktop -->
-    <div
-      class="container relative pt-5 pb-5 mx-auto border-b border-gray-200 sm:pb-0"
-    >
-      <div class="md:flex md:items-center md:justify-between">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">Sources</h3>
-        <div class="flex mt-3 md:mt-0 md:absolute md:top-3 md:right-0">
-          <button
-            type="button"
-            class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            @click.prevent="createSource"
-          >
-            Create
-          </button>
-        </div>
-      </div>
-      <div class="mt-4">
-        <div class="sm:hidden">
-          <label for="current-tab" class="sr-only">Select a tab</label>
-          <select
-            id="current-tab"
-            name="current-tab"
-            class="block w-full py-2 pl-3 pr-10 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          >
-            <option v-for="tab in tabs" :key="tab.name" :selected="tab.current">
-              {{ tab.name }}
-            </option>
-          </select>
-        </div>
-        <div class="hidden sm:block">
-          <nav class="flex -mb-px space-x-8">
-            <a
-              v-for="tab in tabs"
-              :key="tab.name"
-              :href="tab.href"
-              :class="[
-                tab.current
-                  ? 'border-indigo-500 text-indigo-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                'whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm',
-              ]"
-              :aria-current="tab.current ? 'page' : undefined"
-            >
-              {{ tab.name }}
-            </a>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <div
-      class="container justify-center pt-5 pb-5 mx-auto border-b border-gray-200 sm:pb-0"
-    >
-      <div
-        class="grid justify-center grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
-      >
-        <router-link
-          v-for="source in sources"
-          v-slot="{ href }"
-          :key="source.id"
-          :to="{ path: `/source/${source.id}` }"
+  <div id="page-top" class="pt-3 scroll-mt-0 drawer drawer-end">
+    <input
+      id="my-drawer-1"
+      v-model="toggleSourceDrawer"
+      type="checkbox"
+      class="drawer-toggle"
+    />
+    <div class="drawer-content">
+      <div class="container justify-center mx-auto">
+        <div
+          class="grid justify-center grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4"
         >
-          <a
-            :href="href"
-            class="relative flex items-center px-6 py-5 space-x-3 bg-white border border-gray-300 rounded-lg shadow-sm hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+          <div
+            v-for="source in sources"
+            :key="source.id"
+            class="justify-center w-8/12 sm:w-full card bg-primary text-primary-content justify-self-center"
           >
-            <div class="flex-shrink-0">
-              {{ source.name }}
+            <div class="card-body">
+              <h2 class="card-title">{{ source.name }}</h2>
+              <p>{{ source.description }}</p>
+              <div class="justify-end card-actions">
+                <label
+                  for="my-drawer-1"
+                  class="drawer-button btn btn-secondary btn-circle"
+                  @click.prevent="editSource(source.id)"
+                >
+                  <v-icon
+                    name="hi-solid-pencil-alt"
+                    label="Edit Source"
+                    scale="1.5"
+                  />
+                </label>
+
+                <router-link
+                  :key="source.id"
+                  :to="{ path: `/source/${source.id}` }"
+                >
+                  <button class="btn btn-secondary btn-circle">
+                    <v-icon name="hi-eye" label="View Source" scale="1.5" />
+                  </button>
+                </router-link>
+              </div>
             </div>
-            <div class="flex-1 min-w-0">
-              <span class="absolute inset-0" aria-hidden="true" />
-              <p class="text-sm font-medium text-gray-900">
-                {{ source.books }}
-              </p>
-              <p class="text-sm text-gray-500 truncate">
-                {{ source.hasCustom }}
-              </p>
-            </div>
-          </a>
-        </router-link>
+          </div>
+        </div>
+        <label
+          for="my-drawer-1"
+          title="Create Source"
+          class="fixed flex items-center justify-center text-4xl duration-300 rounded-full w-14 h-14 drawer-button text-secondary-content bg-secondary z-90 bottom-10 right-8 drop-shadow-lg hover:bg-primary-focus hover:drop-shadow-2xl hover:animate-bounce"
+        >
+          <v-icon name="hi-solid-plus" label="View Source" scale="1.5" />
+        </label>
       </div>
     </div>
-    <SourceForm />
+    <div class="drawer-side">
+      <label for="my-drawer-1" class="drawer-overlay"></label>
+      <ul
+        class="w-3/4 h-screen p-4 overflow-y-auto md:w-96 md:max-w-lg menu bg-base-100 text-base-content"
+      >
+        <!-- Sidebar content here -->
+        <source-form />
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -89,7 +69,7 @@
 import { ref, toRefs, reactive, onMounted, provide, computed } from "vue";
 import { useRouter } from "vue-router";
 import useSourceCollection from "@/modules/use-collection";
-import SourceForm from "@/components/slideoutforms/SourceForm.vue";
+import SourceForm from "@/components/form/SourceForm.vue";
 
 const tabs = [
   { name: "All", href: "#", current: true },
@@ -107,11 +87,15 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const show = ref(false);
+    const toggleSourceDrawer = ref(false);
     const sourceId = ref("");
     const createSource = () => {
       sourceId.value = "";
-      return (show.value = true);
+      return (toggleSourceDrawer.value = true);
+    };
+    const editSource = (srcId) => {
+      sourceId.value = srcId;
+      return (toggleSourceDrawer.value = true);
     };
     const gotoSource = (docId) => {
       const path = `/source/${docId}`;
@@ -121,7 +105,6 @@ export default {
     const state = reactive({
       sources: [],
       loading: false,
-      openForm: false,
     });
     const { getCollection, collectionData } = useSourceCollection("sources", {
       onMouted: true,
@@ -129,21 +112,23 @@ export default {
     });
     state.sources = collectionData;
 
-    provide("openForm", show);
     provide(
-      "sourceId",
+      "selectedSourceId",
       computed(() => sourceId.value)
     );
+    provide("openForm", toggleSourceDrawer);
     onMounted(() => {
       getCollection();
     });
     return {
       createSource,
+      editSource,
       SourceForm,
       ...toRefs(state),
       tabs,
       gotoSource,
       sourceId,
+      toggleSourceDrawer,
     };
   },
 };

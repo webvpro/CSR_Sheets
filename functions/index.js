@@ -7,5 +7,5 @@ import { sourceImports } from './methods/cypherJsonImports.js';
 export const createSource = createNewSource;
 export const sourceCollectionsList = sourceCollections;
 //local functions don't deploy please
-export const sourceFVTTImports = sourceImports;  
+export const csPubImports = sourceImports;  
 //export const createAdmin = assignAdminClaim;

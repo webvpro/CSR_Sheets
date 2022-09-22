@@ -22,6 +22,8 @@ const db = getFirestore(app);
       { collection: 'descriptors', ref: 'descriptors' },
       { collection: 'foci', ref: 'foci' },
       { collection: 'cyphers', ref: 'cyphers' },
+      { collection: 'artifacts', ref: 'artifacts' },
+      { collection: 'powershifts', ref: 'powershifts' },
     ]
     let docRef = {};
     try {

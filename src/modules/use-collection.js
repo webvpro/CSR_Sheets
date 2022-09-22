@@ -75,15 +75,15 @@ export default function (collectionName, queryOptions) {
     orderBy: _orderBy,
     limit: _limit,
   } = queryOptions) => {
-    let qArgs = [];
     const collectionPath = collectionName.split(",");
-    const subColRef = collection(db, ...collectionPath);
-
+    const qArgs = [];
+    qArgs.push(collection(db, ...collectionPath));
     if (_where) qArgs.push(where(..._where));
     if (_orderBy) qArgs.push(orderBy(..._orderBy));
     if (_limit) qArgs.push(limit(_limit));
-
-    const docs = await getDocs(subColRef);
+    const q = query(...qArgs);
+    console.log(qArgs)
+    const docs = await getDocs(q);
     let resultArray = [];
     docs.forEach((doc) => {
       resultArray.push({ id: doc.id, ...doc.data() });

@@ -13,7 +13,7 @@ const subCollections = {
   }
 const descriptionSourceObj = (description) => {
     const rObj ={};
-    const split1 = description.split("@PDF[")
+    const split1 = description.split("@Compendium[")
     const split2 = split1[1].split("]")
     const labelPg = split2[0].split("|");
     rObj['label'] = labelPg[0];
@@ -46,9 +46,16 @@ const abilitiesFormat = (items) => {
 }; 
 
 export const sourceImports = functions.https.onRequest( async (request, response) => {
+    const mcgPubs = {
+        CYPHERSYSTEMREFERENCEDOCUMENT: { 
+            code:"CSRD",
+            title: "Cypher System Reference Document",
+            collections:["abilitiesCSRD"],
+        },
+    };
     const db = getFirestore();
     const bucket = getStorage().bucket();
-    const fd = bucket.file("TTRPG/MCG/json/abilities.json")
+    const fd = bucket.file("TTRPG/MCG/publications/CSRD/abilitiesCSRD.json")
     const obj = await fd.download();
     const items = JSON.parse(obj)
     let formattedList
@@ -57,6 +64,7 @@ export const sourceImports = functions.https.onRequest( async (request, response
     let pubList;
     let pubDoc;
     let pubRef;
+    console.log(JSON.stringify(items))
     //pubilcations collection needs to be on root
     //each pubilcation doc will have sub collections for its items such as abilities
     if (items.publications) {
@@ -92,6 +100,7 @@ export const sourceImports = functions.https.onRequest( async (request, response
     }
     
     //const pubList = [...new Set(formattedList.map(item => item.pubKey))]; // [ 'A', 'B'] 
-    response.status(200).send(grouped);
+    //response.status(200).send(grouped);
+    response.status(200).send(items);
     return 
 });

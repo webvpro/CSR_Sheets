@@ -58,7 +58,9 @@ export default {
   setup() {
     const route = useRoute();
     const source = ref(inject("source"), {});
-    const { callFunction, functionData } = useCloudFunction("sourceCollectionsList");
+    const { callFunction, functionData } = useCloudFunction(
+      "sourceCollectionsList"
+    );
     const collectionList = ref({});
     collectionList.value = computed(() => functionData);
     const sourceCollections = [
