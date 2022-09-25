@@ -1,11 +1,12 @@
 <template>
   <div
-    class="container grid justify-center gap-4 auto-cols-fr auto-rows-auto md:auto-rows-fr md:grid-cols-3 xl:grid-cols-4"
+    class="container grid justify-center gap-4 pb-4 md:px-3 auto-cols-fr grid-flow-dense auto-rows-auto md:auto-rows-fr md:grid-cols-3 xl:grid-cols-4"
   >
     <div v-for="col in collectionDocs" :key="col.id">
       <item-card
         :item-data="col"
         :item-type="collection"
+        :item-icon="collectionIcon"
         @edit-item="open(col.id)"
       />
     </div>
@@ -30,8 +31,13 @@ import ItemCard from "@/components/ListCards/ItemCard.vue";
 
 export default {
   components: {
-    CollectionForm,
     ItemCard,
+  },
+  props: {
+    collectionIcon: {
+      type: String,
+      default: "",
+    },
   },
   async setup() {
     const state = reactive({
@@ -63,7 +69,6 @@ export default {
     });
     return {
       ...toRefs(state),
-      CollectionForm,
       open,
       ItemCard,
       collection,

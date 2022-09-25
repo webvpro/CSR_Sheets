@@ -5,8 +5,13 @@
 @import 'tailwindcss/utilities';
 
 html,body {
-    @apply scroll-smooth;
+    @apply overflow-y-auto scroll-smooth;
 }
+html {
+    @apply overflow-hidden;
+}
+
+
 
 .page-button {
     @apply inline-flex items-center justify-center;

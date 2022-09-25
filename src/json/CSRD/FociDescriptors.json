@@ -1,0 +1,670 @@
+{
+  "FociDescriptors" : {
+    "Descriptors": {
+      "Incredible": {
+        "Claim the Sky, p.42": "Claim the Sky, p.42",
+        "reg": "reg"
+      },
+      "Mighty": {
+        "Claim the Sky, p.42": "Claim the Sky, p.43",
+        "reg": "reg"
+      },
+      "Sensational": {
+        "Claim the Sky, p.42": "Claim the Sky, p.44",
+        "reg": "reg"
+      },
+      "Uncanny": {
+        "Claim the Sky, p.42": "Claim the Sky, p.44",
+        "reg": "reg"
+      },
+      "Dwarf": {
+        "Claim the Sky, p.42": "Cypher System, p.258",
+        "reg": "sub"
+      },
+      "Elf": {
+        "Claim the Sky, p.42": "Cypher System, p.258",
+        "reg": "sub"
+      },
+      "Half-Giant": {
+        "Claim the Sky, p.42": "Cypher System, p.259",
+        "reg": "sub"
+      },
+      "Helborn": {
+        "Claim the Sky, p.42": "Cypher System, p.259",
+        "reg": "sub"
+      },
+      "Artificially Intelligent": {
+        "Claim the Sky, p.42": "Cypher System, p.279",
+        "reg": "sub"
+      },
+      "Quintar": {
+        "Claim the Sky, p.42": "Cypher System, p.279",
+        "reg": "sub"
+      },
+      "Morlock": {
+        "Claim the Sky, p.42": "Cypher System, p.300",
+        "reg": "sub"
+      },
+      "Roach": {
+        "Claim the Sky, p.42": "Cypher System, p.301",
+        "reg": "sub"
+      },
+      "Appealing": {
+        "Claim the Sky, p.42": "Cypher System, p.38",
+        "reg": "reg"
+      },
+      "Brash": {
+        "Claim the Sky, p.42": "Cypher System, p.39",
+        "reg": "reg"
+      },
+      "Beneficent": {
+        "Claim the Sky, p.42": "Cypher System, p.39",
+        "reg": "reg"
+      },
+      "Calm": {
+        "Claim the Sky, p.42": "Cypher System, p.40",
+        "reg": "reg"
+      },
+      "Chaotic": {
+        "Claim the Sky, p.42": "Cypher System, p.40",
+        "reg": "reg"
+      },
+      "Charming": {
+        "Claim the Sky, p.42": "Cypher System, p.41",
+        "reg": "reg"
+      },
+      "Clever": {
+        "Claim the Sky, p.42": "Cypher System, p.41",
+        "reg": "reg"
+      },
+      "Clumsy": {
+        "Claim the Sky, p.42": "Cypher System, p.41",
+        "reg": "reg"
+      },
+      "Craven": {
+        "Claim the Sky, p.42": "Cypher System, p.42",
+        "reg": "reg"
+      },
+      "Creative": {
+        "Claim the Sky, p.42": "Cypher System, p.42",
+        "reg": "reg"
+      },
+      "Cruel": {
+        "Claim the Sky, p.42": "Cypher System, p.43",
+        "reg": "reg"
+      },
+      "Dishonorable": {
+        "Claim the Sky, p.42": "Cypher System, p.44",
+        "reg": "reg"
+      },
+      "Doomed": {
+        "Claim the Sky, p.42": "Cypher System, p.44",
+        "reg": "reg"
+      },
+      "Empathic": {
+        "Claim the Sky, p.42": "Cypher System, p.44",
+        "reg": "reg"
+      },
+      "Exiled": {
+        "Claim the Sky, p.42": "Cypher System, p.45",
+        "reg": "reg"
+      },
+      "Fast": {
+        "Claim the Sky, p.42": "Cypher System, p.45",
+        "reg": "reg"
+      },
+      "Foolish": {
+        "Claim the Sky, p.42": "Cypher System, p.46",
+        "reg": "reg"
+      },
+      "Graceful": {
+        "Claim the Sky, p.42": "Cypher System, p.46",
+        "reg": "reg"
+      },
+      "Guarded": {
+        "Claim the Sky, p.42": "Cypher System, p.47",
+        "reg": "reg"
+      },
+      "Hardy": {
+        "Claim the Sky, p.42": "Cypher System, p.47",
+        "reg": "reg"
+      },
+      "Hideous": {
+        "Claim the Sky, p.42": "Cypher System, p.48",
+        "reg": "reg"
+      },
+      "Honorable": {
+        "Claim the Sky, p.42": "Cypher System, p.48",
+        "reg": "reg"
+      },
+      "Impulsive": {
+        "Claim the Sky, p.42": "Cypher System, p.48",
+        "reg": "reg"
+      },
+      "Inquisitive": {
+        "Claim the Sky, p.42": "Cypher System, p.49",
+        "reg": "reg"
+      },
+      "Intelligent": {
+        "Claim the Sky, p.42": "Cypher System, p.49",
+        "reg": "reg"
+      },
+      "Intuitive": {
+        "Claim the Sky, p.42": "Cypher System, p.49",
+        "reg": "reg"
+      },
+      "Jovial": {
+        "Claim the Sky, p.42": "Cypher System, p.50",
+        "reg": "reg"
+      },
+      "Kind": {
+        "Claim the Sky, p.42": "Cypher System, p.50",
+        "reg": "reg"
+      },
+      "Learned": {
+        "Claim the Sky, p.42": "Cypher System, p.51",
+        "reg": "reg"
+      },
+      "Lucky": {
+        "Claim the Sky, p.42": "Cypher System, p.51",
+        "reg": "reg"
+      },
+      "Mad": {
+        "Claim the Sky, p.42": "Cypher System, p.51",
+        "reg": "reg"
+      },
+      "Mechanical": {
+        "Claim the Sky, p.42": "Cypher System, p.52",
+        "reg": "reg"
+      },
+      "Mysterious": {
+        "Claim the Sky, p.42": "Cypher System, p.52",
+        "reg": "reg"
+      },
+      "Mystical": {
+        "Claim the Sky, p.42": "Cypher System, p.53",
+        "reg": "reg"
+      },
+      "Naive": {
+        "Claim the Sky, p.42": "Cypher System, p.53",
+        "reg": "reg"
+      },
+      "Perceptive": {
+        "Claim the Sky, p.42": "Cypher System, p.54",
+        "reg": "reg"
+      },
+      "Resilient": {
+        "Claim the Sky, p.42": "Cypher System, p.54",
+        "reg": "reg"
+      },
+      "Risk-Taking": {
+        "Claim the Sky, p.42": "Cypher System, p.54",
+        "reg": "reg"
+      },
+      "Rugged": {
+        "Claim the Sky, p.42": "Cypher System, p.55",
+        "reg": "reg"
+      },
+      "Sharp-Eyed": {
+        "Claim the Sky, p.42": "Cypher System, p.55",
+        "reg": "reg"
+      },
+      "Skeptical": {
+        "Claim the Sky, p.42": "Cypher System, p.55",
+        "reg": "reg"
+      },
+      "Stealthy": {
+        "Claim the Sky, p.42": "Cypher System, p.56",
+        "reg": "reg"
+      },
+      "Strong": {
+        "Claim the Sky, p.42": "Cypher System, p.56",
+        "reg": "reg"
+      },
+      "Strong-Willed": {
+        "Claim the Sky, p.42": "Cypher System, p.56",
+        "reg": "reg"
+      },
+      "Swift": {
+        "Claim the Sky, p.42": "Cypher System, p.57",
+        "reg": "reg"
+      },
+      "Tongue-Tied": {
+        "Claim the Sky, p.42": "Cypher System, p.57",
+        "reg": "reg"
+      },
+      "Tough": {
+        "Claim the Sky, p.42": "Cypher System, p.57",
+        "reg": "reg"
+      },
+      "Vicious": {
+        "Claim the Sky, p.42": "Cypher System, p.58",
+        "reg": "reg"
+      },
+      "Virtuous": {
+        "Claim the Sky, p.42": "Cypher System, p.58",
+        "reg": "reg"
+      },
+      "Weird": {
+        "Claim the Sky, p.42": "Cypher System, p.58",
+        "reg": "reg"
+      },
+      "Catfolk": {
+        "Claim the Sky, p.42": "Godforsaken, p.86",
+        "reg": "sub"
+      },
+      "Dragonfolk": {
+        "Claim the Sky, p.42": "Godforsaken, p.87",
+        "reg": "sub"
+      },
+      "Gnome": {
+        "Claim the Sky, p.42": "Godforsaken, p.88, Ptolus p.50",
+        "reg": "sub"
+      },
+      "Lizardfolk": {
+        "Claim the Sky, p.42": "Ptolus, p.59",
+        "reg": "sub"
+      },
+      "Halfling": {
+        "Claim the Sky, p.42": "Godforsaken, p.89, Ptolus p.51",
+        "reg": "sub"
+      },
+      "Centaur": {
+        "Claim the Sky, p.42": "Ptolus, p.52",
+        "reg": "sub"
+      },
+      "Cherubim Elf": {
+        "Claim the Sky, p.42": "Ptolus, p.53",
+        "reg": "sub"
+      },
+      "Harrow Elf": {
+        "Claim the Sky, p.42": "Ptolus, p.54",
+        "reg": "sub"
+      },
+      "Litorian": {
+        "Claim the Sky, p.42": "Ptolus, p.56",
+        "reg": "sub"
+      },
+      "Calculating": {
+        "Claim the Sky, p.42": "The Stars Are Fire, p.210",
+        "reg": "reg"
+      },
+      "Bewitched": {
+        "Claim the Sky, p.42": "We Are All Mad Here, p.169",
+        "reg": "reg"
+      },
+      "Changeling": {
+        "Claim the Sky, p.42": "We Are All Mad Here, p.170",
+        "reg": "reg"
+      },
+      "Fragmented": {
+        "Claim the Sky, p.42": "We Are All Mad Here, p.171",
+        "reg": "reg"
+      },
+      "Frumious": {
+        "Claim the Sky, p.42": "We Are All Mad Here, p.171",
+        "reg": "reg"
+      },
+      "Haunted": {
+        "Claim the Sky, p.42": "We Are All Mad Here, p.172",
+        "reg": "reg"
+      },
+      "Lost": {
+        "Claim the Sky, p.42": "We Are All Mad Here, p.172",
+        "reg": "reg"
+      }
+    },
+    "Foci": {
+      "Has a Thousand Faces": {
+        "Claims the Sky, p.46": "Claims the Sky, p.46"
+      },
+      "Ignores Physical Distance": {
+        "Claims the Sky, p.46": "Claims the Sky, p.46"
+      },
+      "Sculpts Hard Light": {
+        "Claims the Sky, p.46": "Claims the Sky, p.46"
+      },
+      "Shrinks to Minute Size": {
+        "Claims the Sky, p.46": "Claims the Sky, p.47"
+      },
+      "Soars on Amazing Wings": {
+        "Claims the Sky, p.46": "Claims the Sky, p.47"
+      },
+      "Stretches": {
+        "Claims the Sky, p.46": "Claims the Sky, p.47"
+      },
+      "Wields Invisible Force": {
+        "Claims the Sky, p.46": "Claims the Sky, p.48"
+      },
+      "Abides In Stone": {
+        "Claims the Sky, p.46": "Cypher System, p.64"
+      },
+      "Absorbs Energy": {
+        "Claims the Sky, p.46": "Cypher System, p.64"
+      },
+      "Awakens Dreams": {
+        "Claims the Sky, p.46": "Cypher System, p.64"
+      },
+      "Battles Robots": {
+        "Claims the Sky, p.46": "Cypher System, p.64"
+      },
+      "Bears A Halo Of Fire": {
+        "Claims the Sky, p.46": "Cypher System, p.64"
+      },
+      "Blazes With Radiance": {
+        "Claims the Sky, p.46": "Cypher System, p.64"
+      },
+      "Brandishes An Exotic Shield": {
+        "Claims the Sky, p.46": "Cypher System, p.64"
+      },
+      "Builds Robots": {
+        "Claims the Sky, p.46": "Cypher System, p.65"
+      },
+      "Calculates The Incalculable": {
+        "Claims the Sky, p.46": "Cypher System, p.65"
+      },
+      "Channels Divine Blessings": {
+        "Claims the Sky, p.46": "Cypher System, p.65"
+      },
+      "Commands Mental Powers": {
+        "Claims the Sky, p.46": "Cypher System, p.65"
+      },
+      "Conducts Weird Science": {
+        "Claims the Sky, p.46": "Cypher System, p.65"
+      },
+      "Consorts With The Dead": {
+        "Claims the Sky, p.46": "Cypher System, p.65"
+      },
+      "Controls Beasts": {
+        "Claims the Sky, p.46": "Cypher System, p.65"
+      },
+      "Controls Gravity": {
+        "Claims the Sky, p.46": "Cypher System, p.66"
+      },
+      "Crafts Illusions": {
+        "Claims the Sky, p.46": "Cypher System, p.66"
+      },
+      "Crafts Unique Objects": {
+        "Claims the Sky, p.46": "Cypher System, p.66"
+      },
+      "Dances With Dark Matter": {
+        "Claims the Sky, p.46": "Cypher System, p.66"
+      },
+      "Defends The Gate": {
+        "Claims the Sky, p.46": "Cypher System, p.66"
+      },
+      "Defends The Weak": {
+        "Claims the Sky, p.46": "Cypher System, p.66"
+      },
+      "Doesn't Do Much": {
+        "Claims the Sky, p.46": "Cypher System, p.67"
+      },
+      "Emerged From The Obelisk": {
+        "Claims the Sky, p.46": "Cypher System, p.67"
+      },
+      "Employs Magnetism": {
+        "Claims the Sky, p.46": "Cypher System, p.67"
+      },
+      "Entertains": {
+        "Claims the Sky, p.46": "Cypher System, p.67"
+      },
+      "Exists In Two Places At Once": {
+        "Claims the Sky, p.46": "Cypher System, p.67"
+      },
+      "Descends From Nobility": {
+        "Claims the Sky, p.46": "Cypher System, p.67"
+      },
+      "Drives Like A Maniac": {
+        "Claims the Sky, p.46": "Cypher System, p.67"
+      },
+      "Exists Partially Out Of Phase": {
+        "Claims the Sky, p.46": "Cypher System, p.68"
+      },
+      "Explores Dark Places": {
+        "Claims the Sky, p.46": "Cypher System, p.68"
+      },
+      "Fights Dirty": {
+        "Claims the Sky, p.46": "Cypher System, p.68"
+      },
+      "Fights With Panache": {
+        "Claims the Sky, p.46": "Cypher System, p.68"
+      },
+      "Flies Faster Than A Bullet": {
+        "Claims the Sky, p.46": "Cypher System, p.68"
+      },
+      "Focuses Mind Over Matter": {
+        "Claims the Sky, p.46": "Cypher System, p.68"
+      },
+      "Fuses Flesh And Steel": {
+        "Claims the Sky, p.46": "Cypher System, p.69"
+      },
+      "Fuses Mind And Machine": {
+        "Claims the Sky, p.46": "Cypher System, p.69"
+      },
+      "Grows To Towering Heights": {
+        "Claims the Sky, p.46": "Cypher System, p.69"
+      },
+      "Helps Their Friends": {
+        "Claims the Sky, p.46": "Cypher System, p.69"
+      },
+      "Howls At The Moon": {
+        "Claims the Sky, p.46": "Cypher System, p.69"
+      },
+      "Hunts": {
+        "Claims the Sky, p.46": "Cypher System, p.69"
+      },
+      "Infiltrates": {
+        "Claims the Sky, p.46": "Cypher System, p.70"
+      },
+      "Interprets The Law": {
+        "Claims the Sky, p.46": "Cypher System, p.70"
+      },
+      "Is Idolized By Millions": {
+        "Claims the Sky, p.46": "Cypher System, p.70"
+      },
+      "Is Licensed To Carry": {
+        "Claims the Sky, p.46": "Cypher System, p.70"
+      },
+      "Is Wanted By The Law": {
+        "Claims the Sky, p.46": "Cypher System, p.70"
+      },
+      "Leads": {
+        "Claims the Sky, p.46": "Cypher System, p.71"
+      },
+      "Lives In The Wilderness": {
+        "Claims the Sky, p.46": "Cypher System, p.71"
+      },
+      "Looks For Trouble": {
+        "Claims the Sky, p.46": "Cypher System, p.71"
+      },
+      "Keeps A Magic Ally": {
+        "Claims the Sky, p.46": "Cypher System, p.71"
+      },
+      "Learns Quickly": {
+        "Claims the Sky, p.46": "Cypher System, p.71"
+      },
+      "Loves The Void": {
+        "Claims the Sky, p.46": "Cypher System, p.71"
+      },
+      "Masters Defense": {
+        "Claims the Sky, p.46": "Cypher System, p.72"
+      },
+      "Masters Spells": {
+        "Claims the Sky, p.46": "Cypher System, p.72"
+      },
+      "Masters The Swarm": {
+        "Claims the Sky, p.46": "Cypher System, p.72"
+      },
+      "Masters Weaponry": {
+        "Claims the Sky, p.46": "Cypher System, p.72"
+      },
+      "Metes Out Justice": {
+        "Claims the Sky, p.46": "Cypher System, p.72"
+      },
+      "Moves Like A Cat": {
+        "Claims the Sky, p.46": "Cypher System, p.73"
+      },
+      "Moves Like The Wind": {
+        "Claims the Sky, p.46": "Cypher System, p.73"
+      },
+      "Murders": {
+        "Claims the Sky, p.46": "Cypher System, p.73"
+      },
+      "Needs No Weapons": {
+        "Claims the Sky, p.46": "Cypher System, p.73"
+      },
+      "Never Says Die": {
+        "Claims the Sky, p.46": "Cypher System, p.73"
+      },
+      "Operates Undercover": {
+        "Claims the Sky, p.46": "Cypher System, p.73"
+      },
+      "Performs Feats Of Strength": {
+        "Claims the Sky, p.46": "Cypher System, p.73"
+      },
+      "Pilots Starcraft": {
+        "Claims the Sky, p.46": "Cypher System, p.74"
+      },
+      "Rages": {
+        "Claims the Sky, p.46": "Cypher System, p.74"
+      },
+      "Rides The Lightning": {
+        "Claims the Sky, p.46": "Cypher System, p.74"
+      },
+      "Plays Too Many Games": {
+        "Claims the Sky, p.46": "Cypher System, p.74"
+      },
+      "Runs Away": {
+        "Claims the Sky, p.46": "Cypher System, p.74"
+      },
+      "Sailed Beneath The Jolly Roger": {
+        "Claims the Sky, p.46": "Cypher System, p.74"
+      },
+      "Sees Beyond": {
+        "Claims the Sky, p.46": "Cypher System, p.75"
+      },
+      "Separates Mind From Body": {
+        "Claims the Sky, p.46": "Cypher System, p.75"
+      },
+      "Shepherds The Community": {
+        "Claims the Sky, p.46": "Cypher System, p.75"
+      },
+      "Scavenges": {
+        "Claims the Sky, p.46": "Cypher System, p.75"
+      },
+      "Shepherds Spirits": {
+        "Claims the Sky, p.46": "Cypher System, p.76"
+      },
+      "Shreds the Walls of the World": {
+        "Claims the Sky, p.46": "Cypher System, p.76"
+      },
+      "Siphons Power": {
+        "Claims the Sky, p.46": "Cypher System, p.76"
+      },
+      "Slays Monsters": {
+        "Claims the Sky, p.46": "Cypher System, p.76"
+      },
+      "Solves Mysteries": {
+        "Claims the Sky, p.46": "Cypher System, p.77"
+      },
+      "Speaks For The Land": {
+        "Claims the Sky, p.46": "Cypher System, p.77"
+      },
+      "Stands Like A Bastion": {
+        "Claims the Sky, p.46": "Cypher System, p.77"
+      },
+      "Talks To Machines": {
+        "Claims the Sky, p.46": "Cypher System, p.77"
+      },
+      "Throws With Deadly Accuracy": {
+        "Claims the Sky, p.46": "Cypher System, p.77"
+      },
+      "Thunders": {
+        "Claims the Sky, p.46": "Cypher System, p.77"
+      },
+      "Travels Through Time": {
+        "Claims the Sky, p.46": "Cypher System, p.77"
+      },
+      "Wears A Sheen of Ice": {
+        "Claims the Sky, p.46": "Cypher System, p.78"
+      },
+      "Wields Two Weapons At Once": {
+        "Claims the Sky, p.46": "Cypher System, p.78"
+      },
+      "Was Foretold": {
+        "Claims the Sky, p.46": "Cypher System, p.78"
+      },
+      "Wears Power Armor": {
+        "Claims the Sky, p.46": "Cypher System, p.78"
+      },
+      "Works For A Living": {
+        "Claims the Sky, p.46": "Cypher System, p.78"
+      },
+      "Works Miracles": {
+        "Claims the Sky, p.46": "Cypher System, p.79"
+      },
+      "Works The Back Alleys": {
+        "Claims the Sky, p.46": "Cypher System, p.79"
+      },
+      "Works The System": {
+        "Claims the Sky, p.46": "Cypher System, p.79"
+      },
+      "Would Rather Be Reading": {
+        "Claims the Sky, p.46": "Cypher System, p.79"
+      },
+      "Battles the Blaze": {
+        "Claims the Sky, p.46": "First Responders, p.23"
+      },
+      "Befriends the Flames": {
+        "Claims the Sky, p.46": "First Responders, p.24"
+      },
+      "Controls the Scene": {
+        "Claims the Sky, p.46": "First Responders, p.24"
+      },
+      "Finds What's Lost": {
+        "Claims the Sky, p.46": "First Responders, p.24"
+      },
+      "Shuts Death's Door": {
+        "Claims the Sky, p.46": "First Responders, p.25"
+      },
+      "Takes Animal Shape": {
+        "Claims the Sky, p.46": "Godforsaken, p.24, Claims the Sky, p.47"
+      },
+      "Uses Wild Magic": {
+        "Claims the Sky, p.46": "Godforsaken, p.25"
+      },
+      "Walks The Wild Woods": {
+        "Claims the Sky, p.46": "Godforsaken, p.25"
+      },
+      "Wields An Enchanted Weapon": {
+        "Claims the Sky, p.46": "Godforsaken, p.26, Claims the Sky, p.48"
+      },
+      "Associates with the Inverted Pyramid": {
+        "Claims the Sky, p.46": "Ptolus, p.649"
+      },
+      "Honors the Sainted Battle Champions": {
+        "Claims the Sky, p.46": "Ptolus, p.650"
+      },
+      "Sings Songs of Freedom": {
+        "Claims the Sky, p.46": "Ptolus, p.650"
+      },
+      "Befriends the Black Dog": {
+        "Claims the Sky, p.46": "We Are All Mad Here, p.174"
+      },
+      "Curses the World": {
+        "Claims the Sky, p.46": "We Are All Mad Here, p.174"
+      },
+      "Feigns No Fear": {
+        "Claims the Sky, p.46": "We Are All Mad Here, p.175"
+      },
+      "Lived Among The Fey": {
+        "Claims the Sky, p.46": "We Are All Mad Here, p.175"
+      },
+      "Made A Deal With Death": {
+        "Claims the Sky, p.46": "We Are All Mad Here, p.175"
+      },
+      "Sheds Their Skin": {
+        "Claims the Sky, p.46": "We Are All Mad Here, p.176"
+      }
+    }
+  }}

@@ -1,43 +1,54 @@
 <template>
   <header class="sticky top-0 z-40 bg-indigo-900 shadow">
     <div class="navbar bg-base-100">
-      <div class="flex-none">
-        <button class="btn btn-square btn-ghost">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            class="inline-block w-5 h-5 stroke-current"
+      <div class="flex-none sm:hidden">
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <v-icon name="hi-solid-menu" />
+          </label>
+          <ul
+            tabindex="0"
+            class="px-1 py-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
+            <template v-for="(item, idx) in pgNav" :key="idx">
+              <li :class="[item?.subs ? 'menu-title' : '']">
+                <span v-if="item?.subs">{{ item.label }}</span>
+                <router-link v-else :to="item.href">{{
+                  item.label
+                }}</router-link>
+              </li>
+              <template v-if="item?.subs">
+                <li v-for="(sub, i) in item.subs" :key="`${idx}-${i}`">
+                  <router-link :to="sub.href">{{ sub.label }}</router-link>
+                </li>
+              </template>
+            </template>
+          </ul>
+        </div>
       </div>
-      <div class="flex-1">
-        <router-link to="/" class="text-xl normal-case btn btn-ghost"
+      <div class="text-xs max-w-fit md:flex-none md:text-xl">
+        <router-link to="/" class="normal-case btn btn-ghost"
           >CypherSystem.games</router-link
         >
       </div>
-      <div class="flex-none gap-2">
-        <div class="form-control">
-          <select data-choose-theme class="w-full max-w-xs select">
-            <option disabled selected>Change Theme</option>
-            <option value="default">Default</option>
-            <option
-              v-for="theme in themes"
-              :key="theme"
-              :value="theme"
-              class="capitalize"
-            >
-              {{ theme }}
-            </option>
-          </select>
-        </div>
+      <div class="flex-none hidden md:flex-1 md:flex">
+        <ul class="p-0 mx-auto menu menu-horizontal">
+          <template v-for="(mItem, ix) in pgNav" :key="ix">
+            <li v-if="mItem?.href">
+              <router-link :to="mItem.href">{{ mItem.label }}</router-link>
+            </li>
+            <li v-else tabindex="ix">
+              <a>{{ mItem.label }} <v-icon name="hi-solid-chevron-down" /></a>
+              <ul class="p-2 bg-base-100">
+                <li v-for="(subM, x) in mItem.subs" :key="`${ix}-${x}`">
+                  <router-link :to="subM.href">{{ subM.label }}</router-link>
+                </li>
+              </ul>
+            </li>
+          </template>
+        </ul>
+      </div>
+      <div class="justify-end flex-1 md:flex-none">
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
@@ -45,10 +56,29 @@
             </div>
           </label>
           <ul
-            tabindex="0"
+            tabindex="3"
             class="p-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
-            <li v-if="hasAdmin">
+            <li>
+              <div class="py-1 form-control">
+                <select
+                  data-choose-theme
+                  class="w-full px-1 mx-0 bg-transparent outline-0 foucs:ring-transparent ring-0 ring-offset-0 select"
+                >
+                  <option disabled selected>Change Theme</option>
+                  <option value="default">Default</option>
+                  <option
+                    v-for="theme in themes"
+                    :key="theme"
+                    :value="theme"
+                    class="capitalize"
+                  >
+                    {{ theme }}
+                  </option>
+                </select>
+              </div>
+            </li>
+            <li v-if="isAdmin" class="px-1">
               <router-link to="/admin">Admin</router-link>
             </li>
             <li v-if="hasAuth">
@@ -119,7 +149,25 @@ export default {
     const auth = getAuth();
     const router = useRouter();
     const state = reactive({});
+    const isAdmin = ref(hasAdmin, false);
     const hasAuth = ref(isAuthenticated);
+    const pgNav = [
+      { label: "Games", icon: "fa-dice-d20", href: "/games" },
+      {
+        label: "Create",
+        icon: "gi-toolbox",
+        subs: [
+          { label: "Characters", icon: "gi-bookshelf", href: "/characters" },
+          { label: "Sources", icon: "gi-bookshelf", href: "/sources" },
+          {
+            label: "NPCs/Creatures",
+            icon: "gi-monster-grasp",
+            href: "/npcs",
+          },
+        ],
+      },
+      { label: "Shop", icon: "gi-shopping-cart", href: "/shop" },
+    ];
     state.user = computed(() => user);
     onMounted(() => {
       themeChange(false);
@@ -133,7 +181,14 @@ export default {
         alert(e.message);
       }
     };
-    return { ...toRefs(state), signOutUser, hasAuth, hasAdmin, themes };
+    return {
+      ...toRefs(state),
+      pgNav,
+      signOutUser,
+      hasAuth,
+      isAdmin,
+      themes,
+    };
   },
 };
 </script>
