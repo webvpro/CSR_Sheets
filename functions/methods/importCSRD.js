@@ -14,21 +14,20 @@ const subCollections = {
 
 // fvtt formatting 
 const abilitiesFormat = (items) => {
-    const formattedList = items.map( item => {
-        const pubObject = descriptionSourceObj(item.data.description);
+    const formattedList = items['ablilites'].map( item => {
         const poolKey = item.data.costPool == "Pool" ? "" : item.data.costPool.toUpperCase();
-        const pgDescription = item.data.description;
         return {
             name: item.name,
-            description: pgDescription,
+            description: item.data.description ?? "",
             costPool: poolKey,
-            poolPoints: item.data.costPoints,
-            pubKey: pubObject.PUB_KEY,
-            pubTitle: pubObject.label,
-            pubPg: pubObject.pgNum,
+            poolPoints: item.data.costPoints ?? 0,
+            pubKey: "CSRD",
+            pubTitle: "Cypher System Reference Document",
             tier: item.data.tier.toUpperCase(),
-            category: item.categaory?? "",
-            action: poolKey == "" ? false : true,   
+            category: item.category ?? "",
+            usage: item.type ?? "",
+            mods: Array.isArray(item.data.mods) ? item.data.mods : new Array(),
+               
         };
    });
    return formattedList
@@ -71,9 +70,22 @@ export const sourceImports = functions.https.onRequest( async (request, response
         };
      }*/
 
-    if (items.abilities) {
+    //if (items.abilities) {
         pubDoc = await pubsRef.doc('CYPHERSYSTEMREFERENCEDOCUMENT').get();
-        formattedList = abilitiesFormat(items.abilities);
+        formattedList = abilitiesFormat(items);
+        const subRef = pubsRef.doc('CYPHERSYSTEMREFERENCEDOCUMENT').collection("abilities").doc()
+        let batch = db.batch();
+        let bIdx =0;
+        for (const [idx, item] of Object.entries(formattedList)) {
+            console.log("item:", idx,item)
+            batch.set(subRef,item)
+            if (bIdx === 300) {
+                await batch.commit();
+                batch = db.batch();
+                bIdx = 0; // Reset
+              } else bIdx++;
+        }
+        await batch.commit();
         // need them grouped by publication
         /*grouped  = formattedList.reduce((r, a) => {
             r[a.pubKey] = [...r[a.pubKey] || [], a];
@@ -89,7 +101,7 @@ export const sourceImports = functions.https.onRequest( async (request, response
             }
         }*/
 
-    }
+    //}
     
     //const pubList = [...new Set(formattedList.map(item => item.pubKey))]; // [ 'A', 'B'] 
     //response.status(200).send(grouped);

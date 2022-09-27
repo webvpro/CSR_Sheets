@@ -39,7 +39,7 @@
     <div class="drawer-side">
       <label for="collections-drawer" class="drawer-overlay"></label>
 
-      <ul class="w-56 p-0 mb-6 menu md:w-80 bg-base-100">
+      <ul class="w-56 p-0 pl-1 mb-6 menu md:w-80 bg-base-100">
         <!-- Sidebar content here -->
         <li
           class="flex flex-row content-center py-2.5 pl-2 mb-1 text-xl text-justify"
