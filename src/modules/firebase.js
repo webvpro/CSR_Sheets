@@ -42,7 +42,7 @@ export const hasAdmin = async () => {
   const tokens = auth.currentUser
     ? await auth.currentUser.getIdTokenResult()
     : { claims: {} };
-  return !!tokens.claims.admin ?? false;
+  return tokens.claims.admin ?? false;
 };
 export const getAuthRedirect = () => {
   return getRedirectResult(auth);

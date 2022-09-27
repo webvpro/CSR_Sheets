@@ -64,8 +64,8 @@ export default {
       return (openForm.value = true);
     };
 
-    onMounted(() => {
-      getSubCollectionDocs({ orderBy: ["name"] });
+    onMounted(async () => {
+      await getSubCollectionDocs({ orderBy: ["name"] });
     });
     return {
       ...toRefs(state),

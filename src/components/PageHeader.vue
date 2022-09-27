@@ -3,11 +3,11 @@
     <div class="navbar bg-base-100">
       <div class="flex-none sm:hidden">
         <div class="dropdown">
-          <label tabindex="0" class="btn btn-ghost btn-circle">
+          <label tabindex="1" class="btn btn-ghost btn-circle">
             <v-icon name="hi-solid-menu" />
           </label>
           <ul
-            tabindex="0"
+            tabindex="1"
             class="px-1 py-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <template v-for="(item, idx) in pgNav" :key="idx">
@@ -78,7 +78,7 @@
                 </select>
               </div>
             </li>
-            <li v-if="isAdmin" class="px-1">
+            <li v-if="!!user?.token.claims.admin" class="px-1">
               <router-link to="/admin">Admin</router-link>
             </li>
             <li v-if="hasAuth">
@@ -149,7 +149,6 @@ export default {
     const auth = getAuth();
     const router = useRouter();
     const state = reactive({});
-    const isAdmin = ref(hasAdmin, false);
     const hasAuth = ref(isAuthenticated);
     const pgNav = [
       { label: "Games", icon: "fa-dice-d20", href: "/games" },
@@ -186,7 +185,6 @@ export default {
       pgNav,
       signOutUser,
       hasAuth,
-      isAdmin,
       themes,
     };
   },

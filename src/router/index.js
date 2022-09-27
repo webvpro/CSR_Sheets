@@ -140,7 +140,9 @@ router.beforeEach(async (to, from, next) => {
 });
 
 router.afterEach(() => {
-  //window.scrollTo(1, 1);
+  document.body.setAttribute("tabindex", "-1");
+  document.body.focus();
+  document.body.removeAttribute("tabindex");
   endLoading();
 });
 
