@@ -64,6 +64,7 @@
                 <select
                   data-choose-theme
                   class="w-full px-1 mx-0 bg-transparent outline-0 foucs:ring-transparent ring-0 ring-offset-0 select"
+                  @change="themeChanged"
                 >
                   <option disabled selected>Change Theme</option>
                   <option value="default">Default</option>
@@ -78,7 +79,7 @@
                 </select>
               </div>
             </li>
-            <li v-if="!!user?.token.claims.admin" class="px-1">
+            <li v-if="!!user?.token?.claims?.admin" class="px-1">
               <router-link to="/admin">Admin</router-link>
             </li>
             <li v-if="hasAuth">
@@ -171,6 +172,11 @@ export default {
     onMounted(() => {
       themeChange(false);
     });
+    const themeChanged = () => {
+      document.body.setAttribute("tabindex", "-1");
+      document.body.focus();
+      document.body.removeAttribute("tabindex");
+    };
     const signOutUser = async () => {
       try {
         await signOut(auth);
@@ -186,6 +192,7 @@ export default {
       signOutUser,
       hasAuth,
       themes,
+      themeChanged,
     };
   },
 };
