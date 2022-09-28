@@ -12,7 +12,7 @@ const subCollections = {
     "POWERSHIFTS": {name: 'power-shifts.json', collection: 'powerShifts' }
   }
 
-// fvtt formatting 
+// fvtt format (kind of) to my new better one
 const abilitiesFormat = (items) => {
     const formattedList = items['ablilites'].map( item => {
         const poolKey = item.data.costPool == "Pool" ? "" : item.data.costPool.toUpperCase();
@@ -38,7 +38,6 @@ export const sourceImports = functions.https.onRequest( async (request, response
         CYPHERSYSTEMREFERENCEDOCUMENT: { 
             code:"CSRD",
             title: "Cypher System Reference Document",
-            collections:["abilities"],
         },
     };
     const db = getFirestore();
@@ -73,11 +72,12 @@ export const sourceImports = functions.https.onRequest( async (request, response
     //if (items.abilities) {
         pubDoc = await pubsRef.doc('CYPHERSYSTEMREFERENCEDOCUMENT').get();
         formattedList = abilitiesFormat(items);
-        const subRef = pubsRef.doc('CYPHERSYSTEMREFERENCEDOCUMENT').collection("abilities").doc()
+        //const subRef = pubsRef.doc('CYPHERSYSTEMREFERENCEDOCUMENT').collection("abilities")
         let batch = db.batch();
         let bIdx =0;
         for (const [idx, item] of Object.entries(formattedList)) {
             console.log("item:", idx,item)
+            const subRef = pubsRef.doc('CYPHERSYSTEMREFERENCEDOCUMENT').collection("abilities").doc()
             batch.set(subRef,item)
             if (bIdx === 300) {
                 await batch.commit();
