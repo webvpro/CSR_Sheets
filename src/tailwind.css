@@ -11,7 +11,19 @@ html {
     @apply overflow-hidden;
 }
 
-
+::-webkit-scrollbar {
+    @apply w-2 rounded-lg;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    @apply rounded-lg;
+}
+ 
+::-webkit-scrollbar-thumb {
+    @apply rounded-lg bg-primary;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
 
 .page-button {
     @apply inline-flex items-center justify-center;

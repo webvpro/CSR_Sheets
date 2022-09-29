@@ -7,7 +7,34 @@
         :item-data="col"
         :item-type="collection"
         :item-icon="collectionIcon"
-        @edit-item="open(col.id)"
+        @open-item="open(col)"
+      />
+    </div>
+  </div>
+  <input
+    id="item-modal"
+    v-model="openForm"
+    type="checkbox"
+    class="modal-toggle"
+  />
+  <div class="modal modal-bottom sm:modal-middle">
+    <div class="border modal-box mockup-window bg-base-300">
+      <div class="flex justify-end w-full">
+        <label for="item-modal" class="btn btn-circle btn-primary">
+          <span class="sr-only">Close panel</span>
+          <v-icon name="hi-solid-x" scale="2" title="" />
+        </label>
+      </div>
+      <h2 class="mb-2 text-lg font-bold capitalize">
+        {{
+          selectedCollectionId ? `Edit ${collection}` : `Create ${collection}`
+        }}
+      </h2>
+      <collection-item-form
+        :key="`${selectedCollectionId}-form`"
+        :item-id="selectedCollectionId"
+        :item-type="collection"
+        :source-id="$route.params.id"
       />
     </div>
   </div>
@@ -26,12 +53,13 @@ import {
 } from "vue";
 import { useRoute } from "vue-router";
 import useSourceSubCollection from "@/modules/use-collection";
-import CollectionForm from "@/components/slideoutforms/CollectionForm.vue";
 import ItemCard from "@/components/ListCards/ItemCard.vue";
+import CollectionItemForm from "@/components/form/CollectionItemForm.vue";
 
 export default {
   components: {
     ItemCard,
+    CollectionItemForm,
   },
   props: {
     collectionIcon: {
@@ -61,7 +89,8 @@ export default {
     const open = (id) => {
       selectedCollectionId.value = id;
       console.log(selectedCollectionId.value);
-      return (openForm.value = true);
+      openForm.value = true;
+      console.log;
     };
 
     onMounted(async () => {
@@ -72,6 +101,9 @@ export default {
       open,
       ItemCard,
       collection,
+      openForm,
+      CollectionItemForm,
+      selectedCollectionId,
     };
   },
 };

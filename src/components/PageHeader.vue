@@ -62,9 +62,10 @@
             <li>
               <div class="py-1 form-control">
                 <select
+                  v-model="selectedTheme"
                   data-choose-theme
-                  class="w-full px-1 mx-0 bg-transparent outline-0 foucs:ring-transparent ring-0 ring-offset-0 select"
-                  @change="themeChanged"
+                  class="w-full max-w-xs select select-bordered h-fit select-sm"
+                  @change="themeChanged($event)"
                 >
                   <option disabled selected>Change Theme</option>
                   <option value="default">Default</option>
@@ -151,6 +152,7 @@ export default {
     const router = useRouter();
     const state = reactive({});
     const hasAuth = ref(isAuthenticated);
+    const selectedTheme = ref(localStorage.getItem("theme"));
     const pgNav = [
       { label: "Games", icon: "fa-dice-d20", href: "/games" },
       {
@@ -172,7 +174,8 @@ export default {
     onMounted(() => {
       themeChange(false);
     });
-    const themeChanged = () => {
+    const themeChanged = (evt) => {
+      selectedTheme.value = evt.target.value;
       document.body.setAttribute("tabindex", "-1");
       document.body.focus();
       document.body.removeAttribute("tabindex");
@@ -193,6 +196,7 @@ export default {
       hasAuth,
       themes,
       themeChanged,
+      selectedTheme,
     };
   },
 };

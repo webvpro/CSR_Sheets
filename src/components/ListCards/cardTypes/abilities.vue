@@ -8,7 +8,7 @@ const cardType = computed(() => props.itemType.toLowerCase());
 </script>
 
 <template>
-  <div class="content">xx
+  <div class="content">
     <h3 class="inline-block">{{ itemData.abilityType }}</h3>
     <h3 class="inline-block">
       {{ itemData.statPool }} ({{ itemData.poolCost }})
