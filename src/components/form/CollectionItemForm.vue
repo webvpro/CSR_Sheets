@@ -1,3 +1,71 @@
+<script async setup>
+import { reactive, ref } from "vue";
+import { useField, useForm, Field } from "vee-validate";
+import * as yup from "yup";
+import useItemDoc from "@/modules/use-doc";
+import abilities from "./fieldsets/abilities.vue";
+import defaultForm from "./fieldsets/default.vue";
+const props = defineProps({
+  itemId: { default: "", type: String },
+  itemType: { type: String, required: true },
+  sourceId: { type: String, required: true },
+});
+const emit = defineEmits(["cancelForm", "savedForm"]);
+const initState = {
+  openForm: false,
+  loading: false,
+  error: "",
+  form: {},
+  item: {},
+  source: {},
+  collection: "",
+};
+const docId = ref("");
+const state = reactive({ ...initState });
+const saveDocument = (form) => {
+  console.log(form);
+};
+const { getDocument, setDocument, documentData, error } = useItemDoc(
+  `sources,${props.sourceId},${props.itemType}`,
+  {
+    documentId: props.itemId,
+  }
+);
+
+const loadDocument = (id) => {
+  console.log(`Loading Data for:${id}`);
+  return id ? getDocument(id) : (docId.value = "");
+};
+//form validation scheme
+const schema = yup.object({
+  title: yup.string().required().min(6).label("Title"),
+});
+
+const { handleSubmit, resetForm, errors } = useForm({
+  validationSchema: schema,
+  initialValues: state.source,
+});
+
+const { value: title } = useField("title");
+const { value: description } = useField("description");
+
+function onInvalidSubmit({ values, errors, results }) {
+  console.log(values); // current form values
+  console.log(errors); // a map of field names and their first error message
+  console.log(results); // a detailed map of field names and their validation results
+}
+const close = () => {
+  docId.value = "";
+  state.source.value = {};
+  state.openForm = false;
+};
+const saveForm = handleSubmit((values, { resetForm }) => {
+  //save doc
+  saveDocument(values);
+  resetForm();
+}, onInvalidSubmit);
+</script>
+
 <template>
   <form class="flex-1" @submit="saveForm">
     <div class="w-full form-control">
@@ -36,89 +104,20 @@
       ></textarea>
       <label class="label"> </label>
     </div>
-
+    <component :is="abilities" />
     <!-- Action buttons -->
-    <div class="flex-shrink-0 px-4 py-5 border-t border-gray-200 sm:px-6">
-      <div class="flex justify-end space-x-3">
-        <button
-          type="button"
-          class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          @click.prevent="close"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Save Collection
-        </button>
-      </div>
+    <div class="divider"></div>
+    <div class="flex justify-end space-x-3">
+      <button
+        type="button"
+        class="w-1/3 btn"
+        @click.prevent="emit('cancelForm', '')"
+      >
+        Cancel
+      </button>
+      <button type="submit" class="w-1/3 btn btn-primary">
+        {{ itemId ? `Save` : `Create` }}
+      </button>
     </div>
   </form>
 </template>
-
-<script async setup>
-import { reactive, ref } from "vue";
-import { useField, useForm, Field } from "vee-validate";
-import * as yup from "yup";
-import useItemDoc from "@/modules/use-doc";
-const props = defineProps({
-  itemId: { default: "", type: String },
-  itemType: { type: String, required: true },
-  sourceId: { type: String, required: true },
-});
-const initState = {
-  openForm: false,
-  loading: false,
-  error: "",
-  form: {},
-  item: {},
-  source: {},
-  collection: "",
-};
-const docId = ref("");
-const state = reactive({ ...initState });
-const saveDocument = (form) => {
-  console.log(form);
-};
-const { getDocument, setDocument, documentData, error } = useItemDoc(
-  `sources,${props.sourceId},${props.itemType}`,
-  {
-    documentId: props.itemId,
-  }
-);
-
-const loadDocument = (id) => {
-  console.log(`Loading Data for:${id}`);
-  return id ? getDocument(id) : (docId.value = "");
-};
-//form validation scheme
-const schema = yup.object({
-  name: yup.string().required().min(6).label("Title"),
-});
-
-const { handleSubmit, resetForm, errors } = useForm({
-  validationSchema: schema,
-  initialValues: state.source,
-});
-
-const { value: name } = useField("title");
-const { value: description } = useField("description");
-
-function onInvalidSubmit({ values, errors, results }) {
-  console.log(values); // current form values
-  console.log(errors); // a map of field names and their first error message
-  console.log(results); // a detailed map of field names and their validation results
-}
-const close = () => {
-  docId.value = "";
-  state.source.value = {};
-  state.openForm = false;
-};
-const saveForm = handleSubmit((values, { resetForm }) => {
-  //save doc
-  saveDocument(values);
-  resetForm();
-}, onInvalidSubmit);
-</script>

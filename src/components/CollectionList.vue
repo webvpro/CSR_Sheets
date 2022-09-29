@@ -35,6 +35,7 @@
         :item-id="selectedCollectionId"
         :item-type="collection"
         :source-id="$route.params.id"
+        @cancel-form="closeForm()"
       />
     </div>
   </div>
@@ -90,7 +91,11 @@ export default {
       selectedCollectionId.value = id;
       console.log(selectedCollectionId.value);
       openForm.value = true;
-      console.log;
+    };
+    const closeForm = () => {
+      selectedCollectionId.value = "" ;
+      console.log("closeModal");
+      openForm.value = false;
     };
 
     onMounted(async () => {
@@ -104,6 +109,7 @@ export default {
       openForm,
       CollectionItemForm,
       selectedCollectionId,
+      closeForm,
     };
   },
 };
