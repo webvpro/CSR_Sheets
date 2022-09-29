@@ -7,9 +7,7 @@
 html,body {
     @apply overflow-y-auto scroll-smooth;
 }
-html {
-    @apply overflow-hidden;
-}
+
 
 ::-webkit-scrollbar {
     @apply w-2 rounded-lg;
