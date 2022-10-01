@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="flex flex-col h-screen">
     <PageHeader />
-    <div id="main-body" class="">
+    <main id="main-body" class="flex-1 overflow-y-auto">
       <Suspense>
         <template #default>
           <router-view />
@@ -10,7 +10,7 @@
           <SkeletonLoader />
         </template>
       </Suspense>
-    </div>
+    </main>
   </div>
 </template>
 

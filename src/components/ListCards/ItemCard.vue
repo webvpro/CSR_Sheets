@@ -7,17 +7,25 @@ const props = defineProps({
   allowEdit: { type: Boolean, default: true },
   allowCopy: { type: Boolean, default: true },
   allowSelection: { type: Boolean, default: true },
+  selectedItem: { type: Boolean, default: true },
+  hiddenItem: { type: Boolean, default: true },
   editLock: { type: Boolean, default: false },
   itemType: { type: String, required: true },
   itemIcon: { type: String, required: true },
 });
-const emit = defineEmits(["openItem", "copyItem"]);
+const emit = defineEmits([
+  "openItem",
+  "copyItem",
+  "viewItem",
+  "selectedItem",
+  "hideItem",
+]);
 const cardType = computed(() => props.itemType.toLowerCase());
 </script>
 
 <template>
   <div
-    class="bg-primary max-w-xs min-w-0 h-[29rem] mx-auto card shadow-xl justify-center justify-self-center"
+    class="bg-primary max-w-xs w-[18.66rem] h-[29rem] mx-auto card shadow-xl justify-center justify-self-center"
   >
     <figure class="px-10 pt-3 text-primary-content">
       <v-icon :name="itemIcon" scale="4" label="Edit" />
@@ -33,46 +41,42 @@ const cardType = computed(() => props.itemType.toLowerCase());
         v-html="itemData.description"
       />
       <component :is="cardType" :item-data="itemData"></component>
-      <div class="btm-nav">
-        <button class="text-primary">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      <div
+        class="justify-end flex-1 p-2 border-t-4 btn-group card-actions border-primary"
+      >
+        <div class="btn-group btn-group-horizontal">
+          <button
+            class="btn btn-xs btn-active"
+            @click="emit('selectedItem', itemData.itemData)"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-            />
-          </svg>
-        </button>
-        <button class="text-primary active">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+            <v-icon name="fa-check-square" label="Edit" scale="1" />
+          </button>
+          <button
+            class="btn btn-xs btn-active"
+            @click="emit('hideItem', itemData.itemData)"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </button>
-        <button
-          v-if="allowEdit"
-          class="text-primary"
-          @click="emit('openItem', itemData.itemData)"
-        >
-          <v-icon name="gi-gear-hammer" label="Edit" scale="1.5" />
-        </button>
+            <v-icon name="hi-eye-off" label="Edit" scale="1" />
+          </button>
+          <button
+            class="btn btn-xs"
+            @click="emit('copyItem', itemData.itemData)"
+          >
+            <v-icon name="hi-solid-duplicate" label="Edit" scale="1" />
+          </button>
+          <button
+            class="btn btn-xs"
+            @click="emit('viewItem', itemData.itemData)"
+          >
+            <v-icon name="hi-solid-zoom-in" label="Edit" scale="1" />
+          </button>
+          <button
+            v-if="allowEdit"
+            class="btn btn-xs"
+            @click="emit('openItem', itemData.itemData)"
+          >
+            <v-icon name="gi-gear-hammer" label="Edit" scale="1" />
+          </button>
+        </div>
       </div>
     </div>
   </div>

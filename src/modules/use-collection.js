@@ -20,7 +20,7 @@ import {
  */
 
 export default function (collectionName, queryOptions) {
-  let state = reactive({
+  const state = reactive({
     // error if one happens
     collectionData: [],
     error: null,

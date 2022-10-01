@@ -5,8 +5,9 @@
 @import 'tailwindcss/utilities';
 
 html,body {
-    @apply overflow-y-auto scroll-smooth;
+    @apply overflow-hidden scroll-smooth;
 }
+
 
 
 ::-webkit-scrollbar {

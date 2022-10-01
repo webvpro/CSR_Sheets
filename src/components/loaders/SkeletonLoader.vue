@@ -1,9 +1,7 @@
 <template>
-  <div
-    class="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-300 to-blue-400"
-  >
+  <div class="flex items-center justify-center min-h-screen">
     <!-- card -->
-    <div class="w-64 bg-white rounded shadow-2xl">
+    <div class="w-64 rounded shadow-2xl bg-primary">
       <!-- image -->
       <div class="h-32 bg-gray-200 rounded-tl rounded-tr animate-pulse"></div>
       <div class="p-5">
