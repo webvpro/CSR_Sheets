@@ -24,7 +24,7 @@
     "troisjs": "^0.3.3",
     "vee-validate": "^4.5.11",
     "vue": "^3.2.21",
-    "vue-iframes": "0.0.16",
+    "vue-iframes": "0.0.20",
     "vue-router": "^4.0.10",
     "vue3-pdfjs": "^0.1.6",
     "xstate": "^4.23.0",
