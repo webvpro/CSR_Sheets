@@ -56,6 +56,7 @@ import { useRouter } from "vue-router";
 import useSourceCollection from "@/modules/use-collection";
 import SourceForm from "@/components/form/SourceForm.vue";
 import SettingCard from "@/components/ListCards/SettingCard.vue";
+import { useAuthState, auth } from "@/modules/firebase";
 
 export default {
   components: {
@@ -67,6 +68,7 @@ export default {
     const toggleSourceDrawer = ref(false);
     const sourceId = ref("");
     const settings = ref("");
+    const userId = ref("");
     const createSource = () => {
       sourceId.value = "";
       return (toggleSourceDrawer.value = true);
@@ -88,9 +90,11 @@ export default {
       sources: [],
       loading: false,
     });
+    const { user } = useAuthState();
+    userId.value = computed(() => user.uid);
     const { getCollection, collectionData } = useSourceCollection("sources", {
       onMouted: true,
-      //where: ['name','==', '555']
+      where: ["owner", "==", auth.currentUser.uid],
     });
     state.sources = collectionData;
     settings.value = collectionData;
@@ -109,6 +113,7 @@ export default {
       toggleSourceDrawer,
       SettingCard,
       settings,
+      auth,
     };
   },
 };

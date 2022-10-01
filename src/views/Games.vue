@@ -25,7 +25,7 @@
   </div>
   <div class="mx-16 lg:mx-36">
     <h3 class="text-lg font-medium leading-6 text-gray-900 max-w-screen-2xl">
-      Games ({{ collectionData.length }})
+      Games ({{ games.length }})
       <button
         type="button"
         class="inline-flex items-center p-2 text-white bg-indigo-600 border border-transparent rounded-full shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -81,7 +81,7 @@
 import { toRefs, reactive, onMounted, provide, computed } from "vue";
 import { PlusSmIcon as PlusSmIconOutline } from "@heroicons/vue/outline";
 import { DotsVerticalIcon } from "@heroicons/vue/solid";
-import { useAuthState } from "@/modules/firebase";
+import { auth } from "@/modules/firebase";
 import useGameCollection from "@/modules/use-collection";
 import useGameDoc from "@/modules/use-doc";
 
@@ -98,17 +98,17 @@ export default {
       openForm: false,
       game: {},
     });
-    const { user } = useAuthState();
+    const { uid } = auth.currentUser;
     const { getCollection, collectionData, error } = useGameCollection(
       "games",
       {
         onMouted: true,
         //where: ['name','==', '555']
-        orderBy: ["name", "asc"],
+        orderBy: ["title", "asc"],
       }
     );
     const { setDocument, deleteDocument } = useGameDoc("games");
-    state.games = collectionData;
+    state.games = computed(() => collectionData);
 
     const showForm = (id = null) => {
       state.openForm = true;
@@ -161,10 +161,7 @@ export default {
       getCollection();
     });
     return {
-      user,
-      collectionData,
       error,
-      getCollection,
       ...toRefs(state),
       showForm,
       hideForm,

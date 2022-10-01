@@ -82,7 +82,7 @@ export default function (collectionName, queryOptions) {
     if (_orderBy) qArgs.push(orderBy(..._orderBy));
     if (_limit) qArgs.push(limit(_limit));
     const q = query(...qArgs);
-    console.log(qArgs)
+    console.log(qArgs);
     const docs = await getDocs(q);
     let resultArray = [];
     docs.forEach((doc) => {

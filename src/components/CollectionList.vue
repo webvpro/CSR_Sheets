@@ -34,6 +34,7 @@ import { useRoute } from "vue-router";
 import useSourceSubCollection from "@/modules/use-collection";
 import ItemCard from "@/components/ListCards/ItemCard.vue";
 import CardLoader from "@/components/loaders/CardLoader.vue";
+import { useAuthState, auth } from "@/modules/firebase";
 export default {
   components: {
     ItemCard,
@@ -68,6 +69,7 @@ export default {
       `sources,${route.params.id},${collection.value}`,
       {
         onMounted: true,
+        where: ["owner", "==", "W3uJQB3GtRdd4FYxgTv9ryYY10A3"],
       }
     );
     state.collectionDocs = computed(() => collectionData);
