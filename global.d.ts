@@ -1,5 +1,5 @@
 
-declare module "tailwindcss/defaultTheme",
+declare module "tailwindcss/defaultTheme";
 declare module "daisyui";
 declare module "@tailwindcss/forms";
 declare module "@tailwindcss/typography";
