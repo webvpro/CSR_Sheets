@@ -81,6 +81,16 @@ export const routes = [
     meta: { title: (route) => `${settings.preTitle}-Sheet`, secure: true },
   },
   {
+    path: "/character",
+    component: () => import("@/views/Character.vue"),
+    meta: { title: (route) => `${settings.preTitle}-Sheet`, secure: true },
+  },
+  {
+    path: "/character/:id",
+    component: () => import("@/views/Character.vue"),
+    meta: { title: (route) => `${settings.preTitle}-Sheet`, secure: true },
+  },
+  {
     path: "/profile",
     component: () => import("@/views/Profile.vue"),
     meta: { title: (route) => `${settings.preTitle}-Profile`, secure: true },

@@ -1,5 +1,5 @@
 <template>
-  <div id="page-top" class="h-full drawer drawer-end scroll-mt-0">
+  <div id="page-top" class="h-full my-3 drawer drawer-end scroll-mt-0">
     <input
       id="setting-form-drawer"
       v-model="toggleSourceDrawer"
@@ -21,9 +21,9 @@
           />
         </div>
         <label
-          for="my-drawer-1"
+          for="setting-form-drawer"
           title="Create Source"
-          class="fixed flex items-center justify-center text-4xl duration-300 rounded-full w-14 h-14 drawer-button text-secondary-content bg-secondary z-90 bottom-10 right-8 drop-shadow-lg hover:bg-primary-focus hover:drop-shadow-2xl hover:animate-bounce"
+          class="fixed z-[5] flex items-center justify-center text-4xl duration-300 rounded-full w-9 h-9 md:w-16 md:h-16 drawer-button text-secondary-content bg-secondary bottom-1.5 right-1.5 drop-shadow-lg hover:bg-primary-focus hover:drop-shadow-2xl hover:animate-bounce"
           @click.prevent="createSource"
         >
           <v-icon name="hi-solid-plus" label="View Source" scale="1.5" />

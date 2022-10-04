@@ -12,7 +12,7 @@
       >
         <div class="navbar-start">
           <a
-            class="text-xs normal-case cursor-pointer md:text-xl btn btn-ghost"
+            class="normal-case cursor-pointer md:text-xl btn btn-ghost"
             @click.prevent="goBack"
             ><v-icon name="fa-arrow-alt-circle-left" class="mr-2" scale="1" />{{
               sourceDoc.name
@@ -23,12 +23,14 @@
         <div class="navbar-end">
           <select
             v-model="selectedCollection"
-            class="max-w-xs w-fit text-primary-content select select-bordered"
+            :required="true"
+            class="text-sm max-w-fit select select-bordered md:select-lg"
           >
-            <option disabled selected>Select Collection</option>
+            <option :selected="true">Select Collection</option>
             <option
               v-for="(collection, idx) in sourceCollections"
               :key="idx"
+              class=""
               :value="collection.href"
             >
               {{ collection.name }}
@@ -45,6 +47,14 @@
           @view-detail="openForm"
         />
       </div>
+      <label
+        for="setting-form-drawer"
+        :title="`Create ${selectedCollection}`"
+        class="fixed z-[5] flex items-center justify-center text-4xl duration-300 rounded-full w-9 h-9 md:w-16 md:h-16 drawer-button text-secondary-content bg-secondary bottom-1.5 right-1.5 drop-shadow-lg hover:bg-primary-focus hover:drop-shadow-2xl hover:animate-bounce"
+        @click.prevent="openForm('')"
+      >
+        <v-icon name="hi-solid-plus" label="View Source" scale="1.5" />
+      </label>
     </div>
     <div class="drawer-side">
       <label
@@ -82,7 +92,7 @@ const activeItem = (name) =>
   name.toLowerCase().replace(/\s/g, "") == selectedCollection.value
     ? "bordered"
     : "";
-const openForm = (id) => {
+const openForm = (id = "") => {
   selectedItemId.value = id;
   toggleCollectionDrawer.value = true;
 };
