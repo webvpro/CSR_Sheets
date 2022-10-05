@@ -30,16 +30,17 @@ const poolPercent = ref(
     <div class="stat-value">
       <!-- Pool Status Radial
       class="text-xs text-blue-700 radial-progress md:text-lg"
-       -->
-      <div
-        :class="[
+      :class="[
           'text-lg',
-          baseText,
+          'text-red-700',
           'radial-progress',
           'md:text-xl',
           'bg-white',
           'min-w-fit',
         ]"
+       -->
+      <div
+        class="text-2xl text-primary-content radial-progress bg-primary"
         :style="`--value: ${poolPercent}`"
       >
         {{ currentPool }}
@@ -52,34 +53,16 @@ const poolPercent = ref(
       class="flex flex-row flex-grow min-w-full mb-2 text-xs justify-evenly stat-actions md:text-sm"
     >
       <!-- pool stat -->
-      <div :class="[baseText, 'pool-stat']">
+      <div class="pool-stat">
         <span class="pb-1">Pool</span>
-        <div
-          :class="[
-            baseText,
-            'bg-white',
-            'border-none',
-            'btn-sm',
-            'btn',
-            'btn-circle',
-          ]"
-        >
+        <div class="pool-number">
           <span :class="[baseText]">{{ poolTotal }}</span>
         </div>
       </div>
       <!-- edge stat -->
       <div :class="[baseText, 'pool-stat']">
         <span class="pb-1">Edge</span>
-        <div
-          :class="[
-            baseText,
-            'bg-white',
-            'border-none',
-            'btn-sm',
-            'btn',
-            'btn-circle',
-          ]"
-        >
+        <div class="pool-number">
           <span class="">{{ poolEdge }}</span>
         </div>
       </div>
@@ -89,31 +72,31 @@ const poolPercent = ref(
       pool action btn
     -->
       <button
-        class=""
         :class="[
           'gap-2',
-          'max-w-full',
           'w-11/12',
           'min-h-fit',
           'btn',
           'btn-xl',
-          'md:btn-sm',
-          'bg-base-100',
-          'text-base-content',
-          'hover:text-base-100',
+          'btn-primary',
+          'text-primary-content',
+          'hover:text-focus-content',
           'text-xl',
           'md:text-lg',
           'font-semibold',
         ]"
       >
-        <v-icon :name="icon" scale="1" class="" />
+        <v-icon :name="icon" scale="1.66" class="" />
         {{ poolLabel }}
       </button>
     </div>
   </div>
 </template>
-<style lang="postcss" scoped>
+<style lang="postcss">
 .pool-stat {
-  @apply flex flex-col justify-center text-sm font-semibold text-center;
+  @apply flex flex-col justify-center text-lg font-semibold text-center;
+}
+.pool-number {
+  @apply w-12 h-12 text-xl btn-sm md:btn-xl btn btn-circle;
 }
 </style>

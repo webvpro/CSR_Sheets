@@ -4,7 +4,7 @@
     <div class="drawer-content">
       <div class="container grid grid-cols-12 gap-6 mx-auto">
         <profile />
-        <div class="col-span-12 shadow-xl xl:col-span-6 card bg-base-100">
+        <div class="col-span-12 shadow-xl xl:col-span-6 card">
           <div
             class="text-center shadow stats stats-vertical md:stats-horizontal"
           >
@@ -12,7 +12,7 @@
               v-for="(stat, key) in statPools"
               :key="key"
               :pool-label="stat.label"
-              :pool-color="stat.color"
+              :pool-theme="stat.theme"
               :pool-edge="stat.edge"
               :pool-current="stat.current"
               :pool-total="stat.total"
@@ -179,7 +179,7 @@ const state = reactive({
       total: 15,
       edge: 1,
       label: "Might",
-      color: "red-700",
+      theme: "red",
       icon: "gi-mighty-force",
     },
     speed: {
@@ -187,7 +187,7 @@ const state = reactive({
       total: 12,
       edge: 1,
       label: "Speed",
-      color: "green-700",
+      theme: "green",
       icon: "gi-running-ninja",
     },
     intellect: {
@@ -195,7 +195,7 @@ const state = reactive({
       total: 10,
       edge: 1,
       label: "Intellect",
-      color: "blue-700",
+      theme: "blue",
       icon: "gi-smart",
     },
   },
