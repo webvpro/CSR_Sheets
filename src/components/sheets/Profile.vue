@@ -9,8 +9,8 @@
         alt="Album"
       />
     </figure>
-    <div class="mx-auto card-body">
-      <h2 class="text-2xl truncate card-title">Professor Penelope Pilwicken</h2>
+    <div class="container mx-auto card-body">
+      <h2 class="w-full text-2xl text-center text-ellipsis card-title">Professor Penelope Pilwicken</h2>
       <p class="text-lg">
         <span>Is a, </span><span class="descriptor">Inquisitive</span>,
         <span class="sub-descriptor">Gnome</span>,
