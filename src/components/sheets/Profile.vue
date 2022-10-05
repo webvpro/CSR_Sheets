@@ -1,6 +1,6 @@
 <template>
   <div
-    class="col-span-12 shadow-xl md:col-span-6 card md:card-side bg-base-100"
+    class="col-span-12 shadow-xl xl:col-span-6 card md:card-side bg-base-100"
   >
     <figure>
       <img

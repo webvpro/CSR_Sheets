@@ -4,7 +4,7 @@
     <div class="drawer-content">
       <div class="container grid grid-cols-12 gap-6 mx-auto">
         <profile />
-        <div class="col-span-12 shadow-xl md:col-span-6 card bg-base-100">
+        <div class="col-span-12 shadow-xl xl:col-span-6 card bg-base-100">
           <div
             class="text-center shadow stats stats-vertical md:stats-horizontal"
           >
@@ -20,96 +20,95 @@
             />
           </div>
           <div class="bg-neutral text-neutral-content card-body">
-            <div class="shadow bg-neutral text-neutral-content stats">
-              <div class="stat">
-                <div class="text-xs font-semibold md:text-base stat-title">
-                  Recovery
-                </div>
-                <div class="stat-value">
-                  <div
-                    class="text-sm md:text-base btn btn-primary text-primary-content"
-                    @click.prevent="openRecovery"
-                  >
-                    2d6+2
-                  </div>
+            <div
+              class="shadow bg-neutral text-neutral-content stats stats-vertical md:stats-horizontal"
+            >
+              <div class="recovery-stat">
+                <div class="stat-title">Recovery</div>
+                <div class="recovery-stat-val">
+                  <button class="recovery-button" @click.prevent="openRecovery">
+                    <v-icon name="gi-health-potion" scale="2.33" /><span
+                      >2d6+2</span
+                    >
+                  </button>
                 </div>
               </div>
 
-              <div class="stat">
-                <div class="text-xs font-semibold md:text-base stat-title">
-                  Rest
-                </div>
-                <div class="stat-value">
-                  <div class="flex w-full">
-                    <div class="w-1/2 form-control">
-                      <label class="text-xs cursor-pointer label">
+              <div class="recovery-stat">
+                <div class="stat-title">Rest</div>
+                <div class="recovery-stat-val">
+                  <div
+                    class="grid grid-cols-2 grid-rows-2 gap-4 place-content-center w-fit"
+                  >
+                    <div class="form-control">
+                      <label class="text-lg cursor-pointer label">
                         <input
                           type="checkbox"
-                          class="checkbox checkbox-sm checkbox-primary"
+                          class="checkbox checkbox-primary"
                         />
-                        <span class="ml-1 mr-auto text-sm label-text"
+                        <span class="ml-1 mr-auto text-lg label-text"
                           >Action</span
                         >
                       </label>
                     </div>
-                    <div class="w-1/2 form-control">
-                      <label class="text-base cursor-pointer md:text-xl label">
+                    <div class="form-control">
+                      <label class="text-lg cursor-pointer label">
                         <input
                           type="checkbox"
-                          class="checkbox checkbox-sm checkbox-primary"
+                          class="checkbox checkbox-primary"
                         />
-                        <span class="ml-1 mr-auto text-sm label-text"
-                          >1 hour</span
-                        >
+                        <span class="px-1 text-lg label-text">1 hour</span>
                       </label>
                     </div>
-                  </div>
-                  <div class="flex w-full">
-                    <div class="w-1/2 form-control">
-                      <label class="text-xs cursor-pointer label">
+                    <div class="form-control">
+                      <label class="text-lg cursor-pointer label">
                         <input
                           type="checkbox"
-                          class="checkbox checkbox-sm checkbox-primary"
+                          class="checkbox checkbox-primary"
                         />
-                        <span class="ml-1 mr-auto text-sm label-text"
-                          >10 Mins</span
-                        >
+                        <span class="px-1 text-lg label-text">10 Mins</span>
                       </label>
                     </div>
-                    <div class="w-1/2 form-control">
-                      <label class="text-xs cursor-pointer label">
-                        <input type="checkbox" class="checkbox checkbox-sm" />
-                        <span class="ml-1 mr-auto label-text">10 hrs</span>
+                    <div class="form-control">
+                      <label class="text-lg cursor-pointer label">
+                        <input
+                          type="checkbox"
+                          class="checkbox checkbox-primary"
+                        />
+                        <span class="px-1 text-lg label-text">10 hrs</span>
                       </label>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="stat">
-                <div class="hidden stat-figure md:display">
-                  <v-icon name="gi-broken-bone" scale="3" />
-                </div>
-                <div class="text-xl font-semibold stat-title">Damage Track</div>
-                <div class="stat-value">
-                  <label class="text-xs capitalize cursor-pointer label">
-                    <input
-                      type="checkbox"
-                      class="checkbox checkbox-sm checkbox-primary"
-                    />
-                    <span class="ml-1 mr-auto text-sm capitalize label-text"
-                      >impaired</span
-                    >
-                  </label>
-                  <label class="text-xs cursor-pointer label">
-                    <input
-                      type="checkbox"
-                      class="checkbox checkbox-sm checkbox-primary"
-                    />
-                    <span class="ml-1 mr-auto text-sm capitalize label-text"
-                      >debilitated</span
-                    >
-                  </label>
+              <div class="recovery-stat">
+                <div class="stat-title">Damage Track</div>
+                <div class="recovery-stat-val">
+                  <ul class="flex flex-col justify-start w-1/2">
+                    <li class="w-fit formcontrol">
+                      <label class="text-lg capitalize cursor-pointer label">
+                        <input
+                          type="checkbox"
+                          class="checkbox checkbox-primary"
+                        />
+                        <span class="px-2 text-lg capitalize label-text"
+                          >impaired</span
+                        >
+                      </label>
+                    </li>
+                    <li class="w-fit formcontrol">
+                      <label class="text-lg cursor-pointer label">
+                        <input
+                          type="checkbox"
+                          class="checkbox checkbox-primary"
+                        />
+                        <span class="px-2 text-lg capitalize label-text"
+                          >debilitated</span
+                        >
+                      </label>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -130,7 +129,7 @@
       title="Create Source"
       class="fixed z-[5] flex items-center justify-center text-4xl duration-300 rounded-full w-9 h-9 md:w-16 md:h-16 drawer-button text-secondary-content bg-secondary bottom-1.5 right-1.5 drop-shadow-lg hover:bg-primary-focus hover:drop-shadow-2xl hover:animate-bounce"
     >
-      <v-icon name="gi-gear-hammer" label="View Source" scale="1.5" />
+      <v-icon name="gi-gear-hammer" label="View Source" scale="3.66" />
     </label>
   </div>
 
@@ -216,7 +215,16 @@ const { statPools } = state;
 const { auth } = useAuthState();
 </script>
 <style lang="postcss">
-.pool-stat {
-  @apply flex flex-col text-sm font-semibold text-center;
+.recovery-stat {
+  @apply text-2xl font-bold md:text-xl pb-2 justify-center text-center mb-2 w-full;
+}
+.recovery-button {
+  @apply text-2xl md:text-xl btn-lg mx-auto w-10/12 gap-2 btn btn-primary text-primary-content mt-1;
+}
+.recovery-stat-val {
+  @apply flex justify-center text-center stat-value text-neutral-content;
+}
+.label-text {
+  @apply text-neutral-content;
 }
 </style>
