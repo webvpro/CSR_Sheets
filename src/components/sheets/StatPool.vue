@@ -13,52 +13,107 @@ const props = defineProps({
 
 const totalPool = ref(props.poolTotal);
 const currentPool = ref(props.poolCurrent);
+const icon = ref(props.poolIcon);
+const baseText = ref(computed(() => `text-${props.poolColor}`));
+const baseBg = ref(computed(() => `bg-${props.poolColor}`));
+const baseBorder = ref(computed(() => `border-${props.poolColor}`));
 const poolPercent = ref(
-  computed(() => (currentPool.value / totalPool.value) * 100)
+  computed(() =>
+    currentPool.value !== totalPool.value
+      ? (currentPool.value / totalPool.value) * 100
+      : 100
+  )
 );
 </script>
 <template>
-  <div class="justify-center max-w-xs text-center min-w-[2em] stat">
-    <div class="mx-auto stat-value">
+  <div class="flex flex-col justify-center flex-grow w-full text-center stat">
+    <div class="stat-value">
+      <!-- Pool Status Radial
+      class="text-xs text-blue-700 radial-progress md:text-lg"
+       -->
       <div
-        class="radial-progress"
-        :class="[`text-${poolColor}`, `text-xs md:text-lg`]"
+        :class="[
+          'text-lg',
+          baseText,
+          'radial-progress',
+          'md:text-xl',
+          'bg-white',
+          'min-w-fit',
+        ]"
         :style="`--value: ${poolPercent}`"
       >
-        {{ poolCurrent }}
+        {{ currentPool }}
       </div>
     </div>
-    <div class="flex justify-around mb-2 text-xs stat-actions md:text-sm">
-      <div class="pool-stat" :class="[`text-${poolColor}`]">
+    <!-- 
+      Pool Total
+      -->
+    <div
+      class="flex flex-row flex-grow min-w-full mb-2 text-xs justify-evenly stat-actions md:text-sm"
+    >
+      <!-- pool stat -->
+      <div :class="[baseText, 'pool-stat']">
         <span class="pb-1">Pool</span>
         <div
-          class="bg-white border-2 btn-xs md:btn-sm btn btn-circle"
-          :class="[`text-${poolColor}`, `border-${poolColor}`]"
+          :class="[
+            baseText,
+            'bg-white',
+            'border-none',
+            'btn-sm',
+            'btn',
+            'btn-circle',
+          ]"
         >
-          <span class="">{{ poolTotal }}</span>
+          <span :class="[baseText]">{{ poolTotal }}</span>
         </div>
       </div>
-      <div class="pool-stat" :class="[`text-${poolColor}`]">
+      <!-- edge stat -->
+      <div :class="[baseText, 'pool-stat']">
         <span class="pb-1">Edge</span>
         <div
-          class="bg-white border-2 btn-xs md:btn-sm btn btn-circle"
-          :class="[`text-${poolColor}`, `border-${poolColor}`]"
+          :class="[
+            baseText,
+            'bg-white',
+            'border-none',
+            'btn-sm',
+            'btn',
+            'btn-circle',
+          ]"
         >
           <span class="">{{ poolEdge }}</span>
         </div>
       </div>
     </div>
-    <button
-      class="max-w-xs gap-2 mx-3 text-white btn"
-      :class="[`bg-${poolColor}`]"
-    >
-      <v-icon :name="poolIcon" scale="2" class="mr-1 text-white" />
-      {{ poolLabel }}
-    </button>
+    <div class="flex justify-around mb-2 text-xs stat-actions md:text-sm">
+      <!-- 
+      pool action btn
+    -->
+      <button
+        class=""
+        :class="[
+          'gap-2',
+          'max-w-full',
+          'w-11/12',
+          'min-h-fit',
+          'btn',
+          'btn-xl',
+          'md:btn-sm',
+          'bg-base-100',
+          'text-base-content',
+          'hover:text-base-100',
+          'text-xl',
+          'md:text-lg',
+          'font-semibold',
+        ]"
+      >
+        <v-icon :name="icon" scale="1" class="" />
+        {{ poolLabel }}
+      </button>
+    </div>
   </div>
 </template>
 <style lang="postcss" scoped>
 .pool-stat {
-  @apply flex flex-col text-sm font-semibold text-center;
+  @apply flex flex-col justify-center text-sm font-semibold text-center;
 }
 </style>

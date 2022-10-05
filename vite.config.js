@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import tailwindcss from "tailwindcss";
 import path from "path";
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), tailwindcss()],
   optimizeDeps: {
     exclude: ["vue-router"],
   },
@@ -19,5 +20,9 @@ export default defineConfig({
   json: {
     namedExports: true,
     stringify: true,
+  },
+  build: {
+    minify: false,
+    cssCodeSplit: false,
   },
 });
