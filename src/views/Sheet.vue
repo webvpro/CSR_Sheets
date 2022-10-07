@@ -3,7 +3,7 @@
     <input id="sheet-form-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
       <div class="container grid grid-cols-12 gap-6 mx-auto">
-        <profile />
+        <profile :profile-data="profile" />
         <div class="col-span-12 shadow-xl xl:col-span-6 card">
           <div
             class="text-center shadow stats stats-vertical md:stats-horizontal"
@@ -12,11 +12,14 @@
               v-for="(stat, key) in statPools"
               :key="key"
               :pool-label="stat.label"
+              :pool-key="stat.label.toUpperCase()"
               :pool-theme="stat.theme"
               :pool-edge="stat.edge"
               :pool-current="stat.current"
               :pool-total="stat.total"
               :pool-icon="stat.icon"
+              @pool-select="openPool"
+              @pool-action="openAction"
             />
           </div>
           <div class="bg-neutral text-neutral-content card-body">
@@ -142,33 +145,40 @@
   />
 
   <div class="modal modal-bottom sm:modal-middle">
-    <div class="mockup-window modal-box">
-      <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-      <p class="py-4">
-        You've been selected for a chance to get one year of subscription to use
-        Wikipedia for free!
-      </p>
+    <div class="mockup-window modal-box lg:w-11/12 lg:max-w-3xl">
       <div class="modal-action">
-        <label for="action-modal" class="btn">Yay!</label>
+        <div class="flex-1">
+          <h1 class="capitalize">
+            {{ actionPool }} {{ poolModel.toLowerCase() }}
+          </h1>
+        </div>
+        <label class="flex-none btn btn-circle" @click.prevent="closeModal">
+          <v-icon name="hi-solid-x" scale="1.66" />
+        </label>
       </div>
+      <component
+        :is="modalSwitch"
+        :pool-data="statPools"
+        :recovery-data="recovery"
+        :pool-key="poolKey"
+      />
     </div>
   </div>
 </template>
 <script setup>
-import { reactive, ref, provide, computed } from "vue";
+import { reactive, ref, markRaw, watch, shallowRef } from "vue";
 import { useAuthState } from "@/modules/firebase";
 import StatPool from "@/components/sheets/StatPool.vue";
 import ProfileCard from "@/components/sheets/Profile.vue";
-import Profile from "../components/sheets/Profile.vue";
+import Profile from "@/components/sheets/Profile.vue";
+import ActionCalc from "@/components/modals/actionCalc.vue";
+import PoolCalc from "@/components/modals/poolCalc.vue";
+import RecoveryCalc from "@/components/modals/recoveryCalc.vue";
 
-const modalScope = ref("");
 const openModal = ref(false);
 const openForm = ref(false);
-const openRecovery = () => {
-  openModal.value = true;
-  modalScope.value = "RecoveryCalc";
-};
-
+const modalSwitch = shallowRef(null);
+const actionPool = ref(null);
 const state = reactive({
   openForm: false,
   loading: false,
@@ -193,7 +203,7 @@ const state = reactive({
     intellect: {
       current: 6,
       total: 10,
-      edge: 1,
+      edge: 2,
       label: "Intellect",
       theme: "blue",
       icon: "gi-smart",
@@ -208,11 +218,124 @@ const state = reactive({
     },
     dice: 2,
     mod: 2,
+    mods: {
+      enablers: [
+        {
+          docId: "xxx",
+          label: "Healing Thing",
+          add: 3,
+          poolCost: {},
+          temp: true,
+        },
+      ],
+      actions: [
+        {
+          docId: "xxx",
+          type: "ability",
+          label: "Healing Touch",
+          add: 1,
+          poolCost: { pool: "intellect", cost: 3 },
+        },
+        {
+          docId: "xxx",
+          type: "skill",
+          label: "First Aid",
+          add: 1,
+          poolCost: { pool: "intellect", cost: 3 },
+        },
+      ],
+    },
+  },
+  profile: {
+    name: "Professor Penelope Pilwicken",
+    type: { docId: "xxx", label: "Adept", alias: "Arcane Engineer" },
+    typeAlias: "Arcane Engineer",
+    flavorsLabel: "Also Dabbles in",
+    favors: [{ docId: "xxx", label: "Crafting" }],
+    descriptor: {
+      docId: "xxxx",
+      label: "Inquisitive",
+      alias: "",
+      subs: [{ docId: "xxx", label: "Gnome" }],
+    },
+    focus: {
+      docId: "xxx",
+      label: "Crafts Unique Objects",
+      alias: "Creates Magical Objects",
+    },
+    tier: 1,
+    advancement: [{ label: "+4 Pool" }, { label: "+1 Edge" }],
+    effort: 1,
+    xp: 3,
+  },
+  targetMods: {
+    enablers: [
+      {
+        docId: "xxx",
+        label: "Healing Thing",
+        add: 3,
+        poolCost: {},
+        temp: true,
+      },
+    ],
+    actions: [
+      {
+        docId: "xxx",
+        type: "ability",
+        label: "Healing Touch",
+        add: 1,
+        poolCost: { pool: "intellect", cost: 3 },
+      },
+      {
+        docId: "xxx",
+        type: "skill",
+        label: "First Aid",
+        add: 1,
+        poolCost: { pool: "intellect", cost: 3 },
+      },
+    ],
+    assets: [],
+    hindrances: [],
   },
 });
-
-const { statPools } = state;
+const modalComponents = {
+  POOL: PoolCalc,
+  ACTION: ActionCalc,
+  RECOVERY: RecoveryCalc,
+};
 const { auth } = useAuthState();
+const { statPools, recovery, profile } = state;
+const poolModel = ref("");
+const poolKey = ref("");
+
+const openRecovery = () => {
+  actionPool.value = "";
+  poolModel.value = "RECOVERY";
+  openModal.value = true;
+};
+const openAction = (key) => {
+  console.log(`Action-${key}`);
+  actionPool.value = key;
+  poolModel.value = "ACTION";
+  openModal.value = true;
+};
+const openPool = (key) => {
+  console.log(`Pool-${key}`);
+  actionPool.value = key;
+  poolModel.value = "POOL";
+  openModal.value = true;
+};
+
+const closeModal = () => {
+  actionPool.value = "";
+  poolModel.value = "";
+  openModal.value = false;
+};
+
+watch([poolModel, actionPool], ([newModal, newPool]) => {
+  modalSwitch.value = modalComponents[newModal];
+  poolKey.value = newPool;
+});
 </script>
 <style lang="postcss">
 .recovery-stat {

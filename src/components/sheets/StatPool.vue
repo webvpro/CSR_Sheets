@@ -1,22 +1,19 @@
 <script setup>
 import { ref, computed } from "vue";
-import { computeBbox } from "pdfjs-dist/build/pdf.worker";
 
 const props = defineProps({
   poolTotal: { type: Number, default: 0 },
   poolEdge: { type: Number, default: 0 },
   poolCurrent: { type: Number, default: 0 },
   poolLabel: { type: String, default: "Might" },
-  poolColor: { type: String, default: "red-800" },
   poolIcon: { type: String, default: "gi-mighty-force" },
 });
+
+const emit = defineEmits(["poolSelect", "poolAction"]);
 
 const totalPool = ref(props.poolTotal);
 const currentPool = ref(props.poolCurrent);
 const icon = ref(props.poolIcon);
-const baseText = ref(computed(() => `text-${props.poolColor}`));
-const baseBg = ref(computed(() => `bg-${props.poolColor}`));
-const baseBorder = ref(computed(() => `border-${props.poolColor}`));
 const poolPercent = ref(
   computed(() =>
     currentPool.value !== totalPool.value
@@ -55,12 +52,15 @@ const poolPercent = ref(
       <!-- pool stat -->
       <div class="pool-stat">
         <span class="pb-1">Pool</span>
-        <div class="pool-number">
-          <span :class="[baseText]">{{ poolTotal }}</span>
+        <div
+          class="pool-number"
+          @click="emit('poolSelect', poolLabel.toLowerCase())"
+        >
+          <span>{{ poolTotal }}</span>
         </div>
       </div>
       <!-- edge stat -->
-      <div :class="[baseText, 'pool-stat']">
+      <div :class="['pool-stat']">
         <span class="pb-1">Edge</span>
         <div class="pool-number">
           <span class="">{{ poolEdge }}</span>
@@ -85,6 +85,7 @@ const poolPercent = ref(
           'md:text-lg',
           'font-semibold',
         ]"
+        @click.prevent="emit('poolAction', poolLabel.toLowerCase())"
       >
         <v-icon :name="icon" scale="1.66" class="" />
         {{ poolLabel }}
