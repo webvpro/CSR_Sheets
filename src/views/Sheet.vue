@@ -327,6 +327,7 @@ const state = reactive({
           id: "X123",
           title: "Geography",
           alias: "Knows the Lands of Nee",
+          description: "Knows the lands around Nee",
           pool: "Intellect",
           level: "TRAINED",
           icon: "gi-treasure-map",
