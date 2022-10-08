@@ -6,7 +6,7 @@ const props = defineProps({
   itemType: { type: String, default: "SKILLS" },
 });
 const detail = ref(props.itemDetail);
-const type = ref("SKILLS")
+const type = ref("SKILLS");
 
 detail.value = {
   id: "X123",
