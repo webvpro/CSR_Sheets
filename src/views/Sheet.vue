@@ -1,9 +1,16 @@
 <template>
   <div id="page-top" class="h-full my-3 drawer drawer-end scroll-mt-0">
-    <input id="sheet-form-drawer" type="checkbox" class="drawer-toggle" />
+    <input
+      id="sheet-form-drawer"
+      v-model="toggleSheetDrawer"
+      type="checkbox"
+      class="drawer-toggle"
+    />
     <div class="drawer-content">
       <div class="container grid grid-cols-12 gap-6 mx-auto">
+        <!-- profile -->
         <profile :profile-data="profile" />
+        <!-- pools -->
         <div class="col-span-12 shadow-xl xl:col-span-6 card">
           <div
             class="text-center shadow stats stats-vertical md:stats-horizontal"
@@ -117,8 +124,13 @@
             </div>
           </div>
         </div>
+        <!-- skills -->
+        <skills-abilites :tab-data="abilityGroups" />
+        <!-- attacks equipment -->
+        <attacks-equipment />
       </div>
     </div>
+    <!-- left drawer -->
     <div class="drawer-side">
       <label for="sheet-form-drawer" class="drawer-overlay"></label>
       <ul class="p-4 overflow-y-auto menu w-80 bg-base-100 text-base-content">
@@ -132,7 +144,7 @@
       title="Create Source"
       class="fixed z-[5] flex items-center justify-center text-4xl duration-300 rounded-full w-9 h-9 md:w-16 md:h-16 drawer-button text-secondary-content bg-secondary bottom-1.5 right-1.5 drop-shadow-lg hover:bg-primary-focus hover:drop-shadow-2xl hover:animate-bounce"
     >
-      <v-icon name="gi-gear-hammer" label="View Source" scale="3.66" />
+      <v-icon name="gi-gear-hammer" label="Change Character" scale="3.66" />
     </label>
   </div>
 
@@ -149,7 +161,7 @@
       <div class="modal-action">
         <div class="flex-1">
           <h1 class="capitalize">
-            {{ actionPool }} {{ poolModel.toLowerCase() }}
+            {{ modalAction }} {{ sheetModal.toLowerCase() }}
           </h1>
         </div>
         <label class="flex-none btn btn-circle" @click.prevent="closeModal">
@@ -161,26 +173,36 @@
         :pool-data="statPools"
         :recovery-data="recovery"
         :pool-key="poolKey"
+        :item-detail-data="itemDetailData"
+        :item-doc-id="itemDocId"
+        :item-type="itemType"
       />
     </div>
   </div>
 </template>
 <script setup>
-import { reactive, ref, markRaw, watch, shallowRef } from "vue";
+import { reactive, ref, provide, watch, shallowRef } from "vue";
 import { useAuthState } from "@/modules/firebase";
 import StatPool from "@/components/sheets/StatPool.vue";
 import ProfileCard from "@/components/sheets/Profile.vue";
 import Profile from "@/components/sheets/Profile.vue";
+import SkillAbility from "@/components/sheets/SkillsAbilites.vue";
 import ActionCalc from "@/components/modals/actionCalc.vue";
 import PoolCalc from "@/components/modals/poolCalc.vue";
 import RecoveryCalc from "@/components/modals/recoveryCalc.vue";
+import SkillsAbilites from "@/components/sheets/SkillsAbilites.vue";
+import AttacksEquipment from "@/components/sheets/EquipmentCyphers.vue";
+import ItemDetail from "@/components/modals/itemDetail.vue";
 
 const openModal = ref(false);
-const openForm = ref(false);
+const toggleSheetDrawer = ref(false);
+const sheetDrawerForm = ref("profile");
 const modalSwitch = shallowRef(null);
-const actionPool = ref(null);
+const modalAction = ref(null);
+const itemDetailData = ref({});
+const itemDocId = ref({});
+const itemType = ref("");
 const state = reactive({
-  openForm: false,
   loading: false,
   game: { live: false, id: "1234XYZ" },
   statPools: {
@@ -297,45 +319,183 @@ const state = reactive({
     assets: [],
     hindrances: [],
   },
+  abilityGroups: {
+    SKILLS: {
+      label: "Skills",
+      items: [
+        {
+          id: "X123",
+          title: "Geography",
+          alias: "Knows the Lands of Nee",
+          pool: "Intellect",
+          level: "TRAINED",
+          icon: "gi-treasure-map",
+        },
+        {
+          id: "X213",
+          title: "Jeweler",
+          alias: "Magic Shard Crafting",
+          icon: "gi-gems",
+          pool: "Intellect",
+          level: "SPECIALIZED",
+        },
+        {
+          id: "X223",
+          title: "Social Interactions",
+          alias: "",
+          icon: "fa-regular-comments",
+          pool: "Intellect",
+          level: "HINDERED",
+        },
+        {
+          id: "X224",
+          name: "Woodworking",
+          alias: "Craft Staffs and Wands",
+          icon: "gi-toolbox",
+          pool: "Intellect",
+          level: "HINDERED",
+        },
+      ],
+    },
+    ABILITIES: {
+      label: "abilities",
+      items: [
+        {
+          docId: "XXX",
+          title: "Onslaught",
+          alias: "Arcane Bolts",
+          mods: [
+            { mod: "DAMAGE", pool: "MIGHT", amount: 4 },
+            { mod: "DAMAGE", pool: "INTELLECT", amount: 2 },
+          ],
+          icon: "gi-magic-swirl",
+          category: "SPECIALATTACK",
+          level: "LOW",
+          pool: "INTELLECT",
+          cost: 1,
+          type: "ACTION",
+        },
+        {
+          title: "Critter Companion",
+          alias: "Create Arcane Constructs",
+          icon: "gi-three-friends",
+          category: "COMPANION",
+          level: "LOW",
+          type: "ENABLER",
+        },
+        {
+          title: "Entourage",
+          icon: "gi-three-friends",
+          category: "COMPANION",
+          level: "LOW",
+          type: "ENABLER",
+        },
+      ],
+    },
+    POWERSHIFTS: {
+      label: "Power Shifts",
+      items: [
+        {
+          title: "Accuracy",
+          mods: [{ type: "attack", mod: "ease" }],
+          icon: "gi-target-arrows",
+          shifts: 1,
+        },
+        {
+          title: "Healing",
+          mods: [{ type: "rest", mod: "roll" }],
+          icon: "gi-healing",
+          shifts: 1,
+        },
+      ],
+    },
+    COMPANIONS: {
+      label: "companions",
+      items: [
+        {
+          title: "Robot Assistant",
+          mods: [{ type: "attack", mod: "asset" }],
+          icon: "gi-mono-wheel-robot",
+          level: 2,
+        },
+      ],
+    },
+  },
+  attackEquipmentGroups: {
+    ATTACKS: [
+      {
+        type: "WEAPON",
+      },
+    ],
+  },
 });
 const modalComponents = {
   POOL: PoolCalc,
   ACTION: ActionCalc,
   RECOVERY: RecoveryCalc,
+  DETAIL: ItemDetail,
 };
 const { auth } = useAuthState();
-const { statPools, recovery, profile } = state;
-const poolModel = ref("");
+const { statPools, recovery, profile, abilityGroups, attackEquipmentGroups } =
+  state;
+const sheetModal = ref("");
 const poolKey = ref("");
+const itemsType = ref("");
+const selectedItemsType = ref("SKILLS");
+const selectedEquipmentTab = ref("ATTACK");
 
 const openRecovery = () => {
-  actionPool.value = "";
-  poolModel.value = "RECOVERY";
+  modalAction.value = "";
+  sheetModal.value = "RECOVERY";
   openModal.value = true;
 };
-const openAction = (key) => {
-  console.log(`Action-${key}`);
-  actionPool.value = key;
-  poolModel.value = "ACTION";
+const openAction = (key = null) => {
+  modalAction.value = key;
+  sheetModal.value = "ACTION";
   openModal.value = true;
 };
-const openPool = (key) => {
-  console.log(`Pool-${key}`);
-  actionPool.value = key;
-  poolModel.value = "POOL";
+const openPool = (key = null) => {
+  modalAction.value = key;
+  sheetModal.value = "POOL";
+  openModal.value = true;
+};
+
+const openDetail = (id = "", itmType = "") => {
+  sheetModal.value = "DETAIL";
+  itemDocId.value = id;
+  itemType.value = itmType;
   openModal.value = true;
 };
 
 const closeModal = () => {
-  actionPool.value = "";
-  poolModel.value = "";
+  modalAction.value = "";
+  sheetModal.value = "";
   openModal.value = false;
 };
 
-watch([poolModel, actionPool], ([newModal, newPool]) => {
+const openFormDrawer = (key) => {
+  sheetDrawerForm.value = key;
+  toggleSheetDrawer.value = true;
+};
+
+watch([sheetModal, modalAction], ([newModal, newPool]) => {
   modalSwitch.value = modalComponents[newModal];
   poolKey.value = newPool;
 });
+provide("poolData", statPools);
+provide("abilityData", abilityGroups);
+provide("equipmentData", attackEquipmentGroups);
+provide("modalToggle", openModal);
+provide("poolToggle", sheetModal);
+provide("selectedPool", modalAction);
+provide("itemActions", {
+  openFormDrawer,
+  openRecovery,
+  openAction,
+  openPool,
+  openDetail,
+});
+provide(poolKey);
 </script>
 <style lang="postcss">
 .recovery-stat {

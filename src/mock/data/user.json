@@ -1,185 +1,150 @@
 {
-    "providerId": "firebase",
-    "proactiveRefresh": {
-      "user": {
-        "uid": "W3uJQB3GtRdd4FYxgTv9ryYY10A3",
-        "email": "mlstanley@gmail.com",
-        "emailVerified": true,
-        "displayName": "Stormbringer",
-        "isAnonymous": false,
-        "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c",
-        "providerData": [
-          {
-            "providerId": "google.com",
-            "uid": "105853659056050557754",
-            "displayName": "Stormbringer",
-            "email": "mlstanley@gmail.com",
-            "phoneNumber": null,
-            "photoURL": "https://lh3.googleusercontent.com/a-/ACNPEu952QVT2qcAY4569LXzn69uzVLr1_Fhl7SSAgNMqw=s96-c"
-          },
-          {
-            "providerId": "password",
-            "uid": "mlstanley@gmail.com",
-            "displayName": "Stormbringer",
-            "email": "mlstanley@gmail.com",
-            "phoneNumber": null,
-            "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c"
-          }
-        ],
-        "stsTokenManager": {
-          "refreshToken": "AOEOulZstMVYdKLL63s3E-oKUr2fEuq7wL8iqDE7sLcaIxiS_fs7IGaN3Ivmdt6PMlNYrBaKGD6FJQB-ul1T8Vc_fF-imcUljkHzgd561LJwMAObhj_A89PNTwVWiby7feGtPn0wtfM2g-6DkJODsGLcCPuC-rRfjm6sBxpSdMM8UUg8XHLGJtdJw-jlZ_B2-TW5L-VwzZF8TcznI5dHr2RCUGYMtTTnodW63lZuT-aODyTJbqbsGMWB8pO1DiZ1VPpk-IMpNd0t1Xiwq_qpCL7jymPmaiS0ciR4N6T-oJu98ZBYB87FuJL0TGGFwPGgyYr551lqPMeQvN_7zCgrjNa_S6rDmM_WG3zNza3SRm9GU4UNIMcV_Ratil6H-FhYYARbXiuqaHVuYHpE5eEpKhi-asiUTWBg8xB7ISSpgQVKuZgk89N6RxE",
-          "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU3Rvcm1icmluZ2VyIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdpR2VBUHpxWkJhazlfSVFtNE9MemdxalN4QXphV0V0MEtpMmxvLUd3PXM5Ni1jIiwiYWRtaW4iOnRydWUsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS90dHJwZ292ZXJsYXlzIiwiYXVkIjoidHRycGdvdmVybGF5cyIsImF1dGhfdGltZSI6MTY2NDI0NTU5OCwidXNlcl9pZCI6IlczdUpRQjNHdFJkZDRGWXhnVHY5cnlZWTEwQTMiLCJzdWIiOiJXM3VKUUIzR3RSZGQ0Rll4Z1R2OXJ5WVkxMEEzIiwiaWF0IjoxNjY0MjQ1NTk4LCJleHAiOjE2NjQyNDkxOTgsImVtYWlsIjoibWxzdGFubGV5QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA1ODUzNjU5MDU2MDUwNTU3NzU0Il0sImVtYWlsIjpbIm1sc3RhbmxleUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.A8w4R3v0k1FrotrMzHSGSIspGzoMPH_BcPahJp2Fle2br5U8fywyT9ooRiyPG-2U3stJ9fY3-T8bKMgjxsI9ZZ0j04sjGb6Yu-EmKW4Q9X4NinVthELQLZ5oK_C4P8VZu9xR7BYBzwM4ZylIpaG-T0UN_1Gxx1Dh08sq0ZqgCyB7p5aAiotQa_rjnTS9LdOz8opYk91VHDc8rqfAkkBetSWf9srZvikwHhQcF7zlkHXMbzNPPOFcNufY4bRiFhHKQYl2L_Grkgkj4Kbp0uaPvXJ6jduGVnZYeuhWI3MT1aImtRU-UnR8GIn4_Y21bsueaywAGTwkoN_NqUJwx4ZNTw",
-          "expirationTime": 1664249198498
-        },
-        "createdAt": "1627365362278",
-        "lastLoginAt": "1663983603304",
-        "apiKey": "AIzaSyDzpLjTCSF1FIG8_EuNQFCseQ_P-78rjS0",
-        "appName": "[DEFAULT]"
-      },
-      "isRunning": false,
-      "timerId": null,
-      "errorBackoff": 30000
-    },
-    "reloadUserInfo": {
-      "localId": "W3uJQB3GtRdd4FYxgTv9ryYY10A3",
-      "email": "mlstanley@gmail.com",
-      "displayName": "Stormbringer",
-      "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c",
-      "passwordHash": "UkVEQUNURUQ=",
+  "providerId": "firebase",
+  "proactiveRefresh": {
+    "user": {
+      "uid": "PUgBqDJSNiUxbK62Jxhh5B8N9de2",
+      "email": "michael@stormbringergames.com",
       "emailVerified": true,
-      "passwordUpdatedAt": 1655254831102,
-      "providerUserInfo": [
+      "displayName": "Michael Stanley",
+      "isAnonymous": false,
+      "photoURL": "https://lh3.googleusercontent.com/a-/AOh14Gj46GMrBhYA2mGW26ny6mxk6WaxfFRcEglSkBqQ9zC7xUjjifVlyE98W38mkLnqy5nOfa9yDMjUV1_7bwlhTO9jngI7hoyH18Iuh3o84rCUn87oJIb4ghwgl1VRe7OR6ItF8cDy6lBU0LEDU9gOckzha_SSrVcUZiXh2MxU6ujJhzD5YHUe-__sbsRYSF0OPya5wgg16ir8B4xgI4hO9k0RNDsbrKVIbQt-8GQQhCPL36T2GDUH2BzNuO4cCn-rSXto7qI_9PnrAyDHIh1LSZ5WjEsDkV_BZJWcIRI7iILHsqL74uvxPDdHS0Ygir8L-clk6wvugcCK7KtlxxhFxZ8ghaJ57WHhJQc3Uc6kjzV_9znXyVZ-kFt72n11gjxK1Hz7z5hVTTRhC7FhVFsPcqF9bvmMZZis024tlba_HEYBGlnmTfiHJPp0IRTRdhkeQkj0svVbBZ5Du_TGkF2OvVX_-cU5ucpqObimwQ__Xy0QnPTgdMgLnvFwHoGhUM1AdPgYFOn8XqUnmAR-LW3frTXBcClhITZ2h810mIKI6dmbQVjY_5PyeDb0HPtKoAtO60jCN88FlwTjLlQuZ4Flm_JV08PG4pclJGsrtYFSHD7NiHl0NzMTWaNraH3SjZu6dymo4KpsOAtza9bUm0iLkrBfeTeLTBtTyBovPjBAwwYB_GhVFz_mvGz_3SuLU3IhClfS1ebIA_42wsXJOWJFhIcRaDq8KqQWN9WaCbbHEZrhPAbkA1aFa2PhrbTEAbeKn3H-pQ=s96-c",
+      "providerData": [
         {
           "providerId": "google.com",
-          "displayName": "Stormbringer",
-          "photoUrl": "https://lh3.googleusercontent.com/a-/ACNPEu952QVT2qcAY4569LXzn69uzVLr1_Fhl7SSAgNMqw=s96-c",
-          "federatedId": "105853659056050557754",
-          "email": "mlstanley@gmail.com",
-          "rawId": "105853659056050557754"
-        },
-        {
-          "providerId": "password",
-          "displayName": "Stormbringer",
-          "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c",
-          "federatedId": "mlstanley@gmail.com",
-          "email": "mlstanley@gmail.com",
-          "rawId": "mlstanley@gmail.com"
+          "uid": "108544280971853085482",
+          "displayName": "Michael Stanley",
+          "email": "michael@stormbringergames.com",
+          "phoneNumber": null,
+          "photoURL": "https://lh3.googleusercontent.com/a-/ACNPEu_DtB33gYoW2nkQ8h8ZVd8UeSMPpYgiB--FCKVrPQ61SnPtxRy4GZYHhYdqNUYFASs7eTD05bBhQIgOipnDt2z6xXdtr5mUGKRH7ulM3ET3-Jen9Mau7r3POFrswP33eWLhvasYFR0utNu0CsMvum2kjgPuZFLP5pjbIYtCkO3I3dbHS0zdhG14OQS7CSqwCOGWP4IHeZgyPieSQCKNmkge89SAgCDvAEZSH8NAcvUuu2vHJWceyAUot2yEucDmErJe4O6mMfEuZVwEyG2OX29h5z-HbWVVpB0vUlBohqVyP1xl3X0OwXDYnKaeQ7y6hUZWQAIUIrqxPqjds2jFkFmgNERQ8e8ASNUMLyr20R6VDlBg7CiMazHwQ6y5iHl_zEXA-Vz4yKSNMfmvkP86MJREY3G_buMnev70fHDxnRyMG3ZGpCZG0TLJ3SdcaRrpJG6ajz7NczfWqcjZAfXzscVJlDBW125DsHa-YKBGnndRcyKy_XjmA4Dv4EOeoyC_7GefN_yNIiBGeVI42U2lE9L6L_A2r8gGk9t14zhDV8ZFfNqpwgKmDGDaBOeKKINpI4N5iir84OlyAgu1g66d6AHxv0Yj8bB6ny4dse5p7C-3kLYVSzScWTUcS7bs4iszTghWFPgmPETwbTUVYx6LeQskKMQI8SFk5kV0Ga718VKQBMCbURdlxtCoVtjVZbaGJddgXfgzUbp6KiJP805oGURCEpZDmhhc5406K6SXGyfR5GoeOKluSkBMPnppgyLQq-fvUxqz=s96-c"
         }
       ],
-      "validSince": "1655254831",
-      "lastLoginAt": "1663983603304",
-      "createdAt": "1627365362278",
-      "customAttributes": "{\"admin\":true}",
-      "lastRefreshAt": "2022-09-27T02:05:19.549Z"
-    },
-    "reloadListener": null,
-    "uid": "W3uJQB3GtRdd4FYxgTv9ryYY10A3",
-    "auth": {
+      "stsTokenManager": {
+        "refreshToken": "AOEOulaxW2OC_N1rOwaUu3BHJmDEqAT6GjMTaCSp9VmJdy632tgg0YoYJldmQR1hTsVTMhR3P0wBdPGHutDAn7lnx1UY97iyyS2bhbWsETpg9lctElrkdbplKzpSydSJ90R64b-TDAKnhqcpEKYIJyMcokEI8eRJORd_K8xjNh0P7UYKA1JKexAyKF2BjPSOwmZoTkmxeS1YtxN5bSly02gGqXRZqiq3f_02amyz0uQ0Q1_Ce53f6DIoFav41VgRNopwSHC99rc4qw7nHi2X8UiAKgJUo5z0Zn_FSTUVoFaK4jLAG1jh7oVkOc4jDpkEXzIBYCddmzdBKXh_elc1dbMU-l2G5KDMMKil_GW9VL_ESqFEGUAospLWTxlQcQtxvOJyaA3kycj1FsOJeRjGPFgyD2A8QT0kH86yVZx-nbqH1TcvsUrPc8MqTDYggaxyrsvXQktgOKZw3yPLt0jg9P5w2LSRPEu9MXmDw_-PesInNOnjutghD2hx2npaxRpAMALIVemJomnMnsf0OQOB2FxjNczK9EQpyfJ23wYhkaniB_3boTFcMit7fFIkNdolLRAaZ3KySH0vE4PYZ1SADE9AEH6nE3-PmIRHBKnAuNRutY2hHVOuJpB1ZBLLxUs1Ql3ZmuDfy9SI7hXAVnhv8vmtWZKZ1GUIptvzk8dBexoMnxayXjnziWb4QgjeHUyF2slmGexslVmphY4qB25ZYrD9LP9mYJ2BArW60AFM4U4qGwKSYbbSX_Ii5xon3IVpP-S15QvJP_Ug4OcNJbCavs86znaBZzDnfgQ1qb6cDRa744H3G7rVCSl1AdsACb9VtbOlaMfqOclA4p5C5raXXrPqB1YOk7OCyP5TaBuRUE8yOwH15YlwdiLDBpJIj-ivrwQo-4g2qK1yCAvbjMg5OHNTkofsdSe2SqGykeEgghg144E199kmHnii86VZZfSzSduUteP_MGmziKFW-Z8E95QBc4LBJT8zdisyDGVC6cNhgYG9m1k2u-UpHbTZ0DBkseOSiknftCFIKJFT0QdS2VVxo7rXLD1LYeMVCeqy0xLPus8QrpeYQQ9lVQuiU16uo95WYIBW6uam4rdwiU5db8NDyUUZb2tXxByxoF_wPRpJpSnpbOwLpSFYNHHIBpV7zW_Uh-03HPmXCZUbCHgxj2d3StARSITa21KyhvjiKPLqV-muj6Bf__3citYLU1to_eJH3C4bUeOHQQgg6lmp-FAPSxFmb1PdArBjZlaLOJn-9THiDyUf1Id4u7uawKSZ0oW7JVXLTnc3nmETmNxXDlXqqzve2ge3d96NoeR_1ggcPSgWYMbSVCsl_3htWcyeuNq2axcjpC-r7ud3SjBxoDnOhXQAvFi_Etc-SiqDrhkSmA636gv6KBW62oWKxV0FIFnML0vvbYHO",
+        "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiTWljaGFlbCBTdGFubGV5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdqNDZHTXJCaFlBMm1HVzI2bnk2bXhrNldheGZGUmNFZ2xTa0JxUTl6Qzd4VWpqaWZWbHlFOThXMzhta0xucXk1bk9mYTl5RE1qVVYxXzdid2xoVE85am5nSTdob3lIMThJdWgzbzg0ckNVbjg3b0pJYjRnaHdnbDFWUmU3T1I2SXRGOGNEeTZsQlUwTEVEVTlnT2NremhhX1NTclZjVVppWGgyTXhVNnVqSmh6RDVZSFVlLV9fc2JzUllTRjBPUHlhNXdnZzE2aXI4QjR4Z0k0aE85azBSTkRzYnJLVkliUXQtOEdRUWhDUEwzNlQyR0RVSDJCek51TzRjQ24tclNYdG83cUlfOVBuckF5REhJaDFMU1o1V2pFc0RrVl9CWkpXY0lSSTdpSUxIc3FMNzR1dnhQRGRIUzBZZ2lyOEwtY2xrNnd2dWdjQ0s3S3RseHhoRnhaOGdoYUo1N1dIaEpRYzNVYzZranpWXzl6blh5Vlota0Z0NzJuMTFnanhLMUh6N3o1aFZUVFJoQzdGaFZGc1BjcUY5YnZtTVpaaXMwMjR0bGJhX0hFWUJHbG5tVGZpSEpQcDBJUlRSZGhrZVFrajBzdlZiQlo1RHVfVEdrRjJPdlZYXy1jVTV1Y3BxT2JpbXdRX19YeTBRblBUZ2RNZ0xudkZ3SG9HaFVNMUFkUGdZRk9uOFhxVW5tQVItTFczZnJUWEJjQ2xoSVRaMmg4MTBtSUtJNmRtYlFWallfNVB5ZURiMEhQdEtvQXRPNjBqQ044OEZsd1RqTGxRdVo0RmxtX0pWMDhQRzRwY2xKR3NydFlGU0hEN05pSGwwTnpNVFdhTnJhSDNTalp1NmR5bW80S3BzT0F0emE5YlVtMGlMa3JCZmVUZUxUQnRUeUJvdlBqQkF3d1lCX0doVkZ6X212R3pfM1N1TFUzSWhDbGZTMWViSUFfNDJ3c1hKT1dKRmhJY1JhRHE4S3FRV045V2FDYmJIRVpyaFBBYmtBMWFGYTJQaHJiVEVBYmVLbjNILXBRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3R0cnBnb3ZlcmxheXMiLCJhdWQiOiJ0dHJwZ292ZXJsYXlzIiwiYXV0aF90aW1lIjoxNjY0MjUxOTk3LCJ1c2VyX2lkIjoiUFVnQnFESlNOaVV4Yks2Mkp4aGg1QjhOOWRlMiIsInN1YiI6IlBVZ0JxREpTTmlVeGJLNjJKeGhoNUI4TjlkZTIiLCJpYXQiOjE2NjQyNTE5OTcsImV4cCI6MTY2NDI1NTU5NywiZW1haWwiOiJtaWNoYWVsQHN0b3JtYnJpbmdlcmdhbWVzLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA4NTQ0MjgwOTcxODUzMDg1NDgyIl0sImVtYWlsIjpbIm1pY2hhZWxAc3Rvcm1icmluZ2VyZ2FtZXMuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.nohcX2Tn9RnxUErx_jf0CBpiiwICMEVQgjg4xvPDDKMLsd7fQT3gKLtvfrXM9aYJsZ5d6yX2CwDzrw-nJBEpaPHU9SUlHR1Em0D0UkTtpJs-NvO-c8OYqdCiYsHHe2ee74bAPEh1uWLRPmJN5lJZC4-kVewt_hzvYXEEDU-RGMBFDRpaeRoIJpsGtdcfzTD7K9IWwTa2ZXxd5yxF9vTC1KpYOPaC6HYcb5ZIoP30rXt132SZFPmNzGMXUAzPhezraQSETJML0-YMLY1D09LoAwRbTlw4uGZigt9PjhvXHPUUprNcjva2lweQVMTMcoLUG2dkwpJnAJ1tOrppxGueGQ",
+        "expirationTime": 1664255597779
+      },
+      "createdAt": "1631129195139",
+      "lastLoginAt": "1664251997797",
       "apiKey": "AIzaSyDzpLjTCSF1FIG8_EuNQFCseQ_P-78rjS0",
-      "authDomain": "cyphersystem.games",
-      "appName": "[DEFAULT]",
-      "currentUser": {
-        "uid": "W3uJQB3GtRdd4FYxgTv9ryYY10A3",
-        "email": "mlstanley@gmail.com",
-        "emailVerified": true,
-        "displayName": "Stormbringer",
-        "isAnonymous": false,
-        "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c",
-        "providerData": [
-          {
-            "providerId": "google.com",
-            "uid": "105853659056050557754",
-            "displayName": "Stormbringer",
-            "email": "mlstanley@gmail.com",
-            "phoneNumber": null,
-            "photoURL": "https://lh3.googleusercontent.com/a-/ACNPEu952QVT2qcAY4569LXzn69uzVLr1_Fhl7SSAgNMqw=s96-c"
-          },
-          {
-            "providerId": "password",
-            "uid": "mlstanley@gmail.com",
-            "displayName": "Stormbringer",
-            "email": "mlstanley@gmail.com",
-            "phoneNumber": null,
-            "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c"
-          }
-        ],
-        "stsTokenManager": {
-          "refreshToken": "AOEOulZstMVYdKLL63s3E-oKUr2fEuq7wL8iqDE7sLcaIxiS_fs7IGaN3Ivmdt6PMlNYrBaKGD6FJQB-ul1T8Vc_fF-imcUljkHzgd561LJwMAObhj_A89PNTwVWiby7feGtPn0wtfM2g-6DkJODsGLcCPuC-rRfjm6sBxpSdMM8UUg8XHLGJtdJw-jlZ_B2-TW5L-VwzZF8TcznI5dHr2RCUGYMtTTnodW63lZuT-aODyTJbqbsGMWB8pO1DiZ1VPpk-IMpNd0t1Xiwq_qpCL7jymPmaiS0ciR4N6T-oJu98ZBYB87FuJL0TGGFwPGgyYr551lqPMeQvN_7zCgrjNa_S6rDmM_WG3zNza3SRm9GU4UNIMcV_Ratil6H-FhYYARbXiuqaHVuYHpE5eEpKhi-asiUTWBg8xB7ISSpgQVKuZgk89N6RxE",
-          "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU3Rvcm1icmluZ2VyIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdpR2VBUHpxWkJhazlfSVFtNE9MemdxalN4QXphV0V0MEtpMmxvLUd3PXM5Ni1jIiwiYWRtaW4iOnRydWUsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS90dHJwZ292ZXJsYXlzIiwiYXVkIjoidHRycGdvdmVybGF5cyIsImF1dGhfdGltZSI6MTY2NDI0NTU5OCwidXNlcl9pZCI6IlczdUpRQjNHdFJkZDRGWXhnVHY5cnlZWTEwQTMiLCJzdWIiOiJXM3VKUUIzR3RSZGQ0Rll4Z1R2OXJ5WVkxMEEzIiwiaWF0IjoxNjY0MjQ1NTk4LCJleHAiOjE2NjQyNDkxOTgsImVtYWlsIjoibWxzdGFubGV5QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA1ODUzNjU5MDU2MDUwNTU3NzU0Il0sImVtYWlsIjpbIm1sc3RhbmxleUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.A8w4R3v0k1FrotrMzHSGSIspGzoMPH_BcPahJp2Fle2br5U8fywyT9ooRiyPG-2U3stJ9fY3-T8bKMgjxsI9ZZ0j04sjGb6Yu-EmKW4Q9X4NinVthELQLZ5oK_C4P8VZu9xR7BYBzwM4ZylIpaG-T0UN_1Gxx1Dh08sq0ZqgCyB7p5aAiotQa_rjnTS9LdOz8opYk91VHDc8rqfAkkBetSWf9srZvikwHhQcF7zlkHXMbzNPPOFcNufY4bRiFhHKQYl2L_Grkgkj4Kbp0uaPvXJ6jduGVnZYeuhWI3MT1aImtRU-UnR8GIn4_Y21bsueaywAGTwkoN_NqUJwx4ZNTw",
-          "expirationTime": 1664249198498
-        },
-        "createdAt": "1627365362278",
-        "lastLoginAt": "1663983603304",
-        "apiKey": "AIzaSyDzpLjTCSF1FIG8_EuNQFCseQ_P-78rjS0",
-        "appName": "[DEFAULT]"
-      }
+      "appName": "[DEFAULT]"
     },
-    "stsTokenManager": {
-      "refreshToken": "AOEOulZstMVYdKLL63s3E-oKUr2fEuq7wL8iqDE7sLcaIxiS_fs7IGaN3Ivmdt6PMlNYrBaKGD6FJQB-ul1T8Vc_fF-imcUljkHzgd561LJwMAObhj_A89PNTwVWiby7feGtPn0wtfM2g-6DkJODsGLcCPuC-rRfjm6sBxpSdMM8UUg8XHLGJtdJw-jlZ_B2-TW5L-VwzZF8TcznI5dHr2RCUGYMtTTnodW63lZuT-aODyTJbqbsGMWB8pO1DiZ1VPpk-IMpNd0t1Xiwq_qpCL7jymPmaiS0ciR4N6T-oJu98ZBYB87FuJL0TGGFwPGgyYr551lqPMeQvN_7zCgrjNa_S6rDmM_WG3zNza3SRm9GU4UNIMcV_Ratil6H-FhYYARbXiuqaHVuYHpE5eEpKhi-asiUTWBg8xB7ISSpgQVKuZgk89N6RxE",
-      "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU3Rvcm1icmluZ2VyIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdpR2VBUHpxWkJhazlfSVFtNE9MemdxalN4QXphV0V0MEtpMmxvLUd3PXM5Ni1jIiwiYWRtaW4iOnRydWUsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS90dHJwZ292ZXJsYXlzIiwiYXVkIjoidHRycGdvdmVybGF5cyIsImF1dGhfdGltZSI6MTY2NDI0NTU5OCwidXNlcl9pZCI6IlczdUpRQjNHdFJkZDRGWXhnVHY5cnlZWTEwQTMiLCJzdWIiOiJXM3VKUUIzR3RSZGQ0Rll4Z1R2OXJ5WVkxMEEzIiwiaWF0IjoxNjY0MjQ1NTk4LCJleHAiOjE2NjQyNDkxOTgsImVtYWlsIjoibWxzdGFubGV5QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA1ODUzNjU5MDU2MDUwNTU3NzU0Il0sImVtYWlsIjpbIm1sc3RhbmxleUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.A8w4R3v0k1FrotrMzHSGSIspGzoMPH_BcPahJp2Fle2br5U8fywyT9ooRiyPG-2U3stJ9fY3-T8bKMgjxsI9ZZ0j04sjGb6Yu-EmKW4Q9X4NinVthELQLZ5oK_C4P8VZu9xR7BYBzwM4ZylIpaG-T0UN_1Gxx1Dh08sq0ZqgCyB7p5aAiotQa_rjnTS9LdOz8opYk91VHDc8rqfAkkBetSWf9srZvikwHhQcF7zlkHXMbzNPPOFcNufY4bRiFhHKQYl2L_Grkgkj4Kbp0uaPvXJ6jduGVnZYeuhWI3MT1aImtRU-UnR8GIn4_Y21bsueaywAGTwkoN_NqUJwx4ZNTw",
-      "expirationTime": 1664249198498
-    },
-    "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU3Rvcm1icmluZ2VyIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdpR2VBUHpxWkJhazlfSVFtNE9MemdxalN4QXphV0V0MEtpMmxvLUd3PXM5Ni1jIiwiYWRtaW4iOnRydWUsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS90dHJwZ292ZXJsYXlzIiwiYXVkIjoidHRycGdvdmVybGF5cyIsImF1dGhfdGltZSI6MTY2NDI0NTU5OCwidXNlcl9pZCI6IlczdUpRQjNHdFJkZDRGWXhnVHY5cnlZWTEwQTMiLCJzdWIiOiJXM3VKUUIzR3RSZGQ0Rll4Z1R2OXJ5WVkxMEEzIiwiaWF0IjoxNjY0MjQ1NTk4LCJleHAiOjE2NjQyNDkxOTgsImVtYWlsIjoibWxzdGFubGV5QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA1ODUzNjU5MDU2MDUwNTU3NzU0Il0sImVtYWlsIjpbIm1sc3RhbmxleUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.A8w4R3v0k1FrotrMzHSGSIspGzoMPH_BcPahJp2Fle2br5U8fywyT9ooRiyPG-2U3stJ9fY3-T8bKMgjxsI9ZZ0j04sjGb6Yu-EmKW4Q9X4NinVthELQLZ5oK_C4P8VZu9xR7BYBzwM4ZylIpaG-T0UN_1Gxx1Dh08sq0ZqgCyB7p5aAiotQa_rjnTS9LdOz8opYk91VHDc8rqfAkkBetSWf9srZvikwHhQcF7zlkHXMbzNPPOFcNufY4bRiFhHKQYl2L_Grkgkj4Kbp0uaPvXJ6jduGVnZYeuhWI3MT1aImtRU-UnR8GIn4_Y21bsueaywAGTwkoN_NqUJwx4ZNTw",
-    "displayName": "Stormbringer",
-    "email": "mlstanley@gmail.com",
+    "isRunning": false,
+    "timerId": null,
+    "errorBackoff": 30000
+  },
+  "reloadUserInfo": {
+    "localId": "PUgBqDJSNiUxbK62Jxhh5B8N9de2",
+    "email": "michael@stormbringergames.com",
+    "displayName": "Michael Stanley",
+    "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14Gj46GMrBhYA2mGW26ny6mxk6WaxfFRcEglSkBqQ9zC7xUjjifVlyE98W38mkLnqy5nOfa9yDMjUV1_7bwlhTO9jngI7hoyH18Iuh3o84rCUn87oJIb4ghwgl1VRe7OR6ItF8cDy6lBU0LEDU9gOckzha_SSrVcUZiXh2MxU6ujJhzD5YHUe-__sbsRYSF0OPya5wgg16ir8B4xgI4hO9k0RNDsbrKVIbQt-8GQQhCPL36T2GDUH2BzNuO4cCn-rSXto7qI_9PnrAyDHIh1LSZ5WjEsDkV_BZJWcIRI7iILHsqL74uvxPDdHS0Ygir8L-clk6wvugcCK7KtlxxhFxZ8ghaJ57WHhJQc3Uc6kjzV_9znXyVZ-kFt72n11gjxK1Hz7z5hVTTRhC7FhVFsPcqF9bvmMZZis024tlba_HEYBGlnmTfiHJPp0IRTRdhkeQkj0svVbBZ5Du_TGkF2OvVX_-cU5ucpqObimwQ__Xy0QnPTgdMgLnvFwHoGhUM1AdPgYFOn8XqUnmAR-LW3frTXBcClhITZ2h810mIKI6dmbQVjY_5PyeDb0HPtKoAtO60jCN88FlwTjLlQuZ4Flm_JV08PG4pclJGsrtYFSHD7NiHl0NzMTWaNraH3SjZu6dymo4KpsOAtza9bUm0iLkrBfeTeLTBtTyBovPjBAwwYB_GhVFz_mvGz_3SuLU3IhClfS1ebIA_42wsXJOWJFhIcRaDq8KqQWN9WaCbbHEZrhPAbkA1aFa2PhrbTEAbeKn3H-pQ=s96-c",
     "emailVerified": true,
-    "phoneNumber": null,
-    "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c",
-    "isAnonymous": false,
-    "tenantId": null,
-    "providerData": [
+    "passwordUpdatedAt": 1631129195139,
+    "providerUserInfo": [
       {
         "providerId": "google.com",
-        "uid": "105853659056050557754",
-        "displayName": "Stormbringer",
-        "email": "mlstanley@gmail.com",
-        "phoneNumber": null,
-        "photoURL": "https://lh3.googleusercontent.com/a-/ACNPEu952QVT2qcAY4569LXzn69uzVLr1_Fhl7SSAgNMqw=s96-c"
-      },
-      {
-        "providerId": "password",
-        "uid": "mlstanley@gmail.com",
-        "displayName": "Stormbringer",
-        "email": "mlstanley@gmail.com",
-        "phoneNumber": null,
-        "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c"
+        "displayName": "Michael Stanley",
+        "photoUrl": "https://lh3.googleusercontent.com/a-/ACNPEu_DtB33gYoW2nkQ8h8ZVd8UeSMPpYgiB--FCKVrPQ61SnPtxRy4GZYHhYdqNUYFASs7eTD05bBhQIgOipnDt2z6xXdtr5mUGKRH7ulM3ET3-Jen9Mau7r3POFrswP33eWLhvasYFR0utNu0CsMvum2kjgPuZFLP5pjbIYtCkO3I3dbHS0zdhG14OQS7CSqwCOGWP4IHeZgyPieSQCKNmkge89SAgCDvAEZSH8NAcvUuu2vHJWceyAUot2yEucDmErJe4O6mMfEuZVwEyG2OX29h5z-HbWVVpB0vUlBohqVyP1xl3X0OwXDYnKaeQ7y6hUZWQAIUIrqxPqjds2jFkFmgNERQ8e8ASNUMLyr20R6VDlBg7CiMazHwQ6y5iHl_zEXA-Vz4yKSNMfmvkP86MJREY3G_buMnev70fHDxnRyMG3ZGpCZG0TLJ3SdcaRrpJG6ajz7NczfWqcjZAfXzscVJlDBW125DsHa-YKBGnndRcyKy_XjmA4Dv4EOeoyC_7GefN_yNIiBGeVI42U2lE9L6L_A2r8gGk9t14zhDV8ZFfNqpwgKmDGDaBOeKKINpI4N5iir84OlyAgu1g66d6AHxv0Yj8bB6ny4dse5p7C-3kLYVSzScWTUcS7bs4iszTghWFPgmPETwbTUVYx6LeQskKMQI8SFk5kV0Ga718VKQBMCbURdlxtCoVtjVZbaGJddgXfgzUbp6KiJP805oGURCEpZDmhhc5406K6SXGyfR5GoeOKluSkBMPnppgyLQq-fvUxqz=s96-c",
+        "federatedId": "108544280971853085482",
+        "email": "michael@stormbringergames.com",
+        "rawId": "108544280971853085482"
       }
     ],
-    "metadata": {
-      "createdAt": "1627365362278",
-      "lastLoginAt": "1663983603304"
-    },
-    "token": {
-      "claims": {
-        "name": "Stormbringer",
-        "picture": "https://lh3.googleusercontent.com/a-/AOh14GiGeAPzqZBak9_IQm4OLzgqjSxAzaWEt0Ki2lo-Gw=s96-c",
-        "admin": true,
-        "iss": "https://securetoken.google.com/ttrpgoverlays",
-        "aud": "ttrpgoverlays",
-        "auth_time": 1664245598,
-        "user_id": "W3uJQB3GtRdd4FYxgTv9ryYY10A3",
-        "sub": "W3uJQB3GtRdd4FYxgTv9ryYY10A3",
-        "iat": 1664245598,
-        "exp": 1664249198,
-        "email": "mlstanley@gmail.com",
-        "email_verified": true,
-        "firebase": {
-          "identities": {
-            "google.com": [
-              "105853659056050557754"
-            ],
-            "email": [
-              "mlstanley@gmail.com"
-            ]
-          },
-          "sign_in_provider": "google.com"
+    "validSince": "1635360622",
+    "lastLoginAt": "1664251997797",
+    "createdAt": "1631129195139",
+    "lastRefreshAt": "2022-09-27T04:13:17.797Z"
+  },
+  "reloadListener": null,
+  "uid": "PUgBqDJSNiUxbK62Jxhh5B8N9de2",
+  "auth": {
+    "apiKey": "AIzaSyDzpLjTCSF1FIG8_EuNQFCseQ_P-78rjS0",
+    "authDomain": "cyphersystem.games",
+    "appName": "[DEFAULT]",
+    "currentUser": {
+      "uid": "PUgBqDJSNiUxbK62Jxhh5B8N9de2",
+      "email": "michael@stormbringergames.com",
+      "emailVerified": true,
+      "displayName": "Michael Stanley",
+      "isAnonymous": false,
+      "photoURL": "https://lh3.googleusercontent.com/a-/AOh14Gj46GMrBhYA2mGW26ny6mxk6WaxfFRcEglSkBqQ9zC7xUjjifVlyE98W38mkLnqy5nOfa9yDMjUV1_7bwlhTO9jngI7hoyH18Iuh3o84rCUn87oJIb4ghwgl1VRe7OR6ItF8cDy6lBU0LEDU9gOckzha_SSrVcUZiXh2MxU6ujJhzD5YHUe-__sbsRYSF0OPya5wgg16ir8B4xgI4hO9k0RNDsbrKVIbQt-8GQQhCPL36T2GDUH2BzNuO4cCn-rSXto7qI_9PnrAyDHIh1LSZ5WjEsDkV_BZJWcIRI7iILHsqL74uvxPDdHS0Ygir8L-clk6wvugcCK7KtlxxhFxZ8ghaJ57WHhJQc3Uc6kjzV_9znXyVZ-kFt72n11gjxK1Hz7z5hVTTRhC7FhVFsPcqF9bvmMZZis024tlba_HEYBGlnmTfiHJPp0IRTRdhkeQkj0svVbBZ5Du_TGkF2OvVX_-cU5ucpqObimwQ__Xy0QnPTgdMgLnvFwHoGhUM1AdPgYFOn8XqUnmAR-LW3frTXBcClhITZ2h810mIKI6dmbQVjY_5PyeDb0HPtKoAtO60jCN88FlwTjLlQuZ4Flm_JV08PG4pclJGsrtYFSHD7NiHl0NzMTWaNraH3SjZu6dymo4KpsOAtza9bUm0iLkrBfeTeLTBtTyBovPjBAwwYB_GhVFz_mvGz_3SuLU3IhClfS1ebIA_42wsXJOWJFhIcRaDq8KqQWN9WaCbbHEZrhPAbkA1aFa2PhrbTEAbeKn3H-pQ=s96-c",
+      "providerData": [
+        {
+          "providerId": "google.com",
+          "uid": "108544280971853085482",
+          "displayName": "Michael Stanley",
+          "email": "michael@stormbringergames.com",
+          "phoneNumber": null,
+          "photoURL": "https://lh3.googleusercontent.com/a-/ACNPEu_DtB33gYoW2nkQ8h8ZVd8UeSMPpYgiB--FCKVrPQ61SnPtxRy4GZYHhYdqNUYFASs7eTD05bBhQIgOipnDt2z6xXdtr5mUGKRH7ulM3ET3-Jen9Mau7r3POFrswP33eWLhvasYFR0utNu0CsMvum2kjgPuZFLP5pjbIYtCkO3I3dbHS0zdhG14OQS7CSqwCOGWP4IHeZgyPieSQCKNmkge89SAgCDvAEZSH8NAcvUuu2vHJWceyAUot2yEucDmErJe4O6mMfEuZVwEyG2OX29h5z-HbWVVpB0vUlBohqVyP1xl3X0OwXDYnKaeQ7y6hUZWQAIUIrqxPqjds2jFkFmgNERQ8e8ASNUMLyr20R6VDlBg7CiMazHwQ6y5iHl_zEXA-Vz4yKSNMfmvkP86MJREY3G_buMnev70fHDxnRyMG3ZGpCZG0TLJ3SdcaRrpJG6ajz7NczfWqcjZAfXzscVJlDBW125DsHa-YKBGnndRcyKy_XjmA4Dv4EOeoyC_7GefN_yNIiBGeVI42U2lE9L6L_A2r8gGk9t14zhDV8ZFfNqpwgKmDGDaBOeKKINpI4N5iir84OlyAgu1g66d6AHxv0Yj8bB6ny4dse5p7C-3kLYVSzScWTUcS7bs4iszTghWFPgmPETwbTUVYx6LeQskKMQI8SFk5kV0Ga718VKQBMCbURdlxtCoVtjVZbaGJddgXfgzUbp6KiJP805oGURCEpZDmhhc5406K6SXGyfR5GoeOKluSkBMPnppgyLQq-fvUxqz=s96-c"
         }
+      ],
+      "stsTokenManager": {
+        "refreshToken": "AOEOulaxW2OC_N1rOwaUu3BHJmDEqAT6GjMTaCSp9VmJdy632tgg0YoYJldmQR1hTsVTMhR3P0wBdPGHutDAn7lnx1UY97iyyS2bhbWsETpg9lctElrkdbplKzpSydSJ90R64b-TDAKnhqcpEKYIJyMcokEI8eRJORd_K8xjNh0P7UYKA1JKexAyKF2BjPSOwmZoTkmxeS1YtxN5bSly02gGqXRZqiq3f_02amyz0uQ0Q1_Ce53f6DIoFav41VgRNopwSHC99rc4qw7nHi2X8UiAKgJUo5z0Zn_FSTUVoFaK4jLAG1jh7oVkOc4jDpkEXzIBYCddmzdBKXh_elc1dbMU-l2G5KDMMKil_GW9VL_ESqFEGUAospLWTxlQcQtxvOJyaA3kycj1FsOJeRjGPFgyD2A8QT0kH86yVZx-nbqH1TcvsUrPc8MqTDYggaxyrsvXQktgOKZw3yPLt0jg9P5w2LSRPEu9MXmDw_-PesInNOnjutghD2hx2npaxRpAMALIVemJomnMnsf0OQOB2FxjNczK9EQpyfJ23wYhkaniB_3boTFcMit7fFIkNdolLRAaZ3KySH0vE4PYZ1SADE9AEH6nE3-PmIRHBKnAuNRutY2hHVOuJpB1ZBLLxUs1Ql3ZmuDfy9SI7hXAVnhv8vmtWZKZ1GUIptvzk8dBexoMnxayXjnziWb4QgjeHUyF2slmGexslVmphY4qB25ZYrD9LP9mYJ2BArW60AFM4U4qGwKSYbbSX_Ii5xon3IVpP-S15QvJP_Ug4OcNJbCavs86znaBZzDnfgQ1qb6cDRa744H3G7rVCSl1AdsACb9VtbOlaMfqOclA4p5C5raXXrPqB1YOk7OCyP5TaBuRUE8yOwH15YlwdiLDBpJIj-ivrwQo-4g2qK1yCAvbjMg5OHNTkofsdSe2SqGykeEgghg144E199kmHnii86VZZfSzSduUteP_MGmziKFW-Z8E95QBc4LBJT8zdisyDGVC6cNhgYG9m1k2u-UpHbTZ0DBkseOSiknftCFIKJFT0QdS2VVxo7rXLD1LYeMVCeqy0xLPus8QrpeYQQ9lVQuiU16uo95WYIBW6uam4rdwiU5db8NDyUUZb2tXxByxoF_wPRpJpSnpbOwLpSFYNHHIBpV7zW_Uh-03HPmXCZUbCHgxj2d3StARSITa21KyhvjiKPLqV-muj6Bf__3citYLU1to_eJH3C4bUeOHQQgg6lmp-FAPSxFmb1PdArBjZlaLOJn-9THiDyUf1Id4u7uawKSZ0oW7JVXLTnc3nmETmNxXDlXqqzve2ge3d96NoeR_1ggcPSgWYMbSVCsl_3htWcyeuNq2axcjpC-r7ud3SjBxoDnOhXQAvFi_Etc-SiqDrhkSmA636gv6KBW62oWKxV0FIFnML0vvbYHO",
+        "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiTWljaGFlbCBTdGFubGV5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdqNDZHTXJCaFlBMm1HVzI2bnk2bXhrNldheGZGUmNFZ2xTa0JxUTl6Qzd4VWpqaWZWbHlFOThXMzhta0xucXk1bk9mYTl5RE1qVVYxXzdid2xoVE85am5nSTdob3lIMThJdWgzbzg0ckNVbjg3b0pJYjRnaHdnbDFWUmU3T1I2SXRGOGNEeTZsQlUwTEVEVTlnT2NremhhX1NTclZjVVppWGgyTXhVNnVqSmh6RDVZSFVlLV9fc2JzUllTRjBPUHlhNXdnZzE2aXI4QjR4Z0k0aE85azBSTkRzYnJLVkliUXQtOEdRUWhDUEwzNlQyR0RVSDJCek51TzRjQ24tclNYdG83cUlfOVBuckF5REhJaDFMU1o1V2pFc0RrVl9CWkpXY0lSSTdpSUxIc3FMNzR1dnhQRGRIUzBZZ2lyOEwtY2xrNnd2dWdjQ0s3S3RseHhoRnhaOGdoYUo1N1dIaEpRYzNVYzZranpWXzl6blh5Vlota0Z0NzJuMTFnanhLMUh6N3o1aFZUVFJoQzdGaFZGc1BjcUY5YnZtTVpaaXMwMjR0bGJhX0hFWUJHbG5tVGZpSEpQcDBJUlRSZGhrZVFrajBzdlZiQlo1RHVfVEdrRjJPdlZYXy1jVTV1Y3BxT2JpbXdRX19YeTBRblBUZ2RNZ0xudkZ3SG9HaFVNMUFkUGdZRk9uOFhxVW5tQVItTFczZnJUWEJjQ2xoSVRaMmg4MTBtSUtJNmRtYlFWallfNVB5ZURiMEhQdEtvQXRPNjBqQ044OEZsd1RqTGxRdVo0RmxtX0pWMDhQRzRwY2xKR3NydFlGU0hEN05pSGwwTnpNVFdhTnJhSDNTalp1NmR5bW80S3BzT0F0emE5YlVtMGlMa3JCZmVUZUxUQnRUeUJvdlBqQkF3d1lCX0doVkZ6X212R3pfM1N1TFUzSWhDbGZTMWViSUFfNDJ3c1hKT1dKRmhJY1JhRHE4S3FRV045V2FDYmJIRVpyaFBBYmtBMWFGYTJQaHJiVEVBYmVLbjNILXBRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3R0cnBnb3ZlcmxheXMiLCJhdWQiOiJ0dHJwZ292ZXJsYXlzIiwiYXV0aF90aW1lIjoxNjY0MjUxOTk3LCJ1c2VyX2lkIjoiUFVnQnFESlNOaVV4Yks2Mkp4aGg1QjhOOWRlMiIsInN1YiI6IlBVZ0JxREpTTmlVeGJLNjJKeGhoNUI4TjlkZTIiLCJpYXQiOjE2NjQyNTE5OTcsImV4cCI6MTY2NDI1NTU5NywiZW1haWwiOiJtaWNoYWVsQHN0b3JtYnJpbmdlcmdhbWVzLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA4NTQ0MjgwOTcxODUzMDg1NDgyIl0sImVtYWlsIjpbIm1pY2hhZWxAc3Rvcm1icmluZ2VyZ2FtZXMuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.nohcX2Tn9RnxUErx_jf0CBpiiwICMEVQgjg4xvPDDKMLsd7fQT3gKLtvfrXM9aYJsZ5d6yX2CwDzrw-nJBEpaPHU9SUlHR1Em0D0UkTtpJs-NvO-c8OYqdCiYsHHe2ee74bAPEh1uWLRPmJN5lJZC4-kVewt_hzvYXEEDU-RGMBFDRpaeRoIJpsGtdcfzTD7K9IWwTa2ZXxd5yxF9vTC1KpYOPaC6HYcb5ZIoP30rXt132SZFPmNzGMXUAzPhezraQSETJML0-YMLY1D09LoAwRbTlw4uGZigt9PjhvXHPUUprNcjva2lweQVMTMcoLUG2dkwpJnAJ1tOrppxGueGQ",
+        "expirationTime": 1664255597779
       },
-      "token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU3Rvcm1icmluZ2VyIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdpR2VBUHpxWkJhazlfSVFtNE9MemdxalN4QXphV0V0MEtpMmxvLUd3PXM5Ni1jIiwiYWRtaW4iOnRydWUsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS90dHJwZ292ZXJsYXlzIiwiYXVkIjoidHRycGdvdmVybGF5cyIsImF1dGhfdGltZSI6MTY2NDI0NTU5OCwidXNlcl9pZCI6IlczdUpRQjNHdFJkZDRGWXhnVHY5cnlZWTEwQTMiLCJzdWIiOiJXM3VKUUIzR3RSZGQ0Rll4Z1R2OXJ5WVkxMEEzIiwiaWF0IjoxNjY0MjQ1NTk4LCJleHAiOjE2NjQyNDkxOTgsImVtYWlsIjoibWxzdGFubGV5QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA1ODUzNjU5MDU2MDUwNTU3NzU0Il0sImVtYWlsIjpbIm1sc3RhbmxleUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.A8w4R3v0k1FrotrMzHSGSIspGzoMPH_BcPahJp2Fle2br5U8fywyT9ooRiyPG-2U3stJ9fY3-T8bKMgjxsI9ZZ0j04sjGb6Yu-EmKW4Q9X4NinVthELQLZ5oK_C4P8VZu9xR7BYBzwM4ZylIpaG-T0UN_1Gxx1Dh08sq0ZqgCyB7p5aAiotQa_rjnTS9LdOz8opYk91VHDc8rqfAkkBetSWf9srZvikwHhQcF7zlkHXMbzNPPOFcNufY4bRiFhHKQYl2L_Grkgkj4Kbp0uaPvXJ6jduGVnZYeuhWI3MT1aImtRU-UnR8GIn4_Y21bsueaywAGTwkoN_NqUJwx4ZNTw",
-      "authTime": "Tue, 27 Sep 2022 02:26:38 GMT",
-      "issuedAtTime": "Tue, 27 Sep 2022 02:26:38 GMT",
-      "expirationTime": "Tue, 27 Sep 2022 03:26:38 GMT",
-      "signInProvider": "google.com",
-      "signInSecondFactor": null
+      "createdAt": "1631129195139",
+      "lastLoginAt": "1664251997797",
+      "apiKey": "AIzaSyDzpLjTCSF1FIG8_EuNQFCseQ_P-78rjS0",
+      "appName": "[DEFAULT]"
     }
+  },
+  "stsTokenManager": {
+    "refreshToken": "AOEOulaxW2OC_N1rOwaUu3BHJmDEqAT6GjMTaCSp9VmJdy632tgg0YoYJldmQR1hTsVTMhR3P0wBdPGHutDAn7lnx1UY97iyyS2bhbWsETpg9lctElrkdbplKzpSydSJ90R64b-TDAKnhqcpEKYIJyMcokEI8eRJORd_K8xjNh0P7UYKA1JKexAyKF2BjPSOwmZoTkmxeS1YtxN5bSly02gGqXRZqiq3f_02amyz0uQ0Q1_Ce53f6DIoFav41VgRNopwSHC99rc4qw7nHi2X8UiAKgJUo5z0Zn_FSTUVoFaK4jLAG1jh7oVkOc4jDpkEXzIBYCddmzdBKXh_elc1dbMU-l2G5KDMMKil_GW9VL_ESqFEGUAospLWTxlQcQtxvOJyaA3kycj1FsOJeRjGPFgyD2A8QT0kH86yVZx-nbqH1TcvsUrPc8MqTDYggaxyrsvXQktgOKZw3yPLt0jg9P5w2LSRPEu9MXmDw_-PesInNOnjutghD2hx2npaxRpAMALIVemJomnMnsf0OQOB2FxjNczK9EQpyfJ23wYhkaniB_3boTFcMit7fFIkNdolLRAaZ3KySH0vE4PYZ1SADE9AEH6nE3-PmIRHBKnAuNRutY2hHVOuJpB1ZBLLxUs1Ql3ZmuDfy9SI7hXAVnhv8vmtWZKZ1GUIptvzk8dBexoMnxayXjnziWb4QgjeHUyF2slmGexslVmphY4qB25ZYrD9LP9mYJ2BArW60AFM4U4qGwKSYbbSX_Ii5xon3IVpP-S15QvJP_Ug4OcNJbCavs86znaBZzDnfgQ1qb6cDRa744H3G7rVCSl1AdsACb9VtbOlaMfqOclA4p5C5raXXrPqB1YOk7OCyP5TaBuRUE8yOwH15YlwdiLDBpJIj-ivrwQo-4g2qK1yCAvbjMg5OHNTkofsdSe2SqGykeEgghg144E199kmHnii86VZZfSzSduUteP_MGmziKFW-Z8E95QBc4LBJT8zdisyDGVC6cNhgYG9m1k2u-UpHbTZ0DBkseOSiknftCFIKJFT0QdS2VVxo7rXLD1LYeMVCeqy0xLPus8QrpeYQQ9lVQuiU16uo95WYIBW6uam4rdwiU5db8NDyUUZb2tXxByxoF_wPRpJpSnpbOwLpSFYNHHIBpV7zW_Uh-03HPmXCZUbCHgxj2d3StARSITa21KyhvjiKPLqV-muj6Bf__3citYLU1to_eJH3C4bUeOHQQgg6lmp-FAPSxFmb1PdArBjZlaLOJn-9THiDyUf1Id4u7uawKSZ0oW7JVXLTnc3nmETmNxXDlXqqzve2ge3d96NoeR_1ggcPSgWYMbSVCsl_3htWcyeuNq2axcjpC-r7ud3SjBxoDnOhXQAvFi_Etc-SiqDrhkSmA636gv6KBW62oWKxV0FIFnML0vvbYHO",
+    "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiTWljaGFlbCBTdGFubGV5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdqNDZHTXJCaFlBMm1HVzI2bnk2bXhrNldheGZGUmNFZ2xTa0JxUTl6Qzd4VWpqaWZWbHlFOThXMzhta0xucXk1bk9mYTl5RE1qVVYxXzdid2xoVE85am5nSTdob3lIMThJdWgzbzg0ckNVbjg3b0pJYjRnaHdnbDFWUmU3T1I2SXRGOGNEeTZsQlUwTEVEVTlnT2NremhhX1NTclZjVVppWGgyTXhVNnVqSmh6RDVZSFVlLV9fc2JzUllTRjBPUHlhNXdnZzE2aXI4QjR4Z0k0aE85azBSTkRzYnJLVkliUXQtOEdRUWhDUEwzNlQyR0RVSDJCek51TzRjQ24tclNYdG83cUlfOVBuckF5REhJaDFMU1o1V2pFc0RrVl9CWkpXY0lSSTdpSUxIc3FMNzR1dnhQRGRIUzBZZ2lyOEwtY2xrNnd2dWdjQ0s3S3RseHhoRnhaOGdoYUo1N1dIaEpRYzNVYzZranpWXzl6blh5Vlota0Z0NzJuMTFnanhLMUh6N3o1aFZUVFJoQzdGaFZGc1BjcUY5YnZtTVpaaXMwMjR0bGJhX0hFWUJHbG5tVGZpSEpQcDBJUlRSZGhrZVFrajBzdlZiQlo1RHVfVEdrRjJPdlZYXy1jVTV1Y3BxT2JpbXdRX19YeTBRblBUZ2RNZ0xudkZ3SG9HaFVNMUFkUGdZRk9uOFhxVW5tQVItTFczZnJUWEJjQ2xoSVRaMmg4MTBtSUtJNmRtYlFWallfNVB5ZURiMEhQdEtvQXRPNjBqQ044OEZsd1RqTGxRdVo0RmxtX0pWMDhQRzRwY2xKR3NydFlGU0hEN05pSGwwTnpNVFdhTnJhSDNTalp1NmR5bW80S3BzT0F0emE5YlVtMGlMa3JCZmVUZUxUQnRUeUJvdlBqQkF3d1lCX0doVkZ6X212R3pfM1N1TFUzSWhDbGZTMWViSUFfNDJ3c1hKT1dKRmhJY1JhRHE4S3FRV045V2FDYmJIRVpyaFBBYmtBMWFGYTJQaHJiVEVBYmVLbjNILXBRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3R0cnBnb3ZlcmxheXMiLCJhdWQiOiJ0dHJwZ292ZXJsYXlzIiwiYXV0aF90aW1lIjoxNjY0MjUxOTk3LCJ1c2VyX2lkIjoiUFVnQnFESlNOaVV4Yks2Mkp4aGg1QjhOOWRlMiIsInN1YiI6IlBVZ0JxREpTTmlVeGJLNjJKeGhoNUI4TjlkZTIiLCJpYXQiOjE2NjQyNTE5OTcsImV4cCI6MTY2NDI1NTU5NywiZW1haWwiOiJtaWNoYWVsQHN0b3JtYnJpbmdlcmdhbWVzLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA4NTQ0MjgwOTcxODUzMDg1NDgyIl0sImVtYWlsIjpbIm1pY2hhZWxAc3Rvcm1icmluZ2VyZ2FtZXMuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.nohcX2Tn9RnxUErx_jf0CBpiiwICMEVQgjg4xvPDDKMLsd7fQT3gKLtvfrXM9aYJsZ5d6yX2CwDzrw-nJBEpaPHU9SUlHR1Em0D0UkTtpJs-NvO-c8OYqdCiYsHHe2ee74bAPEh1uWLRPmJN5lJZC4-kVewt_hzvYXEEDU-RGMBFDRpaeRoIJpsGtdcfzTD7K9IWwTa2ZXxd5yxF9vTC1KpYOPaC6HYcb5ZIoP30rXt132SZFPmNzGMXUAzPhezraQSETJML0-YMLY1D09LoAwRbTlw4uGZigt9PjhvXHPUUprNcjva2lweQVMTMcoLUG2dkwpJnAJ1tOrppxGueGQ",
+    "expirationTime": 1664255597779
+  },
+  "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiTWljaGFlbCBTdGFubGV5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdqNDZHTXJCaFlBMm1HVzI2bnk2bXhrNldheGZGUmNFZ2xTa0JxUTl6Qzd4VWpqaWZWbHlFOThXMzhta0xucXk1bk9mYTl5RE1qVVYxXzdid2xoVE85am5nSTdob3lIMThJdWgzbzg0ckNVbjg3b0pJYjRnaHdnbDFWUmU3T1I2SXRGOGNEeTZsQlUwTEVEVTlnT2NremhhX1NTclZjVVppWGgyTXhVNnVqSmh6RDVZSFVlLV9fc2JzUllTRjBPUHlhNXdnZzE2aXI4QjR4Z0k0aE85azBSTkRzYnJLVkliUXQtOEdRUWhDUEwzNlQyR0RVSDJCek51TzRjQ24tclNYdG83cUlfOVBuckF5REhJaDFMU1o1V2pFc0RrVl9CWkpXY0lSSTdpSUxIc3FMNzR1dnhQRGRIUzBZZ2lyOEwtY2xrNnd2dWdjQ0s3S3RseHhoRnhaOGdoYUo1N1dIaEpRYzNVYzZranpWXzl6blh5Vlota0Z0NzJuMTFnanhLMUh6N3o1aFZUVFJoQzdGaFZGc1BjcUY5YnZtTVpaaXMwMjR0bGJhX0hFWUJHbG5tVGZpSEpQcDBJUlRSZGhrZVFrajBzdlZiQlo1RHVfVEdrRjJPdlZYXy1jVTV1Y3BxT2JpbXdRX19YeTBRblBUZ2RNZ0xudkZ3SG9HaFVNMUFkUGdZRk9uOFhxVW5tQVItTFczZnJUWEJjQ2xoSVRaMmg4MTBtSUtJNmRtYlFWallfNVB5ZURiMEhQdEtvQXRPNjBqQ044OEZsd1RqTGxRdVo0RmxtX0pWMDhQRzRwY2xKR3NydFlGU0hEN05pSGwwTnpNVFdhTnJhSDNTalp1NmR5bW80S3BzT0F0emE5YlVtMGlMa3JCZmVUZUxUQnRUeUJvdlBqQkF3d1lCX0doVkZ6X212R3pfM1N1TFUzSWhDbGZTMWViSUFfNDJ3c1hKT1dKRmhJY1JhRHE4S3FRV045V2FDYmJIRVpyaFBBYmtBMWFGYTJQaHJiVEVBYmVLbjNILXBRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3R0cnBnb3ZlcmxheXMiLCJhdWQiOiJ0dHJwZ292ZXJsYXlzIiwiYXV0aF90aW1lIjoxNjY0MjUxOTk3LCJ1c2VyX2lkIjoiUFVnQnFESlNOaVV4Yks2Mkp4aGg1QjhOOWRlMiIsInN1YiI6IlBVZ0JxREpTTmlVeGJLNjJKeGhoNUI4TjlkZTIiLCJpYXQiOjE2NjQyNTE5OTcsImV4cCI6MTY2NDI1NTU5NywiZW1haWwiOiJtaWNoYWVsQHN0b3JtYnJpbmdlcmdhbWVzLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA4NTQ0MjgwOTcxODUzMDg1NDgyIl0sImVtYWlsIjpbIm1pY2hhZWxAc3Rvcm1icmluZ2VyZ2FtZXMuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.nohcX2Tn9RnxUErx_jf0CBpiiwICMEVQgjg4xvPDDKMLsd7fQT3gKLtvfrXM9aYJsZ5d6yX2CwDzrw-nJBEpaPHU9SUlHR1Em0D0UkTtpJs-NvO-c8OYqdCiYsHHe2ee74bAPEh1uWLRPmJN5lJZC4-kVewt_hzvYXEEDU-RGMBFDRpaeRoIJpsGtdcfzTD7K9IWwTa2ZXxd5yxF9vTC1KpYOPaC6HYcb5ZIoP30rXt132SZFPmNzGMXUAzPhezraQSETJML0-YMLY1D09LoAwRbTlw4uGZigt9PjhvXHPUUprNcjva2lweQVMTMcoLUG2dkwpJnAJ1tOrppxGueGQ",
+  "displayName": "Michael Stanley",
+  "email": "michael@stormbringergames.com",
+  "emailVerified": true,
+  "phoneNumber": null,
+  "photoURL": "https://lh3.googleusercontent.com/a-/AOh14Gj46GMrBhYA2mGW26ny6mxk6WaxfFRcEglSkBqQ9zC7xUjjifVlyE98W38mkLnqy5nOfa9yDMjUV1_7bwlhTO9jngI7hoyH18Iuh3o84rCUn87oJIb4ghwgl1VRe7OR6ItF8cDy6lBU0LEDU9gOckzha_SSrVcUZiXh2MxU6ujJhzD5YHUe-__sbsRYSF0OPya5wgg16ir8B4xgI4hO9k0RNDsbrKVIbQt-8GQQhCPL36T2GDUH2BzNuO4cCn-rSXto7qI_9PnrAyDHIh1LSZ5WjEsDkV_BZJWcIRI7iILHsqL74uvxPDdHS0Ygir8L-clk6wvugcCK7KtlxxhFxZ8ghaJ57WHhJQc3Uc6kjzV_9znXyVZ-kFt72n11gjxK1Hz7z5hVTTRhC7FhVFsPcqF9bvmMZZis024tlba_HEYBGlnmTfiHJPp0IRTRdhkeQkj0svVbBZ5Du_TGkF2OvVX_-cU5ucpqObimwQ__Xy0QnPTgdMgLnvFwHoGhUM1AdPgYFOn8XqUnmAR-LW3frTXBcClhITZ2h810mIKI6dmbQVjY_5PyeDb0HPtKoAtO60jCN88FlwTjLlQuZ4Flm_JV08PG4pclJGsrtYFSHD7NiHl0NzMTWaNraH3SjZu6dymo4KpsOAtza9bUm0iLkrBfeTeLTBtTyBovPjBAwwYB_GhVFz_mvGz_3SuLU3IhClfS1ebIA_42wsXJOWJFhIcRaDq8KqQWN9WaCbbHEZrhPAbkA1aFa2PhrbTEAbeKn3H-pQ=s96-c",
+  "isAnonymous": false,
+  "tenantId": null,
+  "providerData": [
+    {
+      "providerId": "google.com",
+      "uid": "108544280971853085482",
+      "displayName": "Michael Stanley",
+      "email": "michael@stormbringergames.com",
+      "phoneNumber": null,
+      "photoURL": "https://lh3.googleusercontent.com/a-/ACNPEu_DtB33gYoW2nkQ8h8ZVd8UeSMPpYgiB--FCKVrPQ61SnPtxRy4GZYHhYdqNUYFASs7eTD05bBhQIgOipnDt2z6xXdtr5mUGKRH7ulM3ET3-Jen9Mau7r3POFrswP33eWLhvasYFR0utNu0CsMvum2kjgPuZFLP5pjbIYtCkO3I3dbHS0zdhG14OQS7CSqwCOGWP4IHeZgyPieSQCKNmkge89SAgCDvAEZSH8NAcvUuu2vHJWceyAUot2yEucDmErJe4O6mMfEuZVwEyG2OX29h5z-HbWVVpB0vUlBohqVyP1xl3X0OwXDYnKaeQ7y6hUZWQAIUIrqxPqjds2jFkFmgNERQ8e8ASNUMLyr20R6VDlBg7CiMazHwQ6y5iHl_zEXA-Vz4yKSNMfmvkP86MJREY3G_buMnev70fHDxnRyMG3ZGpCZG0TLJ3SdcaRrpJG6ajz7NczfWqcjZAfXzscVJlDBW125DsHa-YKBGnndRcyKy_XjmA4Dv4EOeoyC_7GefN_yNIiBGeVI42U2lE9L6L_A2r8gGk9t14zhDV8ZFfNqpwgKmDGDaBOeKKINpI4N5iir84OlyAgu1g66d6AHxv0Yj8bB6ny4dse5p7C-3kLYVSzScWTUcS7bs4iszTghWFPgmPETwbTUVYx6LeQskKMQI8SFk5kV0Ga718VKQBMCbURdlxtCoVtjVZbaGJddgXfgzUbp6KiJP805oGURCEpZDmhhc5406K6SXGyfR5GoeOKluSkBMPnppgyLQq-fvUxqz=s96-c"
+    }
+  ],
+  "metadata": {
+    "createdAt": "1631129195139",
+    "lastLoginAt": "1664251997797"
+  },
+  "token": {
+    "claims": {
+      "name": "Michael Stanley",
+      "picture": "https://lh3.googleusercontent.com/a-/AOh14Gj46GMrBhYA2mGW26ny6mxk6WaxfFRcEglSkBqQ9zC7xUjjifVlyE98W38mkLnqy5nOfa9yDMjUV1_7bwlhTO9jngI7hoyH18Iuh3o84rCUn87oJIb4ghwgl1VRe7OR6ItF8cDy6lBU0LEDU9gOckzha_SSrVcUZiXh2MxU6ujJhzD5YHUe-__sbsRYSF0OPya5wgg16ir8B4xgI4hO9k0RNDsbrKVIbQt-8GQQhCPL36T2GDUH2BzNuO4cCn-rSXto7qI_9PnrAyDHIh1LSZ5WjEsDkV_BZJWcIRI7iILHsqL74uvxPDdHS0Ygir8L-clk6wvugcCK7KtlxxhFxZ8ghaJ57WHhJQc3Uc6kjzV_9znXyVZ-kFt72n11gjxK1Hz7z5hVTTRhC7FhVFsPcqF9bvmMZZis024tlba_HEYBGlnmTfiHJPp0IRTRdhkeQkj0svVbBZ5Du_TGkF2OvVX_-cU5ucpqObimwQ__Xy0QnPTgdMgLnvFwHoGhUM1AdPgYFOn8XqUnmAR-LW3frTXBcClhITZ2h810mIKI6dmbQVjY_5PyeDb0HPtKoAtO60jCN88FlwTjLlQuZ4Flm_JV08PG4pclJGsrtYFSHD7NiHl0NzMTWaNraH3SjZu6dymo4KpsOAtza9bUm0iLkrBfeTeLTBtTyBovPjBAwwYB_GhVFz_mvGz_3SuLU3IhClfS1ebIA_42wsXJOWJFhIcRaDq8KqQWN9WaCbbHEZrhPAbkA1aFa2PhrbTEAbeKn3H-pQ=s96-c",
+      "iss": "https://securetoken.google.com/ttrpgoverlays",
+      "aud": "ttrpgoverlays",
+      "auth_time": 1664251997,
+      "user_id": "PUgBqDJSNiUxbK62Jxhh5B8N9de2",
+      "sub": "PUgBqDJSNiUxbK62Jxhh5B8N9de2",
+      "iat": 1664251997,
+      "exp": 1664255597,
+      "email": "michael@stormbringergames.com",
+      "email_verified": true,
+      "firebase": {
+        "identities": {
+          "google.com": [
+            "108544280971853085482"
+          ],
+          "email": [
+            "michael@stormbringergames.com"
+          ]
+        },
+        "sign_in_provider": "google.com"
+      }
+    },
+    "token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxZTZjMGM2YjRlMzA5NTI0N2MwNjgwMDAwZTFiNDMxODIzODZkNTAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiTWljaGFlbCBTdGFubGV5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdqNDZHTXJCaFlBMm1HVzI2bnk2bXhrNldheGZGUmNFZ2xTa0JxUTl6Qzd4VWpqaWZWbHlFOThXMzhta0xucXk1bk9mYTl5RE1qVVYxXzdid2xoVE85am5nSTdob3lIMThJdWgzbzg0ckNVbjg3b0pJYjRnaHdnbDFWUmU3T1I2SXRGOGNEeTZsQlUwTEVEVTlnT2NremhhX1NTclZjVVppWGgyTXhVNnVqSmh6RDVZSFVlLV9fc2JzUllTRjBPUHlhNXdnZzE2aXI4QjR4Z0k0aE85azBSTkRzYnJLVkliUXQtOEdRUWhDUEwzNlQyR0RVSDJCek51TzRjQ24tclNYdG83cUlfOVBuckF5REhJaDFMU1o1V2pFc0RrVl9CWkpXY0lSSTdpSUxIc3FMNzR1dnhQRGRIUzBZZ2lyOEwtY2xrNnd2dWdjQ0s3S3RseHhoRnhaOGdoYUo1N1dIaEpRYzNVYzZranpWXzl6blh5Vlota0Z0NzJuMTFnanhLMUh6N3o1aFZUVFJoQzdGaFZGc1BjcUY5YnZtTVpaaXMwMjR0bGJhX0hFWUJHbG5tVGZpSEpQcDBJUlRSZGhrZVFrajBzdlZiQlo1RHVfVEdrRjJPdlZYXy1jVTV1Y3BxT2JpbXdRX19YeTBRblBUZ2RNZ0xudkZ3SG9HaFVNMUFkUGdZRk9uOFhxVW5tQVItTFczZnJUWEJjQ2xoSVRaMmg4MTBtSUtJNmRtYlFWallfNVB5ZURiMEhQdEtvQXRPNjBqQ044OEZsd1RqTGxRdVo0RmxtX0pWMDhQRzRwY2xKR3NydFlGU0hEN05pSGwwTnpNVFdhTnJhSDNTalp1NmR5bW80S3BzT0F0emE5YlVtMGlMa3JCZmVUZUxUQnRUeUJvdlBqQkF3d1lCX0doVkZ6X212R3pfM1N1TFUzSWhDbGZTMWViSUFfNDJ3c1hKT1dKRmhJY1JhRHE4S3FRV045V2FDYmJIRVpyaFBBYmtBMWFGYTJQaHJiVEVBYmVLbjNILXBRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3R0cnBnb3ZlcmxheXMiLCJhdWQiOiJ0dHJwZ292ZXJsYXlzIiwiYXV0aF90aW1lIjoxNjY0MjUxOTk3LCJ1c2VyX2lkIjoiUFVnQnFESlNOaVV4Yks2Mkp4aGg1QjhOOWRlMiIsInN1YiI6IlBVZ0JxREpTTmlVeGJLNjJKeGhoNUI4TjlkZTIiLCJpYXQiOjE2NjQyNTE5OTcsImV4cCI6MTY2NDI1NTU5NywiZW1haWwiOiJtaWNoYWVsQHN0b3JtYnJpbmdlcmdhbWVzLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA4NTQ0MjgwOTcxODUzMDg1NDgyIl0sImVtYWlsIjpbIm1pY2hhZWxAc3Rvcm1icmluZ2VyZ2FtZXMuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.nohcX2Tn9RnxUErx_jf0CBpiiwICMEVQgjg4xvPDDKMLsd7fQT3gKLtvfrXM9aYJsZ5d6yX2CwDzrw-nJBEpaPHU9SUlHR1Em0D0UkTtpJs-NvO-c8OYqdCiYsHHe2ee74bAPEh1uWLRPmJN5lJZC4-kVewt_hzvYXEEDU-RGMBFDRpaeRoIJpsGtdcfzTD7K9IWwTa2ZXxd5yxF9vTC1KpYOPaC6HYcb5ZIoP30rXt132SZFPmNzGMXUAzPhezraQSETJML0-YMLY1D09LoAwRbTlw4uGZigt9PjhvXHPUUprNcjva2lweQVMTMcoLUG2dkwpJnAJ1tOrppxGueGQ",
+    "authTime": "Tue, 27 Sep 2022 04:13:17 GMT",
+    "issuedAtTime": "Tue, 27 Sep 2022 04:13:17 GMT",
+    "expirationTime": "Tue, 27 Sep 2022 05:13:17 GMT",
+    "signInProvider": "google.com",
+    "signInSecondFactor": null
   }
+}

@@ -29,10 +29,6 @@ finalTarget.value = computed(() =>
     ? targetNumber.value - modTotal.value
     : 0
 );
-const finalRoll = ref(0);
-finalRoll.value = computed(() =>
-  finalTarget.value > 0 ? parseInt(finalTarget.value) * 3 : 0
-);
 </script>
 <template>
   <h1 class="my-3">Target Number</h1>
@@ -122,10 +118,8 @@ finalRoll.value = computed(() =>
     </div>
   </div>
   <div class="container flex justify-center w-full">
-    <div class="flex justify-between w-full tabs">
-      <a class="tab tab-bordered">Task</a>
-      <a class="tab tab-bordered tab-active">Attack</a>
-      <a class="tab tab-bordered">Defense</a>
-    </div>
+    <ul>
+        <li></li>
+    </ul>
   </div>
 </template>
