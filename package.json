@@ -22,7 +22,7 @@
     "theme-change": "^2.2.0",
     "three": "^0.134.0",
     "troisjs": "^0.3.3",
-    "vee-validate": "^4.5.11",
+    "vee-validate": "^4.7.0",
     "vue": "^3.2.21",
     "vue-iframes": "0.0.16",
     "vue-router": "^4.0.10",
