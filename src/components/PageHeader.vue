@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="text-xs max-w-fit md:flex-none md:text-xl">
-        <router-link to="/" class="normal-case btn btn-primary"
+        <router-link to="/" class="normal-case btn btn-ghost"
           ><v-icon name="fa-home" class="mx-1" />CypherSystem.games</router-link
         >
       </div>

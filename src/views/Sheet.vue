@@ -2,7 +2,7 @@
   <div id="page-top" class="h-full my-3 drawer drawer-end scroll-mt-0">
     <input
       id="sheet-form-drawer"
-      v-model="toggleSheetDrawer"
+      v-model="sheetDrawer"
       type="checkbox"
       class="drawer-toggle"
     />
@@ -128,21 +128,22 @@
         <skills-abilites :tab-data="abilityGroups" />
         <!-- attacks equipment -->
         <attacks-equipment />
+        <background-secrets />
+        <public-private-notes />
       </div>
     </div>
     <!-- left drawer -->
     <div class="drawer-side">
       <label for="sheet-form-drawer" class="drawer-overlay"></label>
-      <ul class="p-4 overflow-y-auto menu w-80 bg-base-100 text-base-content">
+      <div class="p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
         <!-- Sidebar content here -->
-        <li><a>Sidebar Item 1</a></li>
-        <li><a>Sidebar Item 2</a></li>
-      </ul>
+        <component :is="drawerSwitch" />
+      </div>
     </div>
     <label
-      for="sheet-form-drawer"
       title="Create Source"
-      class="fixed z-[5] flex items-center justify-center text-4xl duration-300 rounded-full w-9 h-9 md:w-16 md:h-16 drawer-button text-secondary-content bg-secondary bottom-1.5 right-1.5 drop-shadow-lg hover:bg-primary-focus hover:drop-shadow-2xl hover:animate-bounce"
+      class="fixed z-[5] flex items-center justify-center text-4xl duration-300 rounded-full w-9 h-9 md:w-16 md:h-16 drawer-button text-secondary-content bg-secondary bottom-2 right-2 drop-shadow-lg hover:bg-primary-focus hover:drop-shadow-2xl hover:animate-bounce"
+      @click.prevent="openFormDrawer('PROFILE')"
     >
       <v-icon name="gi-gear-hammer" label="Change Character" scale="3.66" />
     </label>
@@ -157,15 +158,19 @@
   />
 
   <div class="modal modal-bottom sm:modal-middle">
-    <div class="mockup-window modal-box lg:w-11/12 lg:max-w-3xl">
+    <div
+      class="mockup-window modal-box bg-neutral"
+      :class="[
+        sheetModal ?? 'lg:w-11/12 lg:max-w-3xl',
+        sheetModal === 'DETAIL' ? 'lg:w-fit lg:h-fit' : '',
+      ]"
+    >
       <div class="modal-action">
-        <div class="flex-1">
-          <h1 class="capitalize">
-            {{ modalAction }} {{ sheetModal.toLowerCase() }}
-          </h1>
-        </div>
-        <label class="flex-none btn btn-circle" @click.prevent="closeModal">
-          <v-icon name="hi-solid-x" scale="1.66" />
+        <label
+          class="flex-none btn btn-circle btn-neutral mb-1"
+          @click.prevent="closeModal"
+        >
+          <v-icon name="hi-solid-x" scale="1.33" />
         </label>
       </div>
       <component
@@ -192,12 +197,16 @@ import PoolCalc from "@/components/modals/poolCalc.vue";
 import RecoveryCalc from "@/components/modals/recoveryCalc.vue";
 import SkillsAbilites from "@/components/sheets/SkillsAbilites.vue";
 import AttacksEquipment from "@/components/sheets/EquipmentCyphers.vue";
+import BackgroundSecrets from "@/components/sheets/BackgroundSecrets.vue";
+import PublicPrivateNotes from "@/components/sheets/PublicPrivateNotes.vue";
 import ItemDetail from "@/components/modals/itemDetail.vue";
+import ProfileForm from "@/components/form/sheet/ProfileForm.vue";
 
 const openModal = ref(false);
-const toggleSheetDrawer = ref(false);
-const sheetDrawerForm = ref("profile");
+const sheetDrawer = ref(false);
+const sheetDrawerForm = ref(null);
 const modalSwitch = shallowRef(null);
+const drawerSwitch = shallowRef(null);
 const modalAction = ref(null);
 const itemDetailData = ref({});
 const itemDocId = ref({});
@@ -423,11 +432,109 @@ const state = reactive({
     },
   },
   attackEquipmentGroups: {
-    ATTACKS: [
-      {
-        type: "WEAPON",
+    COMBAT: {
+      ATTACKS: [
+        {
+          weapon: "MEDIUM",
+          damageMod: 0,
+          title: "Hand Axe",
+          description: "stuff and this axe",
+          icon: "gi-wood-axe",
+          pool: "might",
+          task: "trained",
+        },
+        {
+          type: "ATTACK",
+          weapon: "ABILITY",
+          category: { title: "Special Attack" },
+          damage: 4,
+          title: "Arcane Bolts",
+          description: "stuff and this",
+          icon: "gi-arcing-bolt",
+          pool: "intellect",
+          cost: 1,
+        },
+        {
+          type: "ATTACK",
+          weapon: "ABILITY",
+          damage: 2,
+          title: "Mind Blast",
+          description: "Head ache",
+          icon: "gi-psychic-waves",
+          pool: "intellect",
+          cost: 1,
+        },
+      ],
+      DEFENSE: [
+        {
+          type: "DEFENSE",
+          weapon: "MEDIUM",
+          damageMod: 0,
+          title: "Speed Defense",
+          description: "stuff and this axe",
+          icon: "gi-dodging",
+          pool: "speed",
+          task: "trained",
+        },
+      ],
+      ARMOR: [
+        {
+          title: "Strong Duster",
+          armor: "HEAVY",
+          icon: "gi-pirate-coat",
+          description: "stuff and this axe",
+          task: "trained",
+        },
+      ],
+    },
+    EQUIPMENT: {
+      ASSETS: [
+        {
+          title: "Spy Glass",
+          description: "Asset for perception tasks at range",
+          skill: "Perception",
+          pool: "Intellect",
+        },
+      ],
+      NORMAL: [{ title: "Rope", icon: "gi-rope-coil", qty: 50 }],
+      WEAPONS: [
+        {
+          weapon: "MEDIUM",
+          damageMod: 0,
+          title: "Hand Axe",
+          description: "stuff and this axe",
+          icon: "gi-wood-axe",
+          pool: "might",
+          task: "trained",
+          equiped: true,
+        },
+      ],
+      ARMOR: [
+        {
+          title: "Strong Duster",
+          armor: "MEDUIM",
+          icon: "gi-pirate-coat",
+          description: "stuff and this axe",
+          equiped: true,
+        },
+      ],
+    },
+    SPECIAL: {
+      CYPHERS: {
+        limit: 3,
+        list: [
+          {
+            title: "Best Tool",
+            levelRange: "1d6",
+            level: 3,
+            description:
+              "Provides an additional asset for any one task using a tool, even if that means exceeding the normal limit of two assets",
+            mods: ["ASSET"],
+          },
+        ],
       },
-    ],
+      ARTIFACTS: [],
+    },
   },
 });
 const modalComponents = {
@@ -436,14 +543,15 @@ const modalComponents = {
   RECOVERY: RecoveryCalc,
   DETAIL: ItemDetail,
 };
+const drawerComponents = {
+  PROFILE: ProfileForm,
+};
 const { auth } = useAuthState();
 const { statPools, recovery, profile, abilityGroups, attackEquipmentGroups } =
   state;
 const sheetModal = ref("");
 const poolKey = ref("");
 const itemsType = ref("");
-const selectedItemsType = ref("SKILLS");
-const selectedEquipmentTab = ref("ATTACK");
 
 const openRecovery = () => {
   modalAction.value = "";
@@ -455,16 +563,16 @@ const openAction = (key = null) => {
   sheetModal.value = "ACTION";
   openModal.value = true;
 };
-const openPool = (key = null) => {
+const openPool = (key = "might") => {
   modalAction.value = key;
   sheetModal.value = "POOL";
   openModal.value = true;
 };
 
-const openDetail = (id = "", itmType = "") => {
+const openDetail = (id = "", type = "") => {
   sheetModal.value = "DETAIL";
   itemDocId.value = id;
-  itemType.value = itmType;
+  itemType.value = type;
   openModal.value = true;
 };
 
@@ -474,27 +582,34 @@ const closeModal = () => {
   openModal.value = false;
 };
 
-const openFormDrawer = (key) => {
+const openFormDrawer = (key = "PROFILE") => {
   sheetDrawerForm.value = key;
-  toggleSheetDrawer.value = true;
+  sheetDrawer.value = true;
+};
+const closeFormDrawer = () => {
+  sheetDrawerForm.value = null;
+  sheetDrawer.value = false;
 };
 
 watch([sheetModal, modalAction], ([newModal, newPool]) => {
   modalSwitch.value = modalComponents[newModal];
   poolKey.value = newPool;
 });
-provide("poolData", statPools);
+watch(sheetDrawerForm, (newForm) => {
+  drawerSwitch.value = drawerComponents[newForm];
+});
+provide("poolData", statPools, poolKey, sheetModal, openPool);
 provide("abilityData", abilityGroups);
 provide("equipmentData", attackEquipmentGroups);
 provide("modalToggle", openModal);
-provide("poolToggle", sheetModal);
-provide("selectedPool", modalAction);
+provide("formDrawer", { closeFormDrawer });
 provide("itemActions", {
   openFormDrawer,
   openRecovery,
   openAction,
   openPool,
   openDetail,
+  modalAction,
 });
 provide(poolKey);
 </script>

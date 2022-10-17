@@ -1,13 +1,17 @@
 <script setup>
 import { ref, inject } from "vue";
+import CombatList from "@/components/sheets/CombatList.vue";
+import EquipmentList from "@/components/sheets/EquipentList.vue";
+import CyphersList from "@/components/sheets/CypherList.vue";
 
 const props = defineProps({
   tabData: { type: Object, default: () => {} },
   selected: { type: String, default: "ATTACK" },
 });
+const eqData = ref(inject("equipmentData"));
 
 const activeTab = ref(props.selected);
-const armorValue = ref("1");
+const armorValue = ref(0);
 const selectTab = (key) => {
   activeTab.value = key;
 };
@@ -21,7 +25,7 @@ const { openFormDrawer, openAction, openRecovery, openPool } =
     class="col-span-12 shadow-xl xl:col-span-6 card md:card-side bg-base-100"
   >
     <div
-      class="flex flex-row md:flex-col items-center justify-evenly w-full h-full p-6 text-center md:w-44 bg-neutral text-neutral-content"
+      class="flex flex-row justify-items-center md:flex-col items-center md:justify-start md:space-y-6 w-full h-full p-6 text-center md:w-44 bg-neutral text-neutral-content"
     >
       <button
         class="btm-sm btn btn-primary"
@@ -75,6 +79,9 @@ const { openFormDrawer, openAction, openRecovery, openPool } =
           >Cypher/Artifact</a
         >
       </div>
+      <combat-list v-if="activeTab === 'ATTACK'" />
+      <equipment-list v-if="activeTab === 'EQUIPMENT'" />
+      <cyphers-list v-if="activeTab === 'CYPHERS'" />
     </div>
   </div>
 </template>

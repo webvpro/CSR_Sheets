@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from "vue";
-import SheetList from "@/components/SheetList.vue";
+import SheetList from "@/components/sheets/SkillsList.vue";
 const props = defineProps({
   tabData: { type: Object, default: () => {} },
   selected: { type: String, default: "SKILLS" },

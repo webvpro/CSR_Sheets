@@ -6,7 +6,6 @@ const props = defineProps({
   itemType: { type: String, default: "SKILLS" },
 });
 const detail = ref(props.itemDetail);
-const type = ref("SKILLS");
 
 detail.value = {
   id: "X123",
@@ -19,5 +18,5 @@ detail.value = {
 };
 </script>
 <template>
-  <item-card :item-type="type" :item-data="detail" />
+  <item-card :item-type="itemType" :item-data="detail" />
 </template>

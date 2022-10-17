@@ -30,7 +30,8 @@ const getIcon = (icon = null) => icon ?? props.itemIcon;
       </p>
       <div
         class="justify-end flex-1 p-2 border-t-4 btn-group card-actions border-primary"
-      > {{ itemType }}
+      >
+        {{ itemType }}
         <div v-if="itemType === 'SKILLS'" class="">
           <span>Pool: {{ itemData.pool }}</span
           ><span class="capitalize">Expertise:{{ itemData.level }}</span>

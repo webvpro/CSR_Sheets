@@ -1,14 +1,20 @@
 <script setup>
-import { ref, reactive, watch, computed } from "vue";
+import { ref, reactive, watch, computed, provide } from "vue";
+import MiniStatPool from "../sheets/MiniStatPool.vue";
 const props = defineProps({
   poolData: { type: Object, default: () => {} },
   recoveryData: { type: Object, default: () => {} },
-  poolKey: { type: String, default: "" },
+  poolKey: { type: String, default: " " },
   targetNum: { type: Number, default: 1 },
   targetMods: { type: Object, default: () => {} },
 });
 const mods = reactive();
-const pool = ref(props.poolData[props.poolKey]);
+const poolsData = ref(props.poolData);
+const poolKey = ref(props.poolKey);
+const currentPool = ref({});
+currentPool.value = computed(
+  () => poolsData.value[poolKey.value.toLowerCase()]
+);
 const modTotal = ref(0);
 const pointCost = ref(0);
 const targetNumber = ref(props.targetNum);
@@ -18,7 +24,9 @@ const targetStep = ref(1);
 const targetPreview = ref(0);
 
 targetPreview.value = computed(() => targetNumber.value * 3);
-
+const switchPool = (pool) => {
+  poolKey.value = pool;
+};
 const rangeGoto = (num) => {
   targetNumber.value = num;
 };
@@ -31,7 +39,19 @@ finalTarget.value = computed(() =>
 );
 </script>
 <template>
-  <h1 class="my-3">Target Number</h1>
+  <div class="flex-1 w-full bg-neutral text-neutral-content">
+    <mini-stat-pool :key="poolKey" :pool-data="currentPool" />
+  </div>
+  <div class="flex justify-center w-full py-2 gap-2">
+    <a
+      v-for="(pool, key) in poolData"
+      :key="`l-${key}`"
+      class="btn btn-xs"
+      :class="[key == poolKey ? 'btn-primary' : 'btn-secondary']"
+      @click.prevent="switchPool(key)"
+      ><v-icon :name="pool.icon" scale="1" label="switch" />{{ pool.label }}</a
+    >
+  </div>
   <input
     v-model="targetNumber"
     type="range"
@@ -40,7 +60,9 @@ finalTarget.value = computed(() =>
     class="range"
     :step="targetStep"
   />
-  <div class="flex justify-between w-full px-2 text-xs md:text-lg">
+  <div
+    class="container flex flex-row justify-between w-full text-xs text-neutral-content"
+  >
     <span class="no-underline link" @click.prevent="rangeGoto(targetMin)">{{
       targetMin
     }}</span>
@@ -61,65 +83,82 @@ finalTarget.value = computed(() =>
       targetMax
     }}</span>
   </div>
-  <div
-    class="justify-center my-3 shadow md:flex stats stats-vertical lg:stats-horizontal"
-  >
-    <div class="stat">
-      <div class="stat-figure">
-        <v-icon name="fa-minus" class="text-4xl text-primary" scale="2.66" />
-      </div>
-      <div class="stat-title">Target</div>
-      <div class="stat-value">
-        <input
-          v-model="targetNumber"
-          type="number"
-          max="20"
-          min="0"
-          maxlength="2"
-          class="w-32 text-4xl input input-ghost"
-        />
-      </div>
-      <div class="text-lg stat-desc">
-        {{
-          targetNumber == 0
-            ? "Auto Success"
-            : `Roll ${targetPreview.value} >= on d20`
-        }}
-      </div>
-    </div>
 
-    <div class="stat">
-      <div class="stat-figure">
-        <v-icon name="fa-equals" class="text-4xl text-primary" scale="2.66" />
+  <div class="container grid grid-cols-6 gap-2">
+    <div class="col-span-6"></div>
+    <div
+      class="my-3 shadow w-full justify-center text-center stats stats-vertical col-span-2"
+    >
+      <div class="stat -pl-3 flex-1 flex-col">
+        <div class="stat-title text-xs md:text-base">Target</div>
+        <div class="stat-value">
+          <div class="form-control">
+            <label class="input-group input-group-xs">
+              <input
+                v-model="targetNumber"
+                type="number"
+                max="20"
+                min="0"
+                maxlength="2"
+                class="w-16 md:w-20 text-sm md-text-2xl input input-ghost"
+              /><span class="text-primary bg-transparent text-3xl -pl-10"
+                >-</span
+              >
+            </label>
+          </div>
+        </div>
       </div>
-      <div class="stat-title">Modifactions</div>
-      <div class="stat-value">
-        <input
-          v-model="modTotal"
-          type="number"
-          max="20"
-          min="0"
-          maxlength="2"
-          class="w-32 text-4xl input input-ghost"
-        />
+
+      <div class="stat flex-1 flex-col justify-start">
+        <div class="stat-title text-xs md:text-base">Modifiers</div>
+        <div class="stat-value flex flex-row justify-center text-center">
+          <div class="form-control">
+            <label class="input-group input-group-xs">
+              <input
+                v-model="modTotal"
+                type="number"
+                max="20"
+                min="0"
+                maxlength="2"
+                class="w-16 md:w-20 text-sm md-text-2xl input input-ghost"
+              /><span class="text-primary bg-transparent text-3xl">=</span>
+            </label>
+          </div>
+        </div>
       </div>
-      <div tabindex="4" class="p-1 stat-desc">
-        Mods Used:
-        <div class="badge badge-info">
-          <span>Assets(2)</span>
+
+      <div class="stat flex-1 flex-col justify-start">
+        <div class="stat-title text-xs md:text-base">
+          1d20 > {{ parseInt(finalTarget.value) * 3 }}
+        </div>
+        <div class="stat-value flex flex-row justify-center text-center">
+          <p class="text-sm md-text-3xl px-1">
+            {{ finalTarget }}<span class="text-primary"> x </span>3<span
+              class="text-primary"
+            >
+              = </span
+            >{{ parseInt(finalTarget.value) * 3 }}
+          </p>
         </div>
       </div>
     </div>
-
-    <div class="stat">
-      <div class="stat-title">Roll >= 1d20</div>
-      <div class="stat-value">{{ parseInt(finalTarget.value) * 3 }}</div>
-      <div class="stat-desc">Target: {{ finalTarget }}</div>
-    </div>
-  </div>
-  <div class="container flex justify-center w-full">
-    <ul>
-        <li></li>
+    <ul class="col-span-2">
+      <li>
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">1 Level of Effort</span>
+            <input type="checkbox" class="toggle toggle-primary" />
+          </label>
+          <label class="label cursor-pointer">
+            <span class="label-text">2nd Level of Effort</span>
+            <input type="checkbox" class="toggle toggle-primary" />
+          </label>
+          <label class="label cursor-pointer">
+            <span class="label-text">Apply Edge</span>
+            <input type="checkbox" class="toggle toggle-primary" />
+          </label>
+        </div>
+      </li>
     </ul>
   </div>
 </template>
