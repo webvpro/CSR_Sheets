@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@google-cloud/pubsub": "^3.0.1",
-    "@google-cloud/storage": "^5.16.1",
+    "@google-cloud/storage": "^6.9.2",
     "@headlessui/vue": "^1.6.1",
     "@heroicons/vue": "^1.0.5",
     "@tailwindcss/aspect-ratio": "^0.4.0",
