@@ -20,7 +20,7 @@
     "firebase-functions": "^3.24.0",
     "pdfjs-dist": "^2.10.377",
     "theme-change": "^2.2.0",
-    "three": "^0.134.0",
+    "three": "^0.150.1",
     "troisjs": "^0.3.3",
     "vee-validate": "^4.5.11",
     "vue": "^3.2.21",
