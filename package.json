@@ -16,7 +16,7 @@
     "@xstate/vue": "^0.8.0",
     "build-url": "^6.0.1",
     "daisyui": "^2.31.0",
-    "firebase": "^9.8.2",
+    "firebase": "^9.17.2",
     "firebase-functions": "^3.24.0",
     "pdfjs-dist": "^2.10.377",
     "theme-change": "^2.2.0",
